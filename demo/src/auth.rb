@@ -2,10 +2,8 @@ require 'tmpdir'
 class PasswordFile
   attr :path
   
-  def initialize(passwords_file_path="#{Dir.tmpdir}/foobar.txt")
+  def initialize(passwords_file_path="#{Dir.tmpdir}/pwds.txt")
     @path = passwords_file_path
-    tmpfile = File.open(passwords_file_path, 'w')
-    tmpfile.close
   end
   
   def get_users()
@@ -17,8 +15,6 @@ class PasswordFile
         user_accounts[data[0]] = {:name => data[0], :pwd => data[1], :status => data[2].chomp!.to_sym}
       end
       password_file.close
-    else
-      puts Messages.lookup(:load_failed)
     end
     return user_accounts
   end
