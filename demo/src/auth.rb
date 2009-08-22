@@ -1,8 +1,10 @@
+require 'tmpdir'
 class PasswordFile
   attr :path
   
-  def initialize(passwords_file_path=nil)
-    @path = passwords_file_path unless passwords_file_path.nil?
+  def initialize(passwords_file_path="#{Dir.tmpdir}/foobar.txt")
+    @path = passwords_file_path
+    File.open(passwords_file_path, 'w')
   end
   
   def get_users()
@@ -158,7 +160,7 @@ end
 if !(ARGV[0].nil?)
 
   # setup the authentication server
-  pwd_file = PasswordFile.new('/Users/esh/Desktop/loginExample060408/src/pwds.txt')
+  pwd_file = PasswordFile.new('#{Dir.tmpdir}/pwds.txt')
   auth     = Authentication.new(pwd_file)
 
   # grab the input and write out the output to stdout

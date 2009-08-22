@@ -1,15 +1,9 @@
 require 'rubygems'
 require 'sinatra'
-require 'haml'
+require 'tmpdir'
 require 'auth.rb'
-pwd_file = PasswordFile.new("./pwds.txt")
+pwd_file = PasswordFile.new()
 auth = Authentication.new(pwd_file)
-post '/hi' do
-  "Hello World!"
-end
-get '/' do
-  haml :'index'
-end
 post '/create' do
   return_code = auth.send(:create, params[:uname], params[:pwd]) 
   return Messages.lookup(return_code)
