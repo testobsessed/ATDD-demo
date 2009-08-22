@@ -1,0 +1,28 @@
+Prioritized Backlog
+-------------------
+Users can create a new account with a username and password
+
+Users can log in with a valid username and password
+
+Users are required to use secure passwords (strings of at least 6 characters with at least one letter, one number, and one symbol)
+
+Users can change passwords (when logged in)
+
+If the user account already exists when the user attempts to create it, they receive an error message.
+
+User accounts are suspended - and thus not valid - after 3 failed login attempts
+
+There is a built in administrator account, with the default password my@dm1n, that has special privileges.
+
+Some users are administrators with special privileges
+
+Administrators can change passwords for any user
+
+Administrators can reset suspended accounts
+
+Administrators can promote other users to be administrators
+
+Administrators can suspend active accounts
+
+Users are required to change their password every 90 days
+
