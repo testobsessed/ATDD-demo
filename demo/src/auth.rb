@@ -4,7 +4,8 @@ class PasswordFile
   
   def initialize(passwords_file_path="#{Dir.tmpdir}/foobar.txt")
     @path = passwords_file_path
-    File.open(passwords_file_path, 'w')
+    tmpfile = File.open(passwords_file_path, 'w')
+    tmpfile.close
   end
   
   def get_users()
@@ -160,7 +161,7 @@ end
 if !(ARGV[0].nil?)
 
   # setup the authentication server
-  pwd_file = PasswordFile.new('#{Dir.tmpdir}/pwds.txt')
+  pwd_file = PasswordFile.new()
   auth     = Authentication.new(pwd_file)
 
   # grab the input and write out the output to stdout
