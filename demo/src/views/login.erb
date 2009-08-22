@@ -3,9 +3,13 @@
 <script type="text/javascript">
 function showCreateForm() {
 	document.authform.action="/create";
+	var submitButton = document.getElementById("submit_button");
+	submitButton.value="Create Account";
 }
 function showLoginForm() {
 	document.authform.action="/login";
+	var submitButton = document.getElementById("submit_button");
+	submitButton.value="Login";
 }
 </script>
 <h1>Welcome!</h1>
@@ -15,7 +19,7 @@ function showLoginForm() {
 User Name: <input type="text" name="uname" /><br />
 Password: <input type="text" name="pwd" /><br />
 Note that for the purposes of this example, this UI does not hide the password. That way we can all see the values we're trying. If this were a real application, the password field would be declared as type "password" so that passwords would show as *** when entered.
-<input type="submit" value="Submit" />
+<input id="submit_button" type="submit" value="Create Account" />
 
 
 </form>
