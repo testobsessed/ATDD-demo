@@ -6,6 +6,12 @@ AUTHPATH = os.path.join(os.path.dirname(__file__),
                         '..', '..', 'demo', 'src', 'auth.rb')
 
 
+def open_login_page():
+    pass
+
+def exit():
+    pass
+
 def create_user(username, password):
     return _run_command('create', username, password)
 

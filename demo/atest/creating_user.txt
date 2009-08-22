@@ -54,13 +54,14 @@ Then the database contains an ${state} account ${username}/${passwor}
     Should Contain  ${db}  ${username}\t${password}\t${state}
 
 
-
 *** Settings ***
 
-Library  OperatingSystem
-Library  ${DRIVER}
+Library         OperatingSystem
+Library         ${DRIVER}Library.py
+Suite Setup     Open Login Page
+Suite Teardown  Exit
 
 
 *** Variables ***
-${DRIVER}    CliLibrary.py
+${DRIVER}    Cli
 ${DATABASE}  ${TEMPDIR}/pwds.txt
