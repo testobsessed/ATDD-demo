@@ -129,13 +129,13 @@ end
 
 class Messages
   @@mappings = {
-    :success => "SUCCESS",
+    :success => "Account created",
     :fail => "FAIL",
     :unknown => "Auth Server: unknown command",
     :no_cmd => "Must provide at least one command",
-    :logged_in => "Logged In",
+    :logged_in => "Welcome!",
     :load_failed => "Failed to load user accounts",
-    :access_denied => "Access Denied"
+    :access_denied => "Access denied"
   }
   
   def self.lookup(msg_symbol)
