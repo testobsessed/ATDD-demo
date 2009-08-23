@@ -8,20 +8,19 @@ ${DELAY} =  0
 *** Keywords ***
 
 Create User  [Arguments]  ${username}  ${password}
-    Go To  ${LOGIN PAGE}
-    Click Link  create  don't wait page to load
-    Input Text  uname  ${username}
-    Input Text  pwd  ${password}
-    Click Button  Create Account
-    ${output} =  Get Text  message
+    ${output} =  Create Or Login  create  Create Account  ${username}  ${password}
     [Return]  ${output}
 
 Attempt To Login  [Arguments]  ${username}  ${password}
+    ${output} =  Create Or Login  login  Login  ${username}  ${password}
+    [Return]  ${output}
+
+Create Or Login  [Arguments]  ${link}  ${button}  ${username}  ${password}
     Go To  ${LOGIN PAGE}
-    Click Link  login  don't wait page to load
+    Click Link  ${link}  don't wait page to load
     Input Text  uname  ${username}
     Input Text  pwd  ${password}
-    Click Button  Login
+    Click Button  ${button}
     ${output} =  Get Text  message
     [Return]  ${output}
 
