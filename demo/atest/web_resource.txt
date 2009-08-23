@@ -1,0 +1,33 @@
+*** Settings ***
+Library  SeleniumLibrary
+
+*** Variables ***
+${LOGIN PAGE} =  http://localhost:4567
+${DELAY} =  0
+
+*** Keywords ***
+
+Create User  [Arguments]  ${username}  ${password}
+    Go To  ${LOGIN PAGE}
+    Click Link  create  don't wait page to load
+    Input Text  uname  ${username}
+    Input Text  pwd  ${password}
+    Click Button  Create Account
+    ${output} =  Get Text  message
+    [Return]  ${output}
+
+Attempt To Login  [Arguments]  ${username}  ${password}
+    Go To  ${LOGIN PAGE}
+    Click Link  login  don't wait page to load
+    Input Text  uname  ${username}
+    Input Text  pwd  ${password}
+    Click Button  Login
+    ${output} =  Get Text  message
+    [Return]  ${output}
+
+Open Login Page
+    Open Browser  ${LOGIN PAGE}
+    Set Selenium Speed  ${DELAY}
+
+Exit
+    Close Browser

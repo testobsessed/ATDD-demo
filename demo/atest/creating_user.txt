@@ -57,11 +57,11 @@ Then the database contains an ${state} account ${username}/${passwor}
 *** Settings ***
 
 Library         OperatingSystem
-Library         ${DRIVER}Library.py
+Resource        ${INTERFACE}_resource.txt
 Suite Setup     Open Login Page
 Suite Teardown  Exit
 
 
 *** Variables ***
-${DRIVER}    Cli
-${DATABASE}  ${TEMPDIR}/pwds.txt
+${INTERFACE}  cli
+${DATABASE}   ${TEMPDIR}/pwds.txt
