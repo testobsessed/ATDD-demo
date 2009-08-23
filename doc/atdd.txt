@@ -1,3 +1,95 @@
-Here is where we will capture the text for the eBook
+Acceptance Test-Driven Development
 
-more text here
+===Introduction
+
+Even Agile teams find
+
+====Benefits of ATDD
+
+- Drive out ambiguity early
+	Collaborate - cross-functional team - multiple perspectives. 
+	 
+	Gain a shared understanding of what we're building.
+
+- 
+- Capture requirements in an executable form
+- Leverage one artifact for multiple purposes
+- See progress on running, tested features
+- Measure progress on new development in terms of running, tested features
+- Automatically detect regressions in existing features
+
+
+Fast feedback - progress toward goal - assess - 
+Requirements
+Expectations
+Regression
+Execute
+
+
+- We capture that understanding in an executable format
+- We end up with executable requirements
+- 
+
+- Automated regression tests
+- Informative automated tests
+- Collaboration
+- Shared understanding of the requirements
+- Concrete communication
+- Executable requirements
+- 
+
+====How ATDD Fits in Agile
+
+Agile - iterative - working from granular Stories in a backlog
+This process works best if you have cross-functional feature teams.
+
+
+===The ATDD Cycle
+
+[picture]
+
+This eBook discusses three distinct components of Acceptance Test-Driven Development (ATDD).
+
+Starting with a high-level Story from the backlog, as a team, we:
+- We 
+- We have a collaborative discussion with concrete examples
+
+
+* Define: we work with the Product Owner to understand the Story, to elicit details, examples, and acceptance criteria, and to distill acceptance tests.
+* Implement: we express the acceptance tests in an Agile-friendly test automation framework format
+* Deliver
+
+===Define
+
+Participants in this collaborative, cross-functional discussion:
+
+Product Owner: the business stakeholder(s) who has the responsibility and authority to define *what* the system should do.
+
+Implementation Team: the people who determine *how* to implement and test the system.
+
+The "Product Owner" refers to the person or people with the 
+responsibility and authority to specify the requirements for the software under development.  
+In Scrum, this is the “Product Owner.”  In Extreme Programming this is the “Customer.”  In 
+some organizations these people are Business Analysts; in other organizations they’re part of 
+Product Management.  In each case, the business stakeholder specifies the “what” while the 
+implementation team specifies the “how.” The business stakeholder defines the features to be 
+implemented in terms of externally verifiable behavior; the implementation team decides on the internal implementation details.
+
+Discussion with participants from all areas.
+
+Testers - use test design techniques & heuristics in eliciting requirements from the Product Owner.
+
+Developers - describe possible implementation strategies, tradeoffs, costs, and benefits to discover what's really important to the Product Owner.
+
+Other stakeholders - depending on the context.
+
+===Implement
+
+====Agile-Friendly Test Automation Tools
+Test automation tools that work well with ATDD:
+- Expresses tests in natural language rather than code so that all stakeholders can understand the existing tests and potentially even add new ones.
+
+===Deliver
+
+===How Do We Know We're Done?
+We D.I.D. it.
