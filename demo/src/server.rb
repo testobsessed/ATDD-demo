@@ -18,6 +18,11 @@ end
 post '/create' do
   return_code = auth.send(:create, params[:uname], params[:pwd]) 
   @message = Messages.lookup(return_code)
+  if (@message == "Account created")
+    @color = "green"
+  else
+    @color = "red"
+  end
   @template = :response
   erb :page
 end
@@ -26,6 +31,11 @@ post '/login' do
   return_code = auth.send(:login, params[:uname], params[:pwd]) 
   @message = Messages.lookup(return_code)
   @template = :response
+  if (@message == "Welcome!")
+    @color = "green"
+  else
+    @color = "red"
+  end
   erb :page
 end
 

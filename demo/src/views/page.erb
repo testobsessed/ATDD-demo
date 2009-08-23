@@ -4,177 +4,14 @@
 	body {
 	  color : #333333;
 	  font-family : Verdana, Arial, Helvetica, sans-serif;
-	  font-size :80%;
-	  line-height : 140%;
+
 	  padding: 10px;
 	  margin: 0;
 	  text-align: center;
 	}
 
-	h1{
-	 text-align: right;
-	 font-size: 120%;
-	 font-weight: bold;
-	 color: #999999;
-	 padding: 0px 10px 5px 0px;
-	 margin: 0px;
-	 /*border-top: 1px solid #cccccc;*/
-	}
-
-	h2{
-	 text-align: right;
-	 font-size: 100%;
-	 color: #999999;
-	 font-weight: bold;
-	 margin: 0px;
-	 padding: 10px 0px 0px 0px;
-	}
-
-	h3{
-	 text-align: left;
-	 font-style: italic;
-	 font-size: 100%;
-	 color: #999999;
-	 margin: 0px;
-	 padding: 0px;
-	}
-
 	ul{
 	 list-style-type: square;
-	}
-
-	ul, ol{
-	 margin: 0px;
-	 padding: 0px;
-	}
-
-	ul li{
-		margin: 10px 0px 10px 17px;
-		padding: 0px;
-	}
-
-	ol li{
-		margin: 10px 0px 0px 30px;
-		padding: 0px;
-	}
-
-	.lowoverhead {
-		margin-top: 0px;
-		margin-bottom: 0px;
-	}
-
-	.clearboth {
-		clear: both;
-	}
-
-	#all {
-		margin: auto;
-		padding: 0px;
-		width: 800px;
-		text-align: left;
-	}
-
-	#right {
-		float: right;
-		display: inline;
-		width: 580px;
-		overflow: hidden;
-	}
-
-	#left {
-		float: left;
-		display: inline;
-	}
-
-	#menu {
-		float: right;
-		display: inline;
-		width: 570px;
-	}
-
-	#menucontent {
-		padding: 0px 0px 0px 5px;
-		margin: 60px 10px 0px 0px;
-		line-height: 200%;
-		font-size: 130%;
-	}
-
-	#menu a {
-		color: white;
-		padding: 10px 10px 0px 5px;
-	}
-
-	#menu a:hover {
-		color: #A0FEB8;
-	}
-
-	.border-left {
-		/*border-left: 1px solid gray;*/
-	}
-
-	.border-right {
-		/*border-right: 1px solid gray;*/
-	}
-
-	.selected {
-		color: white;
-	}
-
-	#breadcrumb {
-		padding: 0px;
-		font-size: 75%;
-		font-weight: bold;
-		color: #999999;
-	}
-
-	#breadcrumbcontents {
-		padding: 0px 5px;
-	}
-
-	#breadcrumb a {
-		color: white;
-		padding: 10px;
-	}
-
-	#breadcrumb a:hover {
-		color: #A0FEB8;
-	}
-
-	.subtitle {
-		font-size: 120%;
-		font-style: italic;
-	}
-
-	#contact {
-		width: 190px;
-		margin: 10px 5px;
-		padding: 0px;
-	}
-
-	#middle {
-		margin: 0px 0px 0px 10px;
-		display: inline;
-		padding: 0px;
-		float: left;
-		width: 399px;
-	}
-
-	#content {
-		margin: 0px 0px 10px 10px;
-	}
-
-	#blurbs {
-		overflow: hidden;
-		float: right;
-		display: inline;
-		width: 171px;
-		padding: 0px;
-		margin: 0px;
-	}
-
-	#blurbcontent {
-		padding: 18px 0px 0px 0px;
-		margin: 0px;
 	}
 
 	.leftalign {
@@ -199,6 +36,52 @@
 	.padright {
 		padding-right: 10px;
 	}
+	
+	.tab {
+		padding: 10px 20px 10px 20px;
+		float: left;
+		color: white;
+	}
+	
+	#authentication_info {
+		float: none;
+		clear: both;
+		padding: 20px 10px 20px 10px;
+	}
+	
+	.label {
+		color: white;
+		font-size: 110%;
+		line-height: 110%;
+		letter-spacing: 1px;
+		font-weight: bold;		
+	}
+	
+	.btn {
+		color: #333333;
+		font-size: 110%;
+		line-height: 110%;		
+		letter-spacing: 1px;
+		font-weight: bold;		
+	}
+	
+	.inactive {
+		background-color: #FFFFFF;
+		color: inherit;
+	}
+	
+	.login {
+		background-color: #333366;
+	}
+	
+	.create {
+		background-color: #336633;		
+	}
+	
+	.container {
+		width: 400px;
+		margin: auto;
+	}
 
 	.rtop, .rbottom {
 		display: block;
@@ -220,6 +103,21 @@
 
 	.bggray {
 		background-color : #999999;
+	}
+	
+	.big {
+		font-size: 160%;
+		line-height: 150%;
+		letter-spacing: 1px;
+		font-weight: bold;
+	}
+
+	.green {
+		color: #339933;
+	}
+
+	.red {
+		color: #FF0000;
 	}
 
 	.left {
@@ -254,22 +152,22 @@
 	</style>
 </head>
 <body class="bggreen">
-	<h1>PAGE TEMPLATE</h1>
-	<div class="bgwhite">
+	<h1>Simple Authentication Example</h1>
+	<div class="bgwhite container">
 			<b class="rtop bggreen">
 				<b class="r1 bgwhite"></b> 
-	<b class="r2 bgwhite"></b> 
-	<b class="r3 bgwhite"></b> 
-	<b class="r4 bgwhite"></b>
+				<b class="r2 bgwhite"></b> 
+				<b class="r3 bgwhite"></b> 
+				<b class="r4 bgwhite"></b>
 			</b>
-				<%= partial @template %>
+			<%= partial @template %>
 
 			<b class="rbottom bggreen">
 				<b class="r4 bgwhite"></b> 
-	<b class="r3 bgwhite"></b> 
-	<b class="r2 bgwhite"></b> 
-	<b class="r1 bgwhite"></b>
+				<b class="r3 bgwhite"></b> 
+				<b class="r2 bgwhite"></b> 
+				<b class="r1 bgwhite"></b>
 			</b>
-		    </div>
-	</body>
+	</div>
+</body>
 </html>

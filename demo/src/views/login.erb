@@ -1,24 +1,44 @@
 <script type="text/javascript">
 function showCreateForm() {
 	document.authform.action="/create";
+	document.getElementById('create').setAttribute("class", "tab create");
+	document.getElementById('login').setAttribute("class", "tab inactive");
+	document.getElementById('authentication_info').setAttribute("class", "create")
 	var submitButton = document.getElementById("submit_button");
 	submitButton.value="Create Account";
 }
 function showLoginForm() {
 	document.authform.action="/login";
+	document.getElementById('create').setAttribute("class", "tab inactive");
+	document.getElementById('login').setAttribute("class", "tab login");
+	document.getElementById('authentication_info').setAttribute("class", "login")
 	var submitButton = document.getElementById("submit_button");
 	submitButton.value="Login";
 }
 </script>
-
-<h1>Welcome!</h1>
-<a href="#" id="create" onClick="showCreateForm();">Create New Account</a>
-<a href="#" id="login" onClick="showLoginForm();">Login</a>
+<div>
+<h3>Login or Create an Account</h3>
+<div id="login" class="tab login" onClick="showLoginForm();">Login</div>
+<div id="create" class="tab inactive" onClick="showCreateForm();">Create New Account</div>
+<div id="authentication_info" class="login">
 <form action="/create" method="post" name="authform">
-User Name: <input type="text" name="uname" /><br />
-Password: <input type="text" name="pwd" /><br />
-Note that for the purposes of this example, this UI does not hide the password. That way we can all see the values we're trying. If this were a real application, the password field would be declared as type "password" so that passwords would show as *** when entered.
-<input id="submit_button" type="submit" value="Create Account" />
-
-
+<table cellpadding=10px>
+	<tr>
+		<td><span class="label">User Name:</span></td>
+		<td><input type="text" name="uname" /></td>
+	</tr>
+	<tr>
+		<td><span class="label">Password:</span></td>
+		<td><input type="text" name="pwd" /></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><input id="submit_button" type="submit" value="Create Account" class="btn" /></td>
+	</tr>
+</table>
 </form>
+</div>
+<div class="leftalign padleft padright">
+	<i>Note that for the purposes of this example, this UI does not hide the password. That way we can all see the values we're trying. If this were a real application, the password field would be declared as type "password" so that passwords would be hidden when entered.</i>
+</div>
+</div>
