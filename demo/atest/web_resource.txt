@@ -17,7 +17,7 @@ Attempt To Login  [Arguments]  ${username}  ${password}
 
 Create Or Login  [Arguments]  ${link}  ${button}  ${username}  ${password}
     Go To  ${LOGIN PAGE}
-    Click Link  ${link}  don't wait page to load
+    Click Element  ${link}  don't wait page to load
     Input Text  uname  ${username}
     Input Text  pwd  ${password}
     Click Button  ${button}
