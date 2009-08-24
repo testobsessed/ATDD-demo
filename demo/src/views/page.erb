@@ -41,6 +41,8 @@
 		padding: 10px 20px 10px 20px;
 		float: left;
 		color: white;
+		-webkit-border-radius: 5px 5px 0px 0px;
+		-moz-border-radius: 5px 5px 0px 0px;
 	}
 	
 	#authentication_info {
@@ -66,7 +68,7 @@
 	}
 	
 	.inactive {
-		background-color: #FFFFFF;
+		background-color: #dddddd;
 		color: inherit;
 	}
 	
@@ -81,6 +83,8 @@
 	.container {
 		width: 400px;
 		margin: auto;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
 	}
 
 	.rtop, .rbottom {
@@ -133,41 +137,13 @@
 		float: right;
 		width: 250px;
 	}
-
-	.r1{margin: 0 5px}
-	.r2{margin: 0 3px}
-	.r3{margin: 0 2px}
-	.r4{margin: 0 1px; height: 2px}
-
-	.lr1{margin: 0 0 0 5px}
-	.lr2{margin: 0 0 0 3px}
-	.lr3{margin: 0 0 0 2px}
-	.lr4{margin: 0 0 0 1px; height: 2px}
-
-	.rr1{margin: 0 5px 0 0}
-	.rr2{margin: 0 3px 0 0}
-	.rr3{margin: 0 2px 0 0}
-	.rr4{margin: 0 1px 0 0; height: 2px}
 	
 	</style>
 </head>
 <body class="bggreen">
 	<h1>Simple Authentication Example</h1>
 	<div class="bgwhite container">
-			<b class="rtop bggreen">
-				<b class="r1 bgwhite"></b> 
-				<b class="r2 bgwhite"></b> 
-				<b class="r3 bgwhite"></b> 
-				<b class="r4 bgwhite"></b>
-			</b>
-			<%= partial @template %>
-
-			<b class="rbottom bggreen">
-				<b class="r4 bgwhite"></b> 
-				<b class="r3 bgwhite"></b> 
-				<b class="r2 bgwhite"></b> 
-				<b class="r1 bgwhite"></b>
-			</b>
+		<%= partial @template %>
 	</div>
 </body>
 </html>
