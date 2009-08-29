@@ -1,0 +1,17 @@
+To prepare the demo:
+
+1. Run the web server app:
+	cd demo/src
+	ruby ./server.rb
+
+2. Run Selenium Server:
+	cd /Users/esh/Desktop/robotframework-seleniumlibrary-2.2
+	java -jar build/lib/SeleniumLibrary/lib/selenium-server.jar
+
+3. Open the tabs for executing unit tests & acceptance tests
+
+4. Start FF & navigate to app
+
+5. Open backlog in text editor
+
+6. Open unit tests & prod code in text editor

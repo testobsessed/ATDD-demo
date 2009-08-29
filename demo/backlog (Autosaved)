@@ -7,6 +7,10 @@ Feedback message from creating login stays on Create Login page on failure to av
 
 Users must change their old, insecure passwords to meet the new security guidelines.
 
+Localization
+
+~`!@#$%^&*()_+-=
+
 Users can change passwords (when logged in)
 
 If the user account already exists when the user attempts to create it, they receive an error message.
