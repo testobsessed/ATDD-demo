@@ -1,10 +1,11 @@
 Prioritized Backlog
 -------------------
-Users can create a new account with a username and password
+Users are required to create new accounts with secure passwords (strings of at least 6 characters with at least one letter, one number, and one symbol)
 
-Users can log in with a valid username and password
+--------
+Feedback message from creating login stays on Create Login page on failure to avoid user having to hit back button.
 
-Users are required to use secure passwords (strings of at least 6 characters with at least one letter, one number, and one symbol)
+Users must change their old, insecure passwords to meet the new security guidelines.
 
 Users can change passwords (when logged in)
 

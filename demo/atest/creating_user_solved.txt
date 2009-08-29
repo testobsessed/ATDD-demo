@@ -19,20 +19,23 @@ Users cannot login with invalid password
     When a user attempts to login with username "fred" and password "bad"
     Then the system responds with the message "Access denied"
 
-Correct information is shown when a password is invalid
-    [Tags]  Unimplemented
-    Given there are no accounts in the system
-    When a user creates an account with username "fred" and password "badpwd"
-    Then the system responds with the message "Password must contain 6-24 characters with at least one letter, one number, and one symbol"
+Too short   Password should be invalid  12eD5
+No numbers  Password should be invalid  asfdssdf
 
-Existing users with invalid password can still login
-    Given there is an account with username "fred" and invalid password "password"
-    When a user attempts to login with username "fred" and password "password"
-    Then the system responds with the message "Welcome!"
-
+Passwords that do not meet the criteria are invalid
+    Passwords that are too short, like 12eD5
+    Passwords that are too long, like alfjawlh5flsjw4
 
 
 *** Keywords ***
+
+Passwords that ${description}, like ${pwd}
+    ${status} =  Create User  fred  ${pwd}      
+    Should Be Equal  ${status}  Not strong enough
+
+Password should be invalid  [Arguments]  ${pwd}
+    ${status} =  Create User  fred  ${pwd}      
+    Should Be Equal  ${status}  Not strong enough
 
 Given there are no accounts in the system
     Remove File  ${TEMPDIR}/pwds.txt
@@ -56,9 +59,6 @@ When a user attempts to login with username "${username}" and password "${passwo
 Then the database contains an ${state} account ${username}/${passwor}
     ${db} =  Get File  ${DATABASE}
     Should Contain  ${db}  ${username}\t${password}\t${state}
-
-Given there is an account with username "${username}" and invalid password "${password}"
-    Create File  ${DATABASE}  ${username}\t${password}\tactive
 
 
 *** Settings ***
