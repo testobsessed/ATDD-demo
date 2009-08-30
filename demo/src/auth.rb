@@ -44,7 +44,6 @@ class Authentication
   end
   
   def create(username, password, status=:active)
-    return :bad_password if !Password.new(password).valid?
     account_data = {}
     account_data[:pwd] = password
     account_data[:status] = status
@@ -88,41 +87,41 @@ class User
   end
 end
 
-class Password
-  attr :password
-  
-  def initialize(password)
-    @password = password
-  end
-  
-  def valid?
-    if too_short? || too_long? || !contains_punctuation? || !contains_letter? || !contains_number?
-      return false
-    else 
-      return true
-    end
-  end
-  
-  def too_short?
-    return (@password.length < 6)
-  end
-  
-  def too_long?
-    return (@password.length > 12)
-  end
-  
-  def contains_punctuation?
-    return !@password.match(/\W/).nil?
-  end
-  
-  def contains_letter?
-    return !@password.match(/[a-zA-Z]/).nil?
-  end
-  
-  def contains_number?
-    return !@password.match(/\d/).nil?
-  end
-end
+# class Password
+#   attr :password
+#   
+#   def initialize(password)
+#     @password = password
+#   end
+#   
+#   def valid?
+#     if too_short? || too_long? || !contains_punctuation? || !contains_letter? || !contains_number?
+#       return false
+#     else 
+#       return true
+#     end
+#   end
+#   
+#   def too_short?
+#     return (@password.length < 6)
+#   end
+#   
+#   def too_long?
+#     return (@password.length > 12)
+#   end
+#   
+#   def contains_punctuation?
+#     return !@password.match(/\W/).nil?
+#   end
+#   
+#   def contains_letter?
+#     return !@password.match(/[a-zA-Z]/).nil?
+#   end
+#   
+#   def contains_number?
+#     return !@password.match(/\d/).nil?
+#   end
+# end
 
 class Messages
   @@mappings = {
@@ -132,8 +131,7 @@ class Messages
     :no_cmd => "Must provide at least one command",
     :logged_in => "Welcome!",
     :load_failed => "Failed to load user accounts",
-    :access_denied => "Access denied",
-    :bad_password => "Password must contain 6-24 characters with at least one letter, one number, and one symbol"
+    :access_denied => "Access denied"
   }
   
   def self.lookup(msg_symbol)

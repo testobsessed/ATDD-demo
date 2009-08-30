@@ -45,12 +45,12 @@ class TestAuth < Test::Unit::TestCase
     assert_equal :success, return_code
   end
   
-  def test_bad_passwords_are_rejected
-    assert !@auth.account_exists?("newacc")
-    return_code = @auth.create("newacc", "bad")
-    assert !@auth.account_exists?("newacc")
-    assert_equal :bad_password, return_code
-  end
+  # def test_bad_passwords_are_rejected
+  #   assert !@auth.account_exists?("newacc")
+  #   return_code = @auth.create("newacc", "bad")
+  #   assert !@auth.account_exists?("newacc")
+  #   assert_equal :bad_password, return_code
+  # end
   
 end
 
@@ -78,37 +78,37 @@ class TestErrs < Test::Unit::TestCase
   end
 end
 
-class TestPassword < Test::Unit::TestCase
-  def test_validate_password_returns_true_when_all_conventions_met
-    password = Password.new "a0!aaa"
-    assert password.valid?
-  end
-  
-  def test_validate_password_returns_false_when_password_less_than_6_chars
-    password = Password.new "a0!aa"
-    assert !password.valid?
-  end
-  
-  def test_validate_password_returns_false_when_password_more_than_12_chars
-    password = Password.new "a0!aaaaaaaaaa"
-    assert !password.valid?
-  end
-  
-  def test_validate_password_returns_false_when_password_missing_punctuation
-    password = Password.new "aaaaa0"
-    assert !password.valid?
-  end
-  
-  def test_validate_password_returns_false_when_password_missing_letter
-    password = Password.new "!!!!00"
-    assert !password.valid?
-  end
-  
-  def test_validate_password_returns_false_when_password_missing_number
-    password = Password.new "!!!!!A"
-    assert !password.valid?
-  end
-end
+# class TestPassword < Test::Unit::TestCase
+#   def test_validate_password_returns_true_when_all_conventions_met
+#     password = Password.new "a0!aaa"
+#     assert password.valid?
+#   end
+#   
+#   def test_validate_password_returns_false_when_password_less_than_6_chars
+#     password = Password.new "a0!aa"
+#     assert !password.valid?
+#   end
+#   
+#   def test_validate_password_returns_false_when_password_more_than_12_chars
+#     password = Password.new "a0!aaaaaaaaaa"
+#     assert !password.valid?
+#   end
+#   
+#   def test_validate_password_returns_false_when_password_missing_punctuation
+#     password = Password.new "aaaaa0"
+#     assert !password.valid?
+#   end
+#   
+#   def test_validate_password_returns_false_when_password_missing_letter
+#     password = Password.new "!!!!00"
+#     assert !password.valid?
+#   end
+#   
+#   def test_validate_password_returns_false_when_password_missing_number
+#     password = Password.new "!!!!!A"
+#     assert !password.valid?
+#   end
+# end
 
 
 

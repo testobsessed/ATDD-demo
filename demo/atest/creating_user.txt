@@ -2,40 +2,36 @@
 
 Users can create a new account with a username and password
     Given there are no accounts in the system
-    When a user creates an account with username "fred" and password "p4ssw@rd"
+    When a user creates an account with username "fred" and password "password"
     Then the system responds with the message "Account created"
 
-Users can login with a valid account
-    Given there is an account with username "fred" and password "p4ssw@rd"
-    When a user attempts to login with username "fred" and password "p4ssw@rd"
+Users can login with a new, valid account
+    Given there is an account with username "fred" and password "password"
+    When a user attempts to login with username "fred" and password "password"
     Then the system responds with the message "Welcome!"
 
-Account information is stored in a database
-    Given there is an account with username "fred" and password "p4ssw@rd"
-    Then the database contains an active account fred/password
-
-Users cannot login with invalid password
-    Given there is an account with username "fred" and password "p4ssw@rd"
+Users cannot login with wrong password
+    Given there is an account with username "fred" and password "password"
     When a user attempts to login with username "fred" and password "bad"
     Then the system responds with the message "Access denied"
 
-Correct information is shown when a password is invalid
-    [Tags]  Unimplemented
-    Given there are no accounts in the system
-    When a user creates an account with username "fred" and password "badpwd"
-    Then the system responds with the message "Password must contain 6-24 characters with at least one letter, one number, and one symbol"
-
-Existing users with invalid password can still login
+Existing users in the database can login
     Given there is an account with username "fred" and invalid password "password"
     When a user attempts to login with username "fred" and password "password"
     Then the system responds with the message "Welcome!"
+
+Account information is stored in a database
+    Given there is an account with username "fred" and password "password"
+    Then the database contains an active account fred/password
+
+
 
 
 
 *** Keywords ***
 
 Given there are no accounts in the system
-    Remove File  ${TEMPDIR}/pwds.txt
+    Remove File  ${DATABASE}
 
 When a user creates an account with username "${username}" and password "${password}"
     ${STATUS} =  Create User  ${username}  ${password}      
@@ -53,12 +49,12 @@ When a user attempts to login with username "${username}" and password "${passwo
     ${STATUS} =  Attempt to Login  ${username}  ${password}
     Set Test Variable  ${STATUS}
     
-Then the database contains an ${state} account ${username}/${passwor}
+Then the database contains an ${state} account ${username}/${password}
     ${db} =  Get File  ${DATABASE}
     Should Contain  ${db}  ${username}\t${password}\t${state}
 
 Given there is an account with username "${username}" and invalid password "${password}"
-    Create File  ${DATABASE}  ${username}\t${password}\tactive
+    Create File  ${DATABASE}  ${username}\t${password}\tactive\n
 
 
 *** Settings ***

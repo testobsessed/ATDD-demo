@@ -1,29 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generated="20090825 15:25:22.703" generator="Robot 2.1.1 (Python 2.5.1 on darwin)">
+<robot generated="20090829 21:27:49.712" generator="Robot 2.1.1 (Python 2.5.1 on darwin)">
 <suite source="/users/esh/desktop/code/atdd-demo/demo/atest/creating_user.txt" name="Creating User">
 <doc></doc>
 <metadata>
 </metadata>
-<kw type="setup" name="web_resource.Open Login Page" timeout="">
+<kw type="setup" name="cli_resource.Open Login Page" timeout="">
 <doc></doc>
 <arguments>
 </arguments>
-<kw type="kw" name="SeleniumLibrary.Open Browser" timeout="">
-<doc>Opens a new browser instance to given url.</doc>
+<kw type="kw" name="BuiltIn.No Operation" timeout="">
+<doc>Does absolutely nothing.</doc>
 <arguments>
-<arg>${LOGIN PAGE}</arg>
 </arguments>
-<msg timestamp="20090825 15:25:33.817" html="no" level="INFO">Opening browser 'firefox' to base url 'http://localhost:4567'</msg>
-<status status="PASS" endtime="20090825 15:25:33.817" starttime="20090825 15:25:22.900"></status>
+<status status="PASS" endtime="20090829 21:27:49.801" starttime="20090829 21:27:49.800"></status>
 </kw>
-<kw type="kw" name="SeleniumLibrary.Set Selenium Speed" timeout="">
-<doc>Sets the delay that is waited after each Selenium command.</doc>
-<arguments>
-<arg>${DELAY}</arg>
-</arguments>
-<status status="PASS" endtime="20090825 15:25:33.829" starttime="20090825 15:25:33.818"></status>
-</kw>
-<status status="PASS" endtime="20090825 15:25:33.829" starttime="20090825 15:25:22.899"></status>
+<status status="PASS" endtime="20090829 21:27:49.801" starttime="20090829 21:27:49.799"></status>
 </kw>
 <test critical="yes" name="Users Can Create A New Account With A Username And Password" timeout="">
 <doc></doc>
@@ -34,97 +25,72 @@
 <kw type="kw" name="OperatingSystem.Remove File" timeout="">
 <doc>Removes a file with the given path.</doc>
 <arguments>
-<arg>${TEMPDIR}/pwds.txt</arg>
+<arg>${DATABASE}</arg>
 </arguments>
-<msg timestamp="20090825 15:25:33.833" html="yes" level="INFO">Removed file '&lt;a href="file:///var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt"&gt;/var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt&lt;/a&gt;'</msg>
-<status status="PASS" endtime="20090825 15:25:33.833" starttime="20090825 15:25:33.831"></status>
+<msg timestamp="20090829 21:27:49.805" html="yes" level="INFO">Removed file '&lt;a href="file:///var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt"&gt;/var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt&lt;/a&gt;'</msg>
+<status status="PASS" endtime="20090829 21:27:49.805" starttime="20090829 21:27:49.803"></status>
 </kw>
-<status status="PASS" endtime="20090825 15:25:33.834" starttime="20090825 15:25:33.830"></status>
+<status status="PASS" endtime="20090829 21:27:49.805" starttime="20090829 21:27:49.802"></status>
 </kw>
-<kw type="kw" name='When a user creates an account with username "fred" and password "p4ssw@rd"' timeout="">
+<kw type="kw" name='When a user creates an account with username "fred" and password "password"' timeout="">
 <doc></doc>
 <arguments>
 </arguments>
-<kw type="set" name="${STATUS} = web_resource.Create User" timeout="">
+<kw type="set" name="${STATUS} = cli_resource.Create User" timeout="">
 <doc></doc>
 <arguments>
 <arg>${username}</arg>
 <arg>${password}</arg>
 </arguments>
-<kw type="set" name="${output} = web_resource.Create Or Login" timeout="">
+<kw type="set" name="${output} = cli_resource.Run Command" timeout="">
 <doc></doc>
 <arguments>
 <arg>create</arg>
-<arg>Create Account</arg>
 <arg>${username}</arg>
 <arg>${password}</arg>
 </arguments>
-<kw type="kw" name="SeleniumLibrary.Go To" timeout="">
-<doc>Navigates the active browser instance to the provided URL.</doc>
+<kw type="set" name="${cmd} = BuiltIn.Catenate" timeout="">
+<doc>Catenates the given items together and returns the resulted string.</doc>
 <arguments>
-<arg>${LOGIN PAGE}</arg>
+<arg>ruby</arg>
+<arg>${AUTHPATH}</arg>
+<arg>@{args}</arg>
 </arguments>
-<msg timestamp="20090825 15:25:34.065" html="no" level="INFO">Opening url 'http://localhost:4567'</msg>
-<status status="PASS" endtime="20090825 15:25:34.065" starttime="20090825 15:25:33.838"></status>
+<msg timestamp="20090829 21:27:49.811" html="no" level="INFO">${cmd} = ruby /users/esh/desktop/code/atdd-demo/demo/atest/../../demo/src/auth.rb create fred password</msg>
+<status status="PASS" endtime="20090829 21:27:49.811" starttime="20090829 21:27:49.809"></status>
 </kw>
-<kw type="kw" name="SeleniumLibrary.Click Element" timeout="">
-<doc>Click element identified by `locator`.</doc>
+<kw type="set" name="${output} = OperatingSystem.Run" timeout="">
+<doc>Runs the given command in the system and returns the output.</doc>
 <arguments>
-<arg>${link}</arg>
-<arg>don't wait page to load</arg>
+<arg>${cmd}</arg>
 </arguments>
-<msg timestamp="20090825 15:25:34.204" html="no" level="INFO">Clicking element 'create'.</msg>
-<status status="PASS" endtime="20090825 15:25:34.205" starttime="20090825 15:25:34.066"></status>
+<msg timestamp="20090829 21:27:49.827" html="no" level="INFO">Running command 'ruby /users/esh/desktop/code/atdd-demo/demo/atest/../../demo/src/auth.rb create fred password 2&gt;&amp;1'</msg>
+<msg timestamp="20090829 21:27:49.829" html="no" level="INFO">${output} = Account created</msg>
+<status status="PASS" endtime="20090829 21:27:49.829" starttime="20090829 21:27:49.811"></status>
 </kw>
-<kw type="kw" name="SeleniumLibrary.Input Text" timeout="">
-<doc>Types the given `text` into text field identified by `locator`.</doc>
+<kw type="kw" name="BuiltIn.Log" timeout="">
+<doc>Logs the given message with the given level.</doc>
 <arguments>
-<arg>uname</arg>
-<arg>${username}</arg>
+<arg>${output}</arg>
 </arguments>
-<msg timestamp="20090825 15:25:34.352" html="no" level="INFO">Typing text 'fred' into text field 'uname'</msg>
-<status status="PASS" endtime="20090825 15:25:34.352" starttime="20090825 15:25:34.205"></status>
+<msg timestamp="20090829 21:27:49.831" html="no" level="INFO">Account created</msg>
+<status status="PASS" endtime="20090829 21:27:49.831" starttime="20090829 21:27:49.830"></status>
 </kw>
-<kw type="kw" name="SeleniumLibrary.Input Text" timeout="">
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<arguments>
-<arg>pwd</arg>
-<arg>${password}</arg>
-</arguments>
-<msg timestamp="20090825 15:25:34.490" html="no" level="INFO">Typing text 'p4ssw@rd' into text field 'pwd'</msg>
-<status status="PASS" endtime="20090825 15:25:34.490" starttime="20090825 15:25:34.353"></status>
+<msg timestamp="20090829 21:27:49.832" html="no" level="INFO">${output} = Account created</msg>
+<status status="PASS" endtime="20090829 21:27:49.832" starttime="20090829 21:27:49.808"></status>
 </kw>
-<kw type="kw" name="SeleniumLibrary.Click Button" timeout="">
-<doc>Clicks a button identified by `locator`.</doc>
-<arguments>
-<arg>${button}</arg>
-</arguments>
-<msg timestamp="20090825 15:25:34.772" html="no" level="INFO">Clicking button 'Create Account'.</msg>
-<status status="PASS" endtime="20090825 15:25:34.773" starttime="20090825 15:25:34.491"></status>
-</kw>
-<kw type="set" name="${output} = SeleniumLibrary.Get Text" timeout="">
-<doc>Returns the text of element identified by `locator`.</doc>
-<arguments>
-<arg>message</arg>
-</arguments>
-<msg timestamp="20090825 15:25:34.903" html="no" level="INFO">${output} = Account created</msg>
-<status status="PASS" endtime="20090825 15:25:34.904" starttime="20090825 15:25:34.774"></status>
-</kw>
-<msg timestamp="20090825 15:25:34.904" html="no" level="INFO">${output} = Account created</msg>
-<status status="PASS" endtime="20090825 15:25:34.905" starttime="20090825 15:25:33.836"></status>
-</kw>
-<msg timestamp="20090825 15:25:34.905" html="no" level="INFO">${STATUS} = Account created</msg>
-<status status="PASS" endtime="20090825 15:25:34.906" starttime="20090825 15:25:33.835"></status>
+<msg timestamp="20090829 21:27:49.833" html="no" level="INFO">${STATUS} = Account created</msg>
+<status status="PASS" endtime="20090829 21:27:49.833" starttime="20090829 21:27:49.807"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Set Test Variable" timeout="">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
 <arguments>
 <arg>${STATUS}</arg>
 </arguments>
-<msg timestamp="20090825 15:25:34.908" html="no" level="INFO">${STATUS} = Account created</msg>
-<status status="PASS" endtime="20090825 15:25:34.908" starttime="20090825 15:25:34.907"></status>
+<msg timestamp="20090829 21:27:49.835" html="no" level="INFO">${STATUS} = Account created</msg>
+<status status="PASS" endtime="20090829 21:27:49.835" starttime="20090829 21:27:49.834"></status>
 </kw>
-<status status="PASS" endtime="20090825 15:25:34.909" starttime="20090825 15:25:33.834"></status>
+<status status="PASS" endtime="20090829 21:27:49.836" starttime="20090829 21:27:49.806"></status>
 </kw>
 <kw type="kw" name='Then the system responds with the message "Account created"' timeout="">
 <doc></doc>
@@ -136,17 +102,17 @@
 <arg>${STATUS}</arg>
 <arg>${message}</arg>
 </arguments>
-<status status="PASS" endtime="20090825 15:25:34.912" starttime="20090825 15:25:34.911"></status>
+<status status="PASS" endtime="20090829 21:27:49.839" starttime="20090829 21:27:49.838"></status>
 </kw>
-<status status="PASS" endtime="20090825 15:25:34.913" starttime="20090825 15:25:34.910"></status>
+<status status="PASS" endtime="20090829 21:27:49.839" starttime="20090829 21:27:49.837"></status>
 </kw>
 <tags>
 </tags>
-<status status="PASS" endtime="20090825 15:25:34.913" starttime="20090825 15:25:33.830"></status>
+<status status="PASS" endtime="20090829 21:27:49.840" starttime="20090829 21:27:49.802"></status>
 </test>
-<test critical="yes" name="Users Can Login With A Valid Account" timeout="">
+<test critical="yes" name="Users Can Login With A New, Valid Account" timeout="">
 <doc></doc>
-<kw type="kw" name='Given there is an account with username "fred" and password "p4ssw@rd"' timeout="">
+<kw type="kw" name='Given there is an account with username "fred" and password "password"' timeout="">
 <doc></doc>
 <arguments>
 </arguments>
@@ -157,97 +123,72 @@
 <kw type="kw" name="OperatingSystem.Remove File" timeout="">
 <doc>Removes a file with the given path.</doc>
 <arguments>
-<arg>${TEMPDIR}/pwds.txt</arg>
+<arg>${DATABASE}</arg>
 </arguments>
-<msg timestamp="20090825 15:25:34.919" html="yes" level="INFO">Removed file '&lt;a href="file:///var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt"&gt;/var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt&lt;/a&gt;'</msg>
-<status status="PASS" endtime="20090825 15:25:34.920" starttime="20090825 15:25:34.917"></status>
+<msg timestamp="20090829 21:27:49.845" html="yes" level="INFO">Removed file '&lt;a href="file:///var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt"&gt;/var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt&lt;/a&gt;'</msg>
+<status status="PASS" endtime="20090829 21:27:49.845" starttime="20090829 21:27:49.843"></status>
 </kw>
-<status status="PASS" endtime="20090825 15:25:34.920" starttime="20090825 15:25:34.916"></status>
+<status status="PASS" endtime="20090829 21:27:49.846" starttime="20090829 21:27:49.843"></status>
 </kw>
 <kw type="kw" name='When A User Creates An Account With Username "${username}" And Password "${password}"' timeout="">
 <doc></doc>
 <arguments>
 </arguments>
-<kw type="set" name="${STATUS} = web_resource.Create User" timeout="">
+<kw type="set" name="${STATUS} = cli_resource.Create User" timeout="">
 <doc></doc>
 <arguments>
 <arg>${username}</arg>
 <arg>${password}</arg>
 </arguments>
-<kw type="set" name="${output} = web_resource.Create Or Login" timeout="">
+<kw type="set" name="${output} = cli_resource.Run Command" timeout="">
 <doc></doc>
 <arguments>
 <arg>create</arg>
-<arg>Create Account</arg>
 <arg>${username}</arg>
 <arg>${password}</arg>
 </arguments>
-<kw type="kw" name="SeleniumLibrary.Go To" timeout="">
-<doc>Navigates the active browser instance to the provided URL.</doc>
+<kw type="set" name="${cmd} = BuiltIn.Catenate" timeout="">
+<doc>Catenates the given items together and returns the resulted string.</doc>
 <arguments>
-<arg>${LOGIN PAGE}</arg>
+<arg>ruby</arg>
+<arg>${AUTHPATH}</arg>
+<arg>@{args}</arg>
 </arguments>
-<msg timestamp="20090825 15:25:35.142" html="no" level="INFO">Opening url 'http://localhost:4567'</msg>
-<status status="PASS" endtime="20090825 15:25:35.142" starttime="20090825 15:25:34.925"></status>
+<msg timestamp="20090829 21:27:49.851" html="no" level="INFO">${cmd} = ruby /users/esh/desktop/code/atdd-demo/demo/atest/../../demo/src/auth.rb create fred password</msg>
+<status status="PASS" endtime="20090829 21:27:49.851" starttime="20090829 21:27:49.850"></status>
 </kw>
-<kw type="kw" name="SeleniumLibrary.Click Element" timeout="">
-<doc>Click element identified by `locator`.</doc>
+<kw type="set" name="${output} = OperatingSystem.Run" timeout="">
+<doc>Runs the given command in the system and returns the output.</doc>
 <arguments>
-<arg>${link}</arg>
-<arg>don't wait page to load</arg>
+<arg>${cmd}</arg>
 </arguments>
-<msg timestamp="20090825 15:25:35.274" html="no" level="INFO">Clicking element 'create'.</msg>
-<status status="PASS" endtime="20090825 15:25:35.275" starttime="20090825 15:25:35.143"></status>
+<msg timestamp="20090829 21:27:49.868" html="no" level="INFO">Running command 'ruby /users/esh/desktop/code/atdd-demo/demo/atest/../../demo/src/auth.rb create fred password 2&gt;&amp;1'</msg>
+<msg timestamp="20090829 21:27:49.869" html="no" level="INFO">${output} = Account created</msg>
+<status status="PASS" endtime="20090829 21:27:49.870" starttime="20090829 21:27:49.852"></status>
 </kw>
-<kw type="kw" name="SeleniumLibrary.Input Text" timeout="">
-<doc>Types the given `text` into text field identified by `locator`.</doc>
+<kw type="kw" name="BuiltIn.Log" timeout="">
+<doc>Logs the given message with the given level.</doc>
 <arguments>
-<arg>uname</arg>
-<arg>${username}</arg>
+<arg>${output}</arg>
 </arguments>
-<msg timestamp="20090825 15:25:35.412" html="no" level="INFO">Typing text 'fred' into text field 'uname'</msg>
-<status status="PASS" endtime="20090825 15:25:35.413" starttime="20090825 15:25:35.276"></status>
+<msg timestamp="20090829 21:27:49.872" html="no" level="INFO">Account created</msg>
+<status status="PASS" endtime="20090829 21:27:49.872" starttime="20090829 21:27:49.871"></status>
 </kw>
-<kw type="kw" name="SeleniumLibrary.Input Text" timeout="">
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<arguments>
-<arg>pwd</arg>
-<arg>${password}</arg>
-</arguments>
-<msg timestamp="20090825 15:25:35.576" html="no" level="INFO">Typing text 'p4ssw@rd' into text field 'pwd'</msg>
-<status status="PASS" endtime="20090825 15:25:35.577" starttime="20090825 15:25:35.414"></status>
+<msg timestamp="20090829 21:27:49.873" html="no" level="INFO">${output} = Account created</msg>
+<status status="PASS" endtime="20090829 21:27:49.873" starttime="20090829 21:27:49.848"></status>
 </kw>
-<kw type="kw" name="SeleniumLibrary.Click Button" timeout="">
-<doc>Clicks a button identified by `locator`.</doc>
-<arguments>
-<arg>${button}</arg>
-</arguments>
-<msg timestamp="20090825 15:25:35.918" html="no" level="INFO">Clicking button 'Create Account'.</msg>
-<status status="PASS" endtime="20090825 15:25:35.918" starttime="20090825 15:25:35.578"></status>
-</kw>
-<kw type="set" name="${output} = SeleniumLibrary.Get Text" timeout="">
-<doc>Returns the text of element identified by `locator`.</doc>
-<arguments>
-<arg>message</arg>
-</arguments>
-<msg timestamp="20090825 15:25:36.046" html="no" level="INFO">${output} = Account created</msg>
-<status status="PASS" endtime="20090825 15:25:36.046" starttime="20090825 15:25:35.919"></status>
-</kw>
-<msg timestamp="20090825 15:25:36.047" html="no" level="INFO">${output} = Account created</msg>
-<status status="PASS" endtime="20090825 15:25:36.047" starttime="20090825 15:25:34.923"></status>
-</kw>
-<msg timestamp="20090825 15:25:36.048" html="no" level="INFO">${STATUS} = Account created</msg>
-<status status="PASS" endtime="20090825 15:25:36.048" starttime="20090825 15:25:34.922"></status>
+<msg timestamp="20090829 21:27:49.873" html="no" level="INFO">${STATUS} = Account created</msg>
+<status status="PASS" endtime="20090829 21:27:49.874" starttime="20090829 21:27:49.847"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Set Test Variable" timeout="">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
 <arguments>
 <arg>${STATUS}</arg>
 </arguments>
-<msg timestamp="20090825 15:25:36.050" html="no" level="INFO">${STATUS} = Account created</msg>
-<status status="PASS" endtime="20090825 15:25:36.051" starttime="20090825 15:25:36.049"></status>
+<msg timestamp="20090829 21:27:49.877" html="no" level="INFO">${STATUS} = Account created</msg>
+<status status="PASS" endtime="20090829 21:27:49.877" starttime="20090829 21:27:49.875"></status>
 </kw>
-<status status="PASS" endtime="20090825 15:25:36.051" starttime="20090825 15:25:34.921"></status>
+<status status="PASS" endtime="20090829 21:27:49.878" starttime="20090829 21:27:49.846"></status>
 </kw>
 <kw type="kw" name='Then the system responds with the message "Account created"' timeout="">
 <doc></doc>
@@ -259,96 +200,71 @@
 <arg>${STATUS}</arg>
 <arg>${message}</arg>
 </arguments>
-<status status="PASS" endtime="20090825 15:25:36.055" starttime="20090825 15:25:36.053"></status>
+<status status="PASS" endtime="20090829 21:27:49.881" starttime="20090829 21:27:49.880"></status>
 </kw>
-<status status="PASS" endtime="20090825 15:25:36.055" starttime="20090825 15:25:36.052"></status>
+<status status="PASS" endtime="20090829 21:27:49.881" starttime="20090829 21:27:49.879"></status>
 </kw>
-<status status="PASS" endtime="20090825 15:25:36.056" starttime="20090825 15:25:34.915"></status>
+<status status="PASS" endtime="20090829 21:27:49.882" starttime="20090829 21:27:49.842"></status>
 </kw>
-<kw type="kw" name='When a user attempts to login with username "fred" and password "p4ssw@rd"' timeout="">
+<kw type="kw" name='When a user attempts to login with username "fred" and password "password"' timeout="">
 <doc></doc>
 <arguments>
 </arguments>
-<kw type="set" name="${STATUS} = web_resource.Attempt To Login" timeout="">
+<kw type="set" name="${STATUS} = cli_resource.Attempt To Login" timeout="">
 <doc></doc>
 <arguments>
 <arg>${username}</arg>
 <arg>${password}</arg>
 </arguments>
-<kw type="set" name="${output} = web_resource.Create Or Login" timeout="">
+<kw type="set" name="${output} = cli_resource.Run Command" timeout="">
 <doc></doc>
 <arguments>
 <arg>login</arg>
-<arg>Login</arg>
 <arg>${username}</arg>
 <arg>${password}</arg>
 </arguments>
-<kw type="kw" name="SeleniumLibrary.Go To" timeout="">
-<doc>Navigates the active browser instance to the provided URL.</doc>
+<kw type="set" name="${cmd} = BuiltIn.Catenate" timeout="">
+<doc>Catenates the given items together and returns the resulted string.</doc>
 <arguments>
-<arg>${LOGIN PAGE}</arg>
+<arg>ruby</arg>
+<arg>${AUTHPATH}</arg>
+<arg>@{args}</arg>
 </arguments>
-<msg timestamp="20090825 15:25:36.265" html="no" level="INFO">Opening url 'http://localhost:4567'</msg>
-<status status="PASS" endtime="20090825 15:25:36.266" starttime="20090825 15:25:36.061"></status>
+<msg timestamp="20090829 21:27:49.887" html="no" level="INFO">${cmd} = ruby /users/esh/desktop/code/atdd-demo/demo/atest/../../demo/src/auth.rb login fred password</msg>
+<status status="PASS" endtime="20090829 21:27:49.887" starttime="20090829 21:27:49.886"></status>
 </kw>
-<kw type="kw" name="SeleniumLibrary.Click Element" timeout="">
-<doc>Click element identified by `locator`.</doc>
+<kw type="set" name="${output} = OperatingSystem.Run" timeout="">
+<doc>Runs the given command in the system and returns the output.</doc>
 <arguments>
-<arg>${link}</arg>
-<arg>don't wait page to load</arg>
+<arg>${cmd}</arg>
 </arguments>
-<msg timestamp="20090825 15:25:36.404" html="no" level="INFO">Clicking element 'login'.</msg>
-<status status="PASS" endtime="20090825 15:25:36.405" starttime="20090825 15:25:36.266"></status>
+<msg timestamp="20090829 21:27:49.904" html="no" level="INFO">Running command 'ruby /users/esh/desktop/code/atdd-demo/demo/atest/../../demo/src/auth.rb login fred password 2&gt;&amp;1'</msg>
+<msg timestamp="20090829 21:27:49.905" html="no" level="INFO">${output} = Welcome!</msg>
+<status status="PASS" endtime="20090829 21:27:49.905" starttime="20090829 21:27:49.888"></status>
 </kw>
-<kw type="kw" name="SeleniumLibrary.Input Text" timeout="">
-<doc>Types the given `text` into text field identified by `locator`.</doc>
+<kw type="kw" name="BuiltIn.Log" timeout="">
+<doc>Logs the given message with the given level.</doc>
 <arguments>
-<arg>uname</arg>
-<arg>${username}</arg>
+<arg>${output}</arg>
 </arguments>
-<msg timestamp="20090825 15:25:36.538" html="no" level="INFO">Typing text 'fred' into text field 'uname'</msg>
-<status status="PASS" endtime="20090825 15:25:36.539" starttime="20090825 15:25:36.406"></status>
+<msg timestamp="20090829 21:27:49.907" html="no" level="INFO">Welcome!</msg>
+<status status="PASS" endtime="20090829 21:27:49.907" starttime="20090829 21:27:49.906"></status>
 </kw>
-<kw type="kw" name="SeleniumLibrary.Input Text" timeout="">
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<arguments>
-<arg>pwd</arg>
-<arg>${password}</arg>
-</arguments>
-<msg timestamp="20090825 15:25:36.674" html="no" level="INFO">Typing text 'p4ssw@rd' into text field 'pwd'</msg>
-<status status="PASS" endtime="20090825 15:25:36.675" starttime="20090825 15:25:36.540"></status>
+<msg timestamp="20090829 21:27:49.908" html="no" level="INFO">${output} = Welcome!</msg>
+<status status="PASS" endtime="20090829 21:27:49.908" starttime="20090829 21:27:49.884"></status>
 </kw>
-<kw type="kw" name="SeleniumLibrary.Click Button" timeout="">
-<doc>Clicks a button identified by `locator`.</doc>
-<arguments>
-<arg>${button}</arg>
-</arguments>
-<msg timestamp="20090825 15:25:36.968" html="no" level="INFO">Clicking button 'Login'.</msg>
-<status status="PASS" endtime="20090825 15:25:36.968" starttime="20090825 15:25:36.675"></status>
-</kw>
-<kw type="set" name="${output} = SeleniumLibrary.Get Text" timeout="">
-<doc>Returns the text of element identified by `locator`.</doc>
-<arguments>
-<arg>message</arg>
-</arguments>
-<msg timestamp="20090825 15:25:37.103" html="no" level="INFO">${output} = Welcome!</msg>
-<status status="PASS" endtime="20090825 15:25:37.103" starttime="20090825 15:25:36.969"></status>
-</kw>
-<msg timestamp="20090825 15:25:37.104" html="no" level="INFO">${output} = Welcome!</msg>
-<status status="PASS" endtime="20090825 15:25:37.105" starttime="20090825 15:25:36.059"></status>
-</kw>
-<msg timestamp="20090825 15:25:37.106" html="no" level="INFO">${STATUS} = Welcome!</msg>
-<status status="PASS" endtime="20090825 15:25:37.106" starttime="20090825 15:25:36.057"></status>
+<msg timestamp="20090829 21:27:49.909" html="no" level="INFO">${STATUS} = Welcome!</msg>
+<status status="PASS" endtime="20090829 21:27:49.909" starttime="20090829 21:27:49.883"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Set Test Variable" timeout="">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
 <arguments>
 <arg>${STATUS}</arg>
 </arguments>
-<msg timestamp="20090825 15:25:37.108" html="no" level="INFO">${STATUS} = Welcome!</msg>
-<status status="PASS" endtime="20090825 15:25:37.109" starttime="20090825 15:25:37.107"></status>
+<msg timestamp="20090829 21:27:49.911" html="no" level="INFO">${STATUS} = Welcome!</msg>
+<status status="PASS" endtime="20090829 21:27:49.911" starttime="20090829 21:27:49.910"></status>
 </kw>
-<status status="PASS" endtime="20090825 15:25:37.109" starttime="20090825 15:25:36.056"></status>
+<status status="PASS" endtime="20090829 21:27:49.912" starttime="20090829 21:27:49.882"></status>
 </kw>
 <kw type="kw" name='Then the system responds with the message "Welcome!"' timeout="">
 <doc></doc>
@@ -360,17 +276,17 @@
 <arg>${STATUS}</arg>
 <arg>${message}</arg>
 </arguments>
-<status status="PASS" endtime="20090825 15:25:37.115" starttime="20090825 15:25:37.112"></status>
+<status status="PASS" endtime="20090829 21:27:49.914" starttime="20090829 21:27:49.913"></status>
 </kw>
-<status status="PASS" endtime="20090825 15:25:37.115" starttime="20090825 15:25:37.110"></status>
+<status status="PASS" endtime="20090829 21:27:49.915" starttime="20090829 21:27:49.912"></status>
 </kw>
 <tags>
 </tags>
-<status status="PASS" endtime="20090825 15:25:37.115" starttime="20090825 15:25:34.914"></status>
+<status status="PASS" endtime="20090829 21:27:49.915" starttime="20090829 21:27:49.841"></status>
 </test>
-<test critical="yes" name="Account Information Is Stored In A Database" timeout="">
+<test critical="yes" name="Users Cannot Login With Wrong Password" timeout="">
 <doc></doc>
-<kw type="kw" name='Given there is an account with username "fred" and password "p4ssw@rd"' timeout="">
+<kw type="kw" name='Given there is an account with username "fred" and password "password"' timeout="">
 <doc></doc>
 <arguments>
 </arguments>
@@ -380,248 +296,73 @@
 </arguments>
 <kw type="kw" name="OperatingSystem.Remove File" timeout="">
 <doc>Removes a file with the given path.</doc>
-<arguments>
-<arg>${TEMPDIR}/pwds.txt</arg>
-</arguments>
-<msg timestamp="20090825 15:25:37.121" html="yes" level="INFO">Removed file '&lt;a href="file:///var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt"&gt;/var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt&lt;/a&gt;'</msg>
-<status status="PASS" endtime="20090825 15:25:37.122" starttime="20090825 15:25:37.120"></status>
-</kw>
-<status status="PASS" endtime="20090825 15:25:37.122" starttime="20090825 15:25:37.119"></status>
-</kw>
-<kw type="kw" name='When A User Creates An Account With Username "${username}" And Password "${password}"' timeout="">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="set" name="${STATUS} = web_resource.Create User" timeout="">
-<doc></doc>
-<arguments>
-<arg>${username}</arg>
-<arg>${password}</arg>
-</arguments>
-<kw type="set" name="${output} = web_resource.Create Or Login" timeout="">
-<doc></doc>
-<arguments>
-<arg>create</arg>
-<arg>Create Account</arg>
-<arg>${username}</arg>
-<arg>${password}</arg>
-</arguments>
-<kw type="kw" name="SeleniumLibrary.Go To" timeout="">
-<doc>Navigates the active browser instance to the provided URL.</doc>
-<arguments>
-<arg>${LOGIN PAGE}</arg>
-</arguments>
-<msg timestamp="20090825 15:25:37.355" html="no" level="INFO">Opening url 'http://localhost:4567'</msg>
-<status status="PASS" endtime="20090825 15:25:37.355" starttime="20090825 15:25:37.127"></status>
-</kw>
-<kw type="kw" name="SeleniumLibrary.Click Element" timeout="">
-<doc>Click element identified by `locator`.</doc>
-<arguments>
-<arg>${link}</arg>
-<arg>don't wait page to load</arg>
-</arguments>
-<msg timestamp="20090825 15:25:37.514" html="no" level="INFO">Clicking element 'create'.</msg>
-<status status="PASS" endtime="20090825 15:25:37.515" starttime="20090825 15:25:37.356"></status>
-</kw>
-<kw type="kw" name="SeleniumLibrary.Input Text" timeout="">
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<arguments>
-<arg>uname</arg>
-<arg>${username}</arg>
-</arguments>
-<msg timestamp="20090825 15:25:37.694" html="no" level="INFO">Typing text 'fred' into text field 'uname'</msg>
-<status status="PASS" endtime="20090825 15:25:37.695" starttime="20090825 15:25:37.516"></status>
-</kw>
-<kw type="kw" name="SeleniumLibrary.Input Text" timeout="">
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<arguments>
-<arg>pwd</arg>
-<arg>${password}</arg>
-</arguments>
-<msg timestamp="20090825 15:25:37.836" html="no" level="INFO">Typing text 'p4ssw@rd' into text field 'pwd'</msg>
-<status status="PASS" endtime="20090825 15:25:37.837" starttime="20090825 15:25:37.696"></status>
-</kw>
-<kw type="kw" name="SeleniumLibrary.Click Button" timeout="">
-<doc>Clicks a button identified by `locator`.</doc>
-<arguments>
-<arg>${button}</arg>
-</arguments>
-<msg timestamp="20090825 15:25:38.121" html="no" level="INFO">Clicking button 'Create Account'.</msg>
-<status status="PASS" endtime="20090825 15:25:38.122" starttime="20090825 15:25:37.837"></status>
-</kw>
-<kw type="set" name="${output} = SeleniumLibrary.Get Text" timeout="">
-<doc>Returns the text of element identified by `locator`.</doc>
-<arguments>
-<arg>message</arg>
-</arguments>
-<msg timestamp="20090825 15:25:38.261" html="no" level="INFO">${output} = Account created</msg>
-<status status="PASS" endtime="20090825 15:25:38.261" starttime="20090825 15:25:38.123"></status>
-</kw>
-<msg timestamp="20090825 15:25:38.262" html="no" level="INFO">${output} = Account created</msg>
-<status status="PASS" endtime="20090825 15:25:38.262" starttime="20090825 15:25:37.125"></status>
-</kw>
-<msg timestamp="20090825 15:25:38.263" html="no" level="INFO">${STATUS} = Account created</msg>
-<status status="PASS" endtime="20090825 15:25:38.263" starttime="20090825 15:25:37.123"></status>
-</kw>
-<kw type="kw" name="BuiltIn.Set Test Variable" timeout="">
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<arguments>
-<arg>${STATUS}</arg>
-</arguments>
-<msg timestamp="20090825 15:25:38.265" html="no" level="INFO">${STATUS} = Account created</msg>
-<status status="PASS" endtime="20090825 15:25:38.266" starttime="20090825 15:25:38.264"></status>
-</kw>
-<status status="PASS" endtime="20090825 15:25:38.266" starttime="20090825 15:25:37.123"></status>
-</kw>
-<kw type="kw" name='Then the system responds with the message "Account created"' timeout="">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="kw" name="BuiltIn.Should Be Equal" timeout="">
-<doc>Fails if the given objects are unequal.</doc>
-<arguments>
-<arg>${STATUS}</arg>
-<arg>${message}</arg>
-</arguments>
-<status status="PASS" endtime="20090825 15:25:38.270" starttime="20090825 15:25:38.268"></status>
-</kw>
-<status status="PASS" endtime="20090825 15:25:38.270" starttime="20090825 15:25:38.267"></status>
-</kw>
-<status status="PASS" endtime="20090825 15:25:38.270" starttime="20090825 15:25:37.118"></status>
-</kw>
-<kw type="kw" name="Then the database contains an active account fred/password" timeout="">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="set" name="${db} = OperatingSystem.Get File" timeout="">
-<doc>Returns the contents of a specified file.</doc>
 <arguments>
 <arg>${DATABASE}</arg>
 </arguments>
-<msg timestamp="20090825 15:25:38.273" html="yes" level="INFO">Getting file '&lt;a href="file:///var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt"&gt;/var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt&lt;/a&gt;'</msg>
-<msg timestamp="20090825 15:25:38.274" html="no" level="INFO">${db} = pekka	password	online
-fred	p4ssw@rd	active
-</msg>
-<status status="PASS" endtime="20090825 15:25:38.274" starttime="20090825 15:25:38.272"></status>
+<msg timestamp="20090829 21:27:49.920" html="yes" level="INFO">Removed file '&lt;a href="file:///var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt"&gt;/var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt&lt;/a&gt;'</msg>
+<status status="PASS" endtime="20090829 21:27:49.920" starttime="20090829 21:27:49.918"></status>
 </kw>
-<kw type="kw" name="BuiltIn.Should Contain" timeout="">
-<doc>Fails if `item1` does not contain `item2` one or more times.</doc>
-<arguments>
-<arg>${db}</arg>
-<arg>${username}\t${password}\t${state}</arg>
-</arguments>
-<status status="PASS" endtime="20090825 15:25:38.276" starttime="20090825 15:25:38.275"></status>
-</kw>
-<status status="PASS" endtime="20090825 15:25:38.277" starttime="20090825 15:25:38.271"></status>
-</kw>
-<tags>
-</tags>
-<status status="PASS" endtime="20090825 15:25:38.277" starttime="20090825 15:25:37.117"></status>
-</test>
-<test critical="yes" name="Users Cannot Login With Invalid Password" timeout="">
-<doc></doc>
-<kw type="kw" name='Given there is an account with username "fred" and password "p4ssw@rd"' timeout="">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="kw" name="Given There Are No Accounts In The System" timeout="">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="kw" name="OperatingSystem.Remove File" timeout="">
-<doc>Removes a file with the given path.</doc>
-<arguments>
-<arg>${TEMPDIR}/pwds.txt</arg>
-</arguments>
-<msg timestamp="20090825 15:25:38.282" html="yes" level="INFO">Removed file '&lt;a href="file:///var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt"&gt;/var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt&lt;/a&gt;'</msg>
-<status status="PASS" endtime="20090825 15:25:38.282" starttime="20090825 15:25:38.280"></status>
-</kw>
-<status status="PASS" endtime="20090825 15:25:38.282" starttime="20090825 15:25:38.279"></status>
+<status status="PASS" endtime="20090829 21:27:49.920" starttime="20090829 21:27:49.917"></status>
 </kw>
 <kw type="kw" name='When A User Creates An Account With Username "${username}" And Password "${password}"' timeout="">
 <doc></doc>
 <arguments>
 </arguments>
-<kw type="set" name="${STATUS} = web_resource.Create User" timeout="">
+<kw type="set" name="${STATUS} = cli_resource.Create User" timeout="">
 <doc></doc>
 <arguments>
 <arg>${username}</arg>
 <arg>${password}</arg>
 </arguments>
-<kw type="set" name="${output} = web_resource.Create Or Login" timeout="">
+<kw type="set" name="${output} = cli_resource.Run Command" timeout="">
 <doc></doc>
 <arguments>
 <arg>create</arg>
-<arg>Create Account</arg>
 <arg>${username}</arg>
 <arg>${password}</arg>
 </arguments>
-<kw type="kw" name="SeleniumLibrary.Go To" timeout="">
-<doc>Navigates the active browser instance to the provided URL.</doc>
+<kw type="set" name="${cmd} = BuiltIn.Catenate" timeout="">
+<doc>Catenates the given items together and returns the resulted string.</doc>
 <arguments>
-<arg>${LOGIN PAGE}</arg>
+<arg>ruby</arg>
+<arg>${AUTHPATH}</arg>
+<arg>@{args}</arg>
 </arguments>
-<msg timestamp="20090825 15:25:38.516" html="no" level="INFO">Opening url 'http://localhost:4567'</msg>
-<status status="PASS" endtime="20090825 15:25:38.516" starttime="20090825 15:25:38.286"></status>
+<msg timestamp="20090829 21:27:49.925" html="no" level="INFO">${cmd} = ruby /users/esh/desktop/code/atdd-demo/demo/atest/../../demo/src/auth.rb create fred password</msg>
+<status status="PASS" endtime="20090829 21:27:49.926" starttime="20090829 21:27:49.924"></status>
 </kw>
-<kw type="kw" name="SeleniumLibrary.Click Element" timeout="">
-<doc>Click element identified by `locator`.</doc>
+<kw type="set" name="${output} = OperatingSystem.Run" timeout="">
+<doc>Runs the given command in the system and returns the output.</doc>
 <arguments>
-<arg>${link}</arg>
-<arg>don't wait page to load</arg>
+<arg>${cmd}</arg>
 </arguments>
-<msg timestamp="20090825 15:25:38.651" html="no" level="INFO">Clicking element 'create'.</msg>
-<status status="PASS" endtime="20090825 15:25:38.652" starttime="20090825 15:25:38.517"></status>
+<msg timestamp="20090829 21:27:49.942" html="no" level="INFO">Running command 'ruby /users/esh/desktop/code/atdd-demo/demo/atest/../../demo/src/auth.rb create fred password 2&gt;&amp;1'</msg>
+<msg timestamp="20090829 21:27:49.943" html="no" level="INFO">${output} = Account created</msg>
+<status status="PASS" endtime="20090829 21:27:49.943" starttime="20090829 21:27:49.926"></status>
 </kw>
-<kw type="kw" name="SeleniumLibrary.Input Text" timeout="">
-<doc>Types the given `text` into text field identified by `locator`.</doc>
+<kw type="kw" name="BuiltIn.Log" timeout="">
+<doc>Logs the given message with the given level.</doc>
 <arguments>
-<arg>uname</arg>
-<arg>${username}</arg>
+<arg>${output}</arg>
 </arguments>
-<msg timestamp="20090825 15:25:38.793" html="no" level="INFO">Typing text 'fred' into text field 'uname'</msg>
-<status status="PASS" endtime="20090825 15:25:38.794" starttime="20090825 15:25:38.652"></status>
+<msg timestamp="20090829 21:27:49.945" html="no" level="INFO">Account created</msg>
+<status status="PASS" endtime="20090829 21:27:49.946" starttime="20090829 21:27:49.944"></status>
 </kw>
-<kw type="kw" name="SeleniumLibrary.Input Text" timeout="">
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<arguments>
-<arg>pwd</arg>
-<arg>${password}</arg>
-</arguments>
-<msg timestamp="20090825 15:25:38.934" html="no" level="INFO">Typing text 'p4ssw@rd' into text field 'pwd'</msg>
-<status status="PASS" endtime="20090825 15:25:38.935" starttime="20090825 15:25:38.795"></status>
+<msg timestamp="20090829 21:27:49.946" html="no" level="INFO">${output} = Account created</msg>
+<status status="PASS" endtime="20090829 21:27:49.947" starttime="20090829 21:27:49.923"></status>
 </kw>
-<kw type="kw" name="SeleniumLibrary.Click Button" timeout="">
-<doc>Clicks a button identified by `locator`.</doc>
-<arguments>
-<arg>${button}</arg>
-</arguments>
-<msg timestamp="20090825 15:25:39.220" html="no" level="INFO">Clicking button 'Create Account'.</msg>
-<status status="PASS" endtime="20090825 15:25:39.221" starttime="20090825 15:25:38.936"></status>
-</kw>
-<kw type="set" name="${output} = SeleniumLibrary.Get Text" timeout="">
-<doc>Returns the text of element identified by `locator`.</doc>
-<arguments>
-<arg>message</arg>
-</arguments>
-<msg timestamp="20090825 15:25:39.353" html="no" level="INFO">${output} = Account created</msg>
-<status status="PASS" endtime="20090825 15:25:39.353" starttime="20090825 15:25:39.221"></status>
-</kw>
-<msg timestamp="20090825 15:25:39.354" html="no" level="INFO">${output} = Account created</msg>
-<status status="PASS" endtime="20090825 15:25:39.354" starttime="20090825 15:25:38.285"></status>
-</kw>
-<msg timestamp="20090825 15:25:39.355" html="no" level="INFO">${STATUS} = Account created</msg>
-<status status="PASS" endtime="20090825 15:25:39.355" starttime="20090825 15:25:38.283"></status>
+<msg timestamp="20090829 21:27:49.947" html="no" level="INFO">${STATUS} = Account created</msg>
+<status status="PASS" endtime="20090829 21:27:49.947" starttime="20090829 21:27:49.921"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Set Test Variable" timeout="">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
 <arguments>
 <arg>${STATUS}</arg>
 </arguments>
-<msg timestamp="20090825 15:25:39.357" html="no" level="INFO">${STATUS} = Account created</msg>
-<status status="PASS" endtime="20090825 15:25:39.358" starttime="20090825 15:25:39.356"></status>
+<msg timestamp="20090829 21:27:49.949" html="no" level="INFO">${STATUS} = Account created</msg>
+<status status="PASS" endtime="20090829 21:27:49.950" starttime="20090829 21:27:49.948"></status>
 </kw>
-<status status="PASS" endtime="20090825 15:25:39.358" starttime="20090825 15:25:38.283"></status>
+<status status="PASS" endtime="20090829 21:27:49.950" starttime="20090829 21:27:49.921"></status>
 </kw>
 <kw type="kw" name='Then the system responds with the message "Account created"' timeout="">
 <doc></doc>
@@ -633,96 +374,71 @@ fred	p4ssw@rd	active
 <arg>${STATUS}</arg>
 <arg>${message}</arg>
 </arguments>
-<status status="PASS" endtime="20090825 15:25:39.362" starttime="20090825 15:25:39.360"></status>
+<status status="PASS" endtime="20090829 21:27:49.954" starttime="20090829 21:27:49.952"></status>
 </kw>
-<status status="PASS" endtime="20090825 15:25:39.362" starttime="20090825 15:25:39.359"></status>
+<status status="PASS" endtime="20090829 21:27:49.954" starttime="20090829 21:27:49.951"></status>
 </kw>
-<status status="PASS" endtime="20090825 15:25:39.363" starttime="20090825 15:25:38.279"></status>
+<status status="PASS" endtime="20090829 21:27:49.954" starttime="20090829 21:27:49.917"></status>
 </kw>
 <kw type="kw" name='When a user attempts to login with username "fred" and password "bad"' timeout="">
 <doc></doc>
 <arguments>
 </arguments>
-<kw type="set" name="${STATUS} = web_resource.Attempt To Login" timeout="">
+<kw type="set" name="${STATUS} = cli_resource.Attempt To Login" timeout="">
 <doc></doc>
 <arguments>
 <arg>${username}</arg>
 <arg>${password}</arg>
 </arguments>
-<kw type="set" name="${output} = web_resource.Create Or Login" timeout="">
+<kw type="set" name="${output} = cli_resource.Run Command" timeout="">
 <doc></doc>
 <arguments>
 <arg>login</arg>
-<arg>Login</arg>
 <arg>${username}</arg>
 <arg>${password}</arg>
 </arguments>
-<kw type="kw" name="SeleniumLibrary.Go To" timeout="">
-<doc>Navigates the active browser instance to the provided URL.</doc>
+<kw type="set" name="${cmd} = BuiltIn.Catenate" timeout="">
+<doc>Catenates the given items together and returns the resulted string.</doc>
 <arguments>
-<arg>${LOGIN PAGE}</arg>
+<arg>ruby</arg>
+<arg>${AUTHPATH}</arg>
+<arg>@{args}</arg>
 </arguments>
-<msg timestamp="20090825 15:25:39.572" html="no" level="INFO">Opening url 'http://localhost:4567'</msg>
-<status status="PASS" endtime="20090825 15:25:39.572" starttime="20090825 15:25:39.369"></status>
+<msg timestamp="20090829 21:27:49.960" html="no" level="INFO">${cmd} = ruby /users/esh/desktop/code/atdd-demo/demo/atest/../../demo/src/auth.rb login fred bad</msg>
+<status status="PASS" endtime="20090829 21:27:49.960" starttime="20090829 21:27:49.959"></status>
 </kw>
-<kw type="kw" name="SeleniumLibrary.Click Element" timeout="">
-<doc>Click element identified by `locator`.</doc>
+<kw type="set" name="${output} = OperatingSystem.Run" timeout="">
+<doc>Runs the given command in the system and returns the output.</doc>
 <arguments>
-<arg>${link}</arg>
-<arg>don't wait page to load</arg>
+<arg>${cmd}</arg>
 </arguments>
-<msg timestamp="20090825 15:25:39.708" html="no" level="INFO">Clicking element 'login'.</msg>
-<status status="PASS" endtime="20090825 15:25:39.709" starttime="20090825 15:25:39.573"></status>
+<msg timestamp="20090829 21:27:49.977" html="no" level="INFO">Running command 'ruby /users/esh/desktop/code/atdd-demo/demo/atest/../../demo/src/auth.rb login fred bad 2&gt;&amp;1'</msg>
+<msg timestamp="20090829 21:27:49.978" html="no" level="INFO">${output} = Access denied</msg>
+<status status="PASS" endtime="20090829 21:27:49.978" starttime="20090829 21:27:49.961"></status>
 </kw>
-<kw type="kw" name="SeleniumLibrary.Input Text" timeout="">
-<doc>Types the given `text` into text field identified by `locator`.</doc>
+<kw type="kw" name="BuiltIn.Log" timeout="">
+<doc>Logs the given message with the given level.</doc>
 <arguments>
-<arg>uname</arg>
-<arg>${username}</arg>
+<arg>${output}</arg>
 </arguments>
-<msg timestamp="20090825 15:25:39.850" html="no" level="INFO">Typing text 'fred' into text field 'uname'</msg>
-<status status="PASS" endtime="20090825 15:25:39.851" starttime="20090825 15:25:39.710"></status>
+<msg timestamp="20090829 21:27:49.980" html="no" level="INFO">Access denied</msg>
+<status status="PASS" endtime="20090829 21:27:49.980" starttime="20090829 21:27:49.979"></status>
 </kw>
-<kw type="kw" name="SeleniumLibrary.Input Text" timeout="">
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<arguments>
-<arg>pwd</arg>
-<arg>${password}</arg>
-</arguments>
-<msg timestamp="20090825 15:25:39.993" html="no" level="INFO">Typing text 'bad' into text field 'pwd'</msg>
-<status status="PASS" endtime="20090825 15:25:39.994" starttime="20090825 15:25:39.852"></status>
+<msg timestamp="20090829 21:27:49.981" html="no" level="INFO">${output} = Access denied</msg>
+<status status="PASS" endtime="20090829 21:27:49.981" starttime="20090829 21:27:49.957"></status>
 </kw>
-<kw type="kw" name="SeleniumLibrary.Click Button" timeout="">
-<doc>Clicks a button identified by `locator`.</doc>
-<arguments>
-<arg>${button}</arg>
-</arguments>
-<msg timestamp="20090825 15:25:40.277" html="no" level="INFO">Clicking button 'Login'.</msg>
-<status status="PASS" endtime="20090825 15:25:40.278" starttime="20090825 15:25:39.995"></status>
-</kw>
-<kw type="set" name="${output} = SeleniumLibrary.Get Text" timeout="">
-<doc>Returns the text of element identified by `locator`.</doc>
-<arguments>
-<arg>message</arg>
-</arguments>
-<msg timestamp="20090825 15:25:40.413" html="no" level="INFO">${output} = Access denied</msg>
-<status status="PASS" endtime="20090825 15:25:40.414" starttime="20090825 15:25:40.279"></status>
-</kw>
-<msg timestamp="20090825 15:25:40.415" html="no" level="INFO">${output} = Access denied</msg>
-<status status="PASS" endtime="20090825 15:25:40.415" starttime="20090825 15:25:39.366"></status>
-</kw>
-<msg timestamp="20090825 15:25:40.416" html="no" level="INFO">${STATUS} = Access denied</msg>
-<status status="PASS" endtime="20090825 15:25:40.416" starttime="20090825 15:25:39.365"></status>
+<msg timestamp="20090829 21:27:49.982" html="no" level="INFO">${STATUS} = Access denied</msg>
+<status status="PASS" endtime="20090829 21:27:49.982" starttime="20090829 21:27:49.956"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Set Test Variable" timeout="">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
 <arguments>
 <arg>${STATUS}</arg>
 </arguments>
-<msg timestamp="20090825 15:25:40.418" html="no" level="INFO">${STATUS} = Access denied</msg>
-<status status="PASS" endtime="20090825 15:25:40.418" starttime="20090825 15:25:40.417"></status>
+<msg timestamp="20090829 21:27:49.984" html="no" level="INFO">${STATUS} = Access denied</msg>
+<status status="PASS" endtime="20090829 21:27:49.984" starttime="20090829 21:27:49.983"></status>
 </kw>
-<status status="PASS" endtime="20090825 15:25:40.419" starttime="20090825 15:25:39.364"></status>
+<status status="PASS" endtime="20090829 21:27:49.985" starttime="20090829 21:27:49.955"></status>
 </kw>
 <kw type="kw" name='Then the system responds with the message "Access denied"' timeout="">
 <doc></doc>
@@ -734,135 +450,15 @@ fred	p4ssw@rd	active
 <arg>${STATUS}</arg>
 <arg>${message}</arg>
 </arguments>
-<status status="PASS" endtime="20090825 15:25:40.422" starttime="20090825 15:25:40.420"></status>
+<status status="PASS" endtime="20090829 21:27:49.987" starttime="20090829 21:27:49.986"></status>
 </kw>
-<status status="PASS" endtime="20090825 15:25:40.422" starttime="20090825 15:25:40.419"></status>
+<status status="PASS" endtime="20090829 21:27:49.988" starttime="20090829 21:27:49.985"></status>
 </kw>
 <tags>
 </tags>
-<status status="PASS" endtime="20090825 15:25:40.423" starttime="20090825 15:25:38.278"></status>
+<status status="PASS" endtime="20090829 21:27:49.988" starttime="20090829 21:27:49.916"></status>
 </test>
-<test critical="yes" name="Correct Information Is Shown When A Password Is Invalid" timeout="">
-<doc></doc>
-<kw type="kw" name="Given There Are No Accounts In The System" timeout="">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="kw" name="OperatingSystem.Remove File" timeout="">
-<doc>Removes a file with the given path.</doc>
-<arguments>
-<arg>${TEMPDIR}/pwds.txt</arg>
-</arguments>
-<msg timestamp="20090825 15:25:40.427" html="yes" level="INFO">Removed file '&lt;a href="file:///var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt"&gt;/var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt&lt;/a&gt;'</msg>
-<status status="PASS" endtime="20090825 15:25:40.427" starttime="20090825 15:25:40.425"></status>
-</kw>
-<status status="PASS" endtime="20090825 15:25:40.428" starttime="20090825 15:25:40.425"></status>
-</kw>
-<kw type="kw" name='When a user creates an account with username "fred" and password "badpwd"' timeout="">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="set" name="${STATUS} = web_resource.Create User" timeout="">
-<doc></doc>
-<arguments>
-<arg>${username}</arg>
-<arg>${password}</arg>
-</arguments>
-<kw type="set" name="${output} = web_resource.Create Or Login" timeout="">
-<doc></doc>
-<arguments>
-<arg>create</arg>
-<arg>Create Account</arg>
-<arg>${username}</arg>
-<arg>${password}</arg>
-</arguments>
-<kw type="kw" name="SeleniumLibrary.Go To" timeout="">
-<doc>Navigates the active browser instance to the provided URL.</doc>
-<arguments>
-<arg>${LOGIN PAGE}</arg>
-</arguments>
-<msg timestamp="20090825 15:25:40.642" html="no" level="INFO">Opening url 'http://localhost:4567'</msg>
-<status status="PASS" endtime="20090825 15:25:40.642" starttime="20090825 15:25:40.432"></status>
-</kw>
-<kw type="kw" name="SeleniumLibrary.Click Element" timeout="">
-<doc>Click element identified by `locator`.</doc>
-<arguments>
-<arg>${link}</arg>
-<arg>don't wait page to load</arg>
-</arguments>
-<msg timestamp="20090825 15:25:40.779" html="no" level="INFO">Clicking element 'create'.</msg>
-<status status="PASS" endtime="20090825 15:25:40.779" starttime="20090825 15:25:40.643"></status>
-</kw>
-<kw type="kw" name="SeleniumLibrary.Input Text" timeout="">
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<arguments>
-<arg>uname</arg>
-<arg>${username}</arg>
-</arguments>
-<msg timestamp="20090825 15:25:40.918" html="no" level="INFO">Typing text 'fred' into text field 'uname'</msg>
-<status status="PASS" endtime="20090825 15:25:40.918" starttime="20090825 15:25:40.780"></status>
-</kw>
-<kw type="kw" name="SeleniumLibrary.Input Text" timeout="">
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<arguments>
-<arg>pwd</arg>
-<arg>${password}</arg>
-</arguments>
-<msg timestamp="20090825 15:25:41.055" html="no" level="INFO">Typing text 'badpwd' into text field 'pwd'</msg>
-<status status="PASS" endtime="20090825 15:25:41.055" starttime="20090825 15:25:40.919"></status>
-</kw>
-<kw type="kw" name="SeleniumLibrary.Click Button" timeout="">
-<doc>Clicks a button identified by `locator`.</doc>
-<arguments>
-<arg>${button}</arg>
-</arguments>
-<msg timestamp="20090825 15:25:41.339" html="no" level="INFO">Clicking button 'Create Account'.</msg>
-<status status="PASS" endtime="20090825 15:25:41.340" starttime="20090825 15:25:41.056"></status>
-</kw>
-<kw type="set" name="${output} = SeleniumLibrary.Get Text" timeout="">
-<doc>Returns the text of element identified by `locator`.</doc>
-<arguments>
-<arg>message</arg>
-</arguments>
-<msg timestamp="20090825 15:25:41.472" html="no" level="INFO">${output} = Password must contain 6-24 characters with at least one letter, one number, and one symbol</msg>
-<status status="PASS" endtime="20090825 15:25:41.473" starttime="20090825 15:25:41.341"></status>
-</kw>
-<msg timestamp="20090825 15:25:41.473" html="no" level="INFO">${output} = Password must contain 6-24 characters with at least one letter, one number, and one symbol</msg>
-<status status="PASS" endtime="20090825 15:25:41.474" starttime="20090825 15:25:40.431"></status>
-</kw>
-<msg timestamp="20090825 15:25:41.474" html="no" level="INFO">${STATUS} = Password must contain 6-24 characters with at least one letter, one number, and one symbol</msg>
-<status status="PASS" endtime="20090825 15:25:41.475" starttime="20090825 15:25:40.429"></status>
-</kw>
-<kw type="kw" name="BuiltIn.Set Test Variable" timeout="">
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<arguments>
-<arg>${STATUS}</arg>
-</arguments>
-<msg timestamp="20090825 15:25:41.477" html="no" level="INFO">${STATUS} = Password must contain 6-24 characters with at least one letter, one number, and one symbol</msg>
-<status status="PASS" endtime="20090825 15:25:41.477" starttime="20090825 15:25:41.475"></status>
-</kw>
-<status status="PASS" endtime="20090825 15:25:41.478" starttime="20090825 15:25:40.428"></status>
-</kw>
-<kw type="kw" name='Then the system responds with the message "Password must contain 6-24 characters with at least one letter, one number, and one symbol"' timeout="">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="kw" name="BuiltIn.Should Be Equal" timeout="">
-<doc>Fails if the given objects are unequal.</doc>
-<arguments>
-<arg>${STATUS}</arg>
-<arg>${message}</arg>
-</arguments>
-<status status="PASS" endtime="20090825 15:25:41.481" starttime="20090825 15:25:41.480"></status>
-</kw>
-<status status="PASS" endtime="20090825 15:25:41.482" starttime="20090825 15:25:41.479"></status>
-</kw>
-<tags>
-<tag>Unimplemented</tag>
-</tags>
-<status status="PASS" endtime="20090825 15:25:41.482" starttime="20090825 15:25:40.424"></status>
-</test>
-<test critical="yes" name="Existing Users With Invalid Password Can Still Login" timeout="">
+<test critical="yes" name="Existing Users In The Database Can Login" timeout="">
 <doc></doc>
 <kw type="kw" name='Given there is an account with username "fred" and invalid password "password"' timeout="">
 <doc></doc>
@@ -872,97 +468,72 @@ fred	p4ssw@rd	active
 <doc>Creates a file to the given path with the given content.</doc>
 <arguments>
 <arg>${DATABASE}</arg>
-<arg>${username}\t${password}\tactive</arg>
+<arg>${username}\t${password}\tactive\n</arg>
 </arguments>
-<msg timestamp="20090825 15:25:41.488" html="yes" level="INFO">Created file '&lt;a href="file:///var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt"&gt;/var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt&lt;/a&gt;'</msg>
-<status status="PASS" endtime="20090825 15:25:41.489" starttime="20090825 15:25:41.486"></status>
+<msg timestamp="20090829 21:27:49.993" html="yes" level="INFO">Created file '&lt;a href="file:///var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt"&gt;/var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt&lt;/a&gt;'</msg>
+<status status="PASS" endtime="20090829 21:27:49.993" starttime="20090829 21:27:49.991"></status>
 </kw>
-<status status="PASS" endtime="20090825 15:25:41.489" starttime="20090825 15:25:41.485"></status>
+<status status="PASS" endtime="20090829 21:27:49.993" starttime="20090829 21:27:49.990"></status>
 </kw>
 <kw type="kw" name='When a user attempts to login with username "fred" and password "password"' timeout="">
 <doc></doc>
 <arguments>
 </arguments>
-<kw type="set" name="${STATUS} = web_resource.Attempt To Login" timeout="">
+<kw type="set" name="${STATUS} = cli_resource.Attempt To Login" timeout="">
 <doc></doc>
 <arguments>
 <arg>${username}</arg>
 <arg>${password}</arg>
 </arguments>
-<kw type="set" name="${output} = web_resource.Create Or Login" timeout="">
+<kw type="set" name="${output} = cli_resource.Run Command" timeout="">
 <doc></doc>
 <arguments>
 <arg>login</arg>
-<arg>Login</arg>
 <arg>${username}</arg>
 <arg>${password}</arg>
 </arguments>
-<kw type="kw" name="SeleniumLibrary.Go To" timeout="">
-<doc>Navigates the active browser instance to the provided URL.</doc>
+<kw type="set" name="${cmd} = BuiltIn.Catenate" timeout="">
+<doc>Catenates the given items together and returns the resulted string.</doc>
 <arguments>
-<arg>${LOGIN PAGE}</arg>
+<arg>ruby</arg>
+<arg>${AUTHPATH}</arg>
+<arg>@{args}</arg>
 </arguments>
-<msg timestamp="20090825 15:25:41.700" html="no" level="INFO">Opening url 'http://localhost:4567'</msg>
-<status status="PASS" endtime="20090825 15:25:41.700" starttime="20090825 15:25:41.495"></status>
+<msg timestamp="20090829 21:27:49.999" html="no" level="INFO">${cmd} = ruby /users/esh/desktop/code/atdd-demo/demo/atest/../../demo/src/auth.rb login fred password</msg>
+<status status="PASS" endtime="20090829 21:27:49.999" starttime="20090829 21:27:49.997"></status>
 </kw>
-<kw type="kw" name="SeleniumLibrary.Click Element" timeout="">
-<doc>Click element identified by `locator`.</doc>
+<kw type="set" name="${output} = OperatingSystem.Run" timeout="">
+<doc>Runs the given command in the system and returns the output.</doc>
 <arguments>
-<arg>${link}</arg>
-<arg>don't wait page to load</arg>
+<arg>${cmd}</arg>
 </arguments>
-<msg timestamp="20090825 15:25:41.830" html="no" level="INFO">Clicking element 'login'.</msg>
-<status status="PASS" endtime="20090825 15:25:41.831" starttime="20090825 15:25:41.701"></status>
+<msg timestamp="20090829 21:27:50.015" html="no" level="INFO">Running command 'ruby /users/esh/desktop/code/atdd-demo/demo/atest/../../demo/src/auth.rb login fred password 2&gt;&amp;1'</msg>
+<msg timestamp="20090829 21:27:50.016" html="no" level="INFO">${output} = Welcome!</msg>
+<status status="PASS" endtime="20090829 21:27:50.016" starttime="20090829 21:27:50.000"></status>
 </kw>
-<kw type="kw" name="SeleniumLibrary.Input Text" timeout="">
-<doc>Types the given `text` into text field identified by `locator`.</doc>
+<kw type="kw" name="BuiltIn.Log" timeout="">
+<doc>Logs the given message with the given level.</doc>
 <arguments>
-<arg>uname</arg>
-<arg>${username}</arg>
+<arg>${output}</arg>
 </arguments>
-<msg timestamp="20090825 15:25:41.965" html="no" level="INFO">Typing text 'fred' into text field 'uname'</msg>
-<status status="PASS" endtime="20090825 15:25:41.965" starttime="20090825 15:25:41.831"></status>
+<msg timestamp="20090829 21:27:50.018" html="no" level="INFO">Welcome!</msg>
+<status status="PASS" endtime="20090829 21:27:50.019" starttime="20090829 21:27:50.017"></status>
 </kw>
-<kw type="kw" name="SeleniumLibrary.Input Text" timeout="">
-<doc>Types the given `text` into text field identified by `locator`.</doc>
-<arguments>
-<arg>pwd</arg>
-<arg>${password}</arg>
-</arguments>
-<msg timestamp="20090825 15:25:42.110" html="no" level="INFO">Typing text 'password' into text field 'pwd'</msg>
-<status status="PASS" endtime="20090825 15:25:42.111" starttime="20090825 15:25:41.966"></status>
+<msg timestamp="20090829 21:27:50.019" html="no" level="INFO">${output} = Welcome!</msg>
+<status status="PASS" endtime="20090829 21:27:50.020" starttime="20090829 21:27:49.996"></status>
 </kw>
-<kw type="kw" name="SeleniumLibrary.Click Button" timeout="">
-<doc>Clicks a button identified by `locator`.</doc>
-<arguments>
-<arg>${button}</arg>
-</arguments>
-<msg timestamp="20090825 15:25:42.384" html="no" level="INFO">Clicking button 'Login'.</msg>
-<status status="PASS" endtime="20090825 15:25:42.385" starttime="20090825 15:25:42.111"></status>
-</kw>
-<kw type="set" name="${output} = SeleniumLibrary.Get Text" timeout="">
-<doc>Returns the text of element identified by `locator`.</doc>
-<arguments>
-<arg>message</arg>
-</arguments>
-<msg timestamp="20090825 15:25:42.515" html="no" level="INFO">${output} = Access denied</msg>
-<status status="PASS" endtime="20090825 15:25:42.515" starttime="20090825 15:25:42.386"></status>
-</kw>
-<msg timestamp="20090825 15:25:42.516" html="no" level="INFO">${output} = Access denied</msg>
-<status status="PASS" endtime="20090825 15:25:42.516" starttime="20090825 15:25:41.493"></status>
-</kw>
-<msg timestamp="20090825 15:25:42.517" html="no" level="INFO">${STATUS} = Access denied</msg>
-<status status="PASS" endtime="20090825 15:25:42.517" starttime="20090825 15:25:41.491"></status>
+<msg timestamp="20090829 21:27:50.020" html="no" level="INFO">${STATUS} = Welcome!</msg>
+<status status="PASS" endtime="20090829 21:27:50.020" starttime="20090829 21:27:49.995"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Set Test Variable" timeout="">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
 <arguments>
 <arg>${STATUS}</arg>
 </arguments>
-<msg timestamp="20090825 15:25:42.520" html="no" level="INFO">${STATUS} = Access denied</msg>
-<status status="PASS" endtime="20090825 15:25:42.520" starttime="20090825 15:25:42.518"></status>
+<msg timestamp="20090829 21:27:50.022" html="no" level="INFO">${STATUS} = Welcome!</msg>
+<status status="PASS" endtime="20090829 21:27:50.022" starttime="20090829 21:27:50.021"></status>
 </kw>
-<status status="PASS" endtime="20090825 15:25:42.520" starttime="20090825 15:25:41.490"></status>
+<status status="PASS" endtime="20090829 21:27:50.023" starttime="20090829 21:27:49.994"></status>
 </kw>
 <kw type="kw" name='Then the system responds with the message "Welcome!"' timeout="">
 <doc></doc>
@@ -974,39 +545,161 @@ fred	p4ssw@rd	active
 <arg>${STATUS}</arg>
 <arg>${message}</arg>
 </arguments>
-<msg timestamp="20090825 15:25:42.527" html="no" level="FAIL">Access denied != Welcome!</msg>
-<status status="FAIL" endtime="20090825 15:25:42.527" starttime="20090825 15:25:42.522"></status>
+<status status="PASS" endtime="20090829 21:27:50.027" starttime="20090829 21:27:50.025"></status>
 </kw>
-<status status="FAIL" endtime="20090825 15:25:42.528" starttime="20090825 15:25:42.521"></status>
+<status status="PASS" endtime="20090829 21:27:50.027" starttime="20090829 21:27:50.024"></status>
 </kw>
 <tags>
 </tags>
-<status status="FAIL" endtime="20090825 15:25:42.528" starttime="20090825 15:25:41.483">Access denied != Welcome!</status>
+<status status="PASS" endtime="20090829 21:27:50.028" starttime="20090829 21:27:49.989"></status>
 </test>
-<kw type="teardown" name="web_resource.Exit" timeout="">
+<test critical="yes" name="Account Information Is Stored In A Database" timeout="">
+<doc></doc>
+<kw type="kw" name='Given there is an account with username "fred" and password "password"' timeout="">
 <doc></doc>
 <arguments>
 </arguments>
-<kw type="kw" name="SeleniumLibrary.Close Browser" timeout="">
-<doc>Closes the current browser.</doc>
+<kw type="kw" name="Given There Are No Accounts In The System" timeout="">
+<doc></doc>
 <arguments>
 </arguments>
-<status status="PASS" endtime="20090825 15:25:42.578" starttime="20090825 15:25:42.530"></status>
+<kw type="kw" name="OperatingSystem.Remove File" timeout="">
+<doc>Removes a file with the given path.</doc>
+<arguments>
+<arg>${DATABASE}</arg>
+</arguments>
+<msg timestamp="20090829 21:27:50.035" html="yes" level="INFO">Removed file '&lt;a href="file:///var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt"&gt;/var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt&lt;/a&gt;'</msg>
+<status status="PASS" endtime="20090829 21:27:50.035" starttime="20090829 21:27:50.034"></status>
 </kw>
-<status status="PASS" endtime="20090825 15:25:42.579" starttime="20090825 15:25:42.529"></status>
+<status status="PASS" endtime="20090829 21:27:50.036" starttime="20090829 21:27:50.033"></status>
 </kw>
-<status status="FAIL" endtime="20090825 15:25:42.579" starttime="20090825 15:25:22.725"></status>
+<kw type="kw" name='When A User Creates An Account With Username "${username}" And Password "${password}"' timeout="">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="set" name="${STATUS} = cli_resource.Create User" timeout="">
+<doc></doc>
+<arguments>
+<arg>${username}</arg>
+<arg>${password}</arg>
+</arguments>
+<kw type="set" name="${output} = cli_resource.Run Command" timeout="">
+<doc></doc>
+<arguments>
+<arg>create</arg>
+<arg>${username}</arg>
+<arg>${password}</arg>
+</arguments>
+<kw type="set" name="${cmd} = BuiltIn.Catenate" timeout="">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>ruby</arg>
+<arg>${AUTHPATH}</arg>
+<arg>@{args}</arg>
+</arguments>
+<msg timestamp="20090829 21:27:50.041" html="no" level="INFO">${cmd} = ruby /users/esh/desktop/code/atdd-demo/demo/atest/../../demo/src/auth.rb create fred password</msg>
+<status status="PASS" endtime="20090829 21:27:50.041" starttime="20090829 21:27:50.040"></status>
+</kw>
+<kw type="set" name="${output} = OperatingSystem.Run" timeout="">
+<doc>Runs the given command in the system and returns the output.</doc>
+<arguments>
+<arg>${cmd}</arg>
+</arguments>
+<msg timestamp="20090829 21:27:50.058" html="no" level="INFO">Running command 'ruby /users/esh/desktop/code/atdd-demo/demo/atest/../../demo/src/auth.rb create fred password 2&gt;&amp;1'</msg>
+<msg timestamp="20090829 21:27:50.059" html="no" level="INFO">${output} = Account created</msg>
+<status status="PASS" endtime="20090829 21:27:50.059" starttime="20090829 21:27:50.042"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Log" timeout="">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${output}</arg>
+</arguments>
+<msg timestamp="20090829 21:27:50.061" html="no" level="INFO">Account created</msg>
+<status status="PASS" endtime="20090829 21:27:50.062" starttime="20090829 21:27:50.060"></status>
+</kw>
+<msg timestamp="20090829 21:27:50.062" html="no" level="INFO">${output} = Account created</msg>
+<status status="PASS" endtime="20090829 21:27:50.062" starttime="20090829 21:27:50.038"></status>
+</kw>
+<msg timestamp="20090829 21:27:50.063" html="no" level="INFO">${STATUS} = Account created</msg>
+<status status="PASS" endtime="20090829 21:27:50.063" starttime="20090829 21:27:50.037"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Set Test Variable" timeout="">
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<arguments>
+<arg>${STATUS}</arg>
+</arguments>
+<msg timestamp="20090829 21:27:50.065" html="no" level="INFO">${STATUS} = Account created</msg>
+<status status="PASS" endtime="20090829 21:27:50.066" starttime="20090829 21:27:50.064"></status>
+</kw>
+<status status="PASS" endtime="20090829 21:27:50.066" starttime="20090829 21:27:50.036"></status>
+</kw>
+<kw type="kw" name='Then the system responds with the message "Account created"' timeout="">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="BuiltIn.Should Be Equal" timeout="">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${STATUS}</arg>
+<arg>${message}</arg>
+</arguments>
+<status status="PASS" endtime="20090829 21:27:50.070" starttime="20090829 21:27:50.068"></status>
+</kw>
+<status status="PASS" endtime="20090829 21:27:50.070" starttime="20090829 21:27:50.067"></status>
+</kw>
+<status status="PASS" endtime="20090829 21:27:50.070" starttime="20090829 21:27:50.032"></status>
+</kw>
+<kw type="kw" name="Then the database contains an active account fred/password" timeout="">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="set" name="${db} = OperatingSystem.Get File" timeout="">
+<doc>Returns the contents of a specified file.</doc>
+<arguments>
+<arg>${DATABASE}</arg>
+</arguments>
+<msg timestamp="20090829 21:27:50.073" html="yes" level="INFO">Getting file '&lt;a href="file:///var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt"&gt;/var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt&lt;/a&gt;'</msg>
+<msg timestamp="20090829 21:27:50.074" html="no" level="INFO">${db} = fred	password	active
+</msg>
+<status status="PASS" endtime="20090829 21:27:50.074" starttime="20090829 21:27:50.072"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Contain" timeout="">
+<doc>Fails if `item1` does not contain `item2` one or more times.</doc>
+<arguments>
+<arg>${db}</arg>
+<arg>${username}\t${password}\t${state}</arg>
+</arguments>
+<status status="PASS" endtime="20090829 21:27:50.076" starttime="20090829 21:27:50.075"></status>
+</kw>
+<status status="PASS" endtime="20090829 21:27:50.076" starttime="20090829 21:27:50.071"></status>
+</kw>
+<tags>
+</tags>
+<status status="PASS" endtime="20090829 21:27:50.077" starttime="20090829 21:27:50.031"></status>
+</test>
+<kw type="teardown" name="cli_resource.Exit" timeout="">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="BuiltIn.No Operation" timeout="">
+<doc>Does absolutely nothing.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20090829 21:27:50.079" starttime="20090829 21:27:50.079"></status>
+</kw>
+<status status="PASS" endtime="20090829 21:27:50.080" starttime="20090829 21:27:50.078"></status>
+</kw>
+<status status="PASS" endtime="20090829 21:27:50.080" starttime="20090829 21:27:49.734"></status>
 </suite>
 <statistics>
 <total>
-<stat fail="1" pass="5">Critical Tests</stat>
-<stat fail="1" pass="5">All Tests</stat>
+<stat fail="0" pass="5">Critical Tests</stat>
+<stat fail="0" pass="5">All Tests</stat>
 </total>
 <tag>
-<stat info="" fail="0" pass="1">Unimplemented</stat>
 </tag>
 <suite>
-<stat fail="1" doc="Creating User" pass="5">Creating User</stat>
+<stat fail="0" doc="Creating User" pass="5">Creating User</stat>
 </suite>
 </statistics>
 <errors>
