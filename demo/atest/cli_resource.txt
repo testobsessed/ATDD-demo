@@ -8,11 +8,11 @@ ${AUTHPATH} =  ${CURDIR}/../../demo/src/auth.rb
 *** Keywords ***
 
 Create User  [Arguments]  ${username}  ${password}
-    ${output} =  Run Command  create  ${username}  ${password}
+    ${output} =  Run Command  create  ${username}  "${password}"
     [Return]  ${output}
 
 Attempt To Login  [Arguments]  ${username}  ${password}
-    ${output} =  Run Command  login  ${username}  ${password}
+    ${output} =  Run Command  login  ${username}  "${password}"
     [Return]  ${output}
 
 Run Command  [Arguments]  @{args}
@@ -22,6 +22,9 @@ Run Command  [Arguments]  @{args}
     [Return]  ${output}
 
 Open Login Page
+    No Operation
+
+Reload User Database
     No Operation
 
 Exit

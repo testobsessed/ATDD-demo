@@ -1,4 +1,7 @@
 require 'tmpdir'
+$LOAD_PATH << File.join(File.dirname(__FILE__), "../src")
+require 'messages'
+
 class PasswordFile
   attr :path
   
@@ -25,6 +28,7 @@ class PasswordFile
       password_file.puts(userid + "\t" + values[:pwd] + "\t" + values[:status].to_s)
     end
     password_file.close
+    get_users
   end
 end
 
@@ -36,6 +40,10 @@ class Authentication
   
   def initialize(pwd_file)
     @pwd_file = pwd_file
+    load_users
+  end
+  
+  def load_users()
     @user_accounts = @pwd_file.get_users
   end
   
@@ -44,6 +52,8 @@ class Authentication
   end
   
   def create(username, password, status=:active)
+    return :already_exists unless @user_accounts[username].nil?
+    return :too_short unless Password.new(password).valid?
     account_data = {}
     account_data[:pwd] = password
     account_data[:status] = status
@@ -95,11 +105,11 @@ end
 #   end
 #   
 #   def valid?
-#     if too_short? || too_long? || !contains_punctuation? || !contains_letter? || !contains_number?
-#       return false
-#     else 
+#      if !contains_number? || !contains_letter? || too_short? || too_long? || !contains_punctuation? 
+#        return false
+#      else 
 #       return true
-#     end
+#      end
 #   end
 #   
 #   def too_short?
@@ -121,23 +131,8 @@ end
 #   def contains_number?
 #     return !@password.match(/\d/).nil?
 #   end
+#   
 # end
-
-class Messages
-  @@mappings = {
-    :success => "Account created",
-    :fail => "FAIL",
-    :unknown => "Auth Server: unknown command",
-    :no_cmd => "Must provide at least one command",
-    :logged_in => "Welcome!",
-    :load_failed => "Failed to load user accounts",
-    :access_denied => "Access denied"
-  }
-  
-  def self.lookup(msg_symbol)
-    return @@mappings[msg_symbol]
-  end
-end
 
 class CommandLine
   

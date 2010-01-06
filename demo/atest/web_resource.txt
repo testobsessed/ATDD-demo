@@ -30,3 +30,6 @@ Open Login Page
 
 Exit
     Close Browser
+
+Reload User Database
+    Go To  ${LOGIN PAGE}/reload

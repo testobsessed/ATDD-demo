@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generated="20090829 21:27:49.712" generator="Robot 2.1.1 (Python 2.5.1 on darwin)">
-<suite source="/users/esh/desktop/code/atdd-demo/demo/atest/creating_user.txt" name="Creating User">
+<robot generated="20100106 07:35:08.114" generator="Robot 2.1.2 (Python 2.6.1 on darwin)">
+<suite source="/users/esh/desktop/code/atdd-demo/demo/atest/secure_passwords.txt" name="Secure Passwords">
 <doc></doc>
 <metadata>
 </metadata>
@@ -12,455 +12,13 @@
 <doc>Does absolutely nothing.</doc>
 <arguments>
 </arguments>
-<status status="PASS" endtime="20090829 21:27:49.801" starttime="20090829 21:27:49.800"></status>
+<status status="PASS" endtime="20100106 07:35:08.369" starttime="20100106 07:35:08.369"></status>
 </kw>
-<status status="PASS" endtime="20090829 21:27:49.801" starttime="20090829 21:27:49.799"></status>
+<status status="PASS" endtime="20100106 07:35:08.370" starttime="20100106 07:35:08.368"></status>
 </kw>
-<test critical="yes" name="Users Can Create A New Account With A Username And Password" timeout="">
-<doc></doc>
-<kw type="kw" name="Given There Are No Accounts In The System" timeout="">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="kw" name="OperatingSystem.Remove File" timeout="">
-<doc>Removes a file with the given path.</doc>
-<arguments>
-<arg>${DATABASE}</arg>
-</arguments>
-<msg timestamp="20090829 21:27:49.805" html="yes" level="INFO">Removed file '&lt;a href="file:///var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt"&gt;/var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt&lt;/a&gt;'</msg>
-<status status="PASS" endtime="20090829 21:27:49.805" starttime="20090829 21:27:49.803"></status>
-</kw>
-<status status="PASS" endtime="20090829 21:27:49.805" starttime="20090829 21:27:49.802"></status>
-</kw>
-<kw type="kw" name='When a user creates an account with username "fred" and password "password"' timeout="">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="set" name="${STATUS} = cli_resource.Create User" timeout="">
-<doc></doc>
-<arguments>
-<arg>${username}</arg>
-<arg>${password}</arg>
-</arguments>
-<kw type="set" name="${output} = cli_resource.Run Command" timeout="">
-<doc></doc>
-<arguments>
-<arg>create</arg>
-<arg>${username}</arg>
-<arg>${password}</arg>
-</arguments>
-<kw type="set" name="${cmd} = BuiltIn.Catenate" timeout="">
-<doc>Catenates the given items together and returns the resulted string.</doc>
-<arguments>
-<arg>ruby</arg>
-<arg>${AUTHPATH}</arg>
-<arg>@{args}</arg>
-</arguments>
-<msg timestamp="20090829 21:27:49.811" html="no" level="INFO">${cmd} = ruby /users/esh/desktop/code/atdd-demo/demo/atest/../../demo/src/auth.rb create fred password</msg>
-<status status="PASS" endtime="20090829 21:27:49.811" starttime="20090829 21:27:49.809"></status>
-</kw>
-<kw type="set" name="${output} = OperatingSystem.Run" timeout="">
-<doc>Runs the given command in the system and returns the output.</doc>
-<arguments>
-<arg>${cmd}</arg>
-</arguments>
-<msg timestamp="20090829 21:27:49.827" html="no" level="INFO">Running command 'ruby /users/esh/desktop/code/atdd-demo/demo/atest/../../demo/src/auth.rb create fred password 2&gt;&amp;1'</msg>
-<msg timestamp="20090829 21:27:49.829" html="no" level="INFO">${output} = Account created</msg>
-<status status="PASS" endtime="20090829 21:27:49.829" starttime="20090829 21:27:49.811"></status>
-</kw>
-<kw type="kw" name="BuiltIn.Log" timeout="">
-<doc>Logs the given message with the given level.</doc>
-<arguments>
-<arg>${output}</arg>
-</arguments>
-<msg timestamp="20090829 21:27:49.831" html="no" level="INFO">Account created</msg>
-<status status="PASS" endtime="20090829 21:27:49.831" starttime="20090829 21:27:49.830"></status>
-</kw>
-<msg timestamp="20090829 21:27:49.832" html="no" level="INFO">${output} = Account created</msg>
-<status status="PASS" endtime="20090829 21:27:49.832" starttime="20090829 21:27:49.808"></status>
-</kw>
-<msg timestamp="20090829 21:27:49.833" html="no" level="INFO">${STATUS} = Account created</msg>
-<status status="PASS" endtime="20090829 21:27:49.833" starttime="20090829 21:27:49.807"></status>
-</kw>
-<kw type="kw" name="BuiltIn.Set Test Variable" timeout="">
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<arguments>
-<arg>${STATUS}</arg>
-</arguments>
-<msg timestamp="20090829 21:27:49.835" html="no" level="INFO">${STATUS} = Account created</msg>
-<status status="PASS" endtime="20090829 21:27:49.835" starttime="20090829 21:27:49.834"></status>
-</kw>
-<status status="PASS" endtime="20090829 21:27:49.836" starttime="20090829 21:27:49.806"></status>
-</kw>
-<kw type="kw" name='Then the system responds with the message "Account created"' timeout="">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="kw" name="BuiltIn.Should Be Equal" timeout="">
-<doc>Fails if the given objects are unequal.</doc>
-<arguments>
-<arg>${STATUS}</arg>
-<arg>${message}</arg>
-</arguments>
-<status status="PASS" endtime="20090829 21:27:49.839" starttime="20090829 21:27:49.838"></status>
-</kw>
-<status status="PASS" endtime="20090829 21:27:49.839" starttime="20090829 21:27:49.837"></status>
-</kw>
-<tags>
-</tags>
-<status status="PASS" endtime="20090829 21:27:49.840" starttime="20090829 21:27:49.802"></status>
-</test>
-<test critical="yes" name="Users Can Login With A New, Valid Account" timeout="">
-<doc></doc>
-<kw type="kw" name='Given there is an account with username "fred" and password "password"' timeout="">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="kw" name="Given There Are No Accounts In The System" timeout="">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="kw" name="OperatingSystem.Remove File" timeout="">
-<doc>Removes a file with the given path.</doc>
-<arguments>
-<arg>${DATABASE}</arg>
-</arguments>
-<msg timestamp="20090829 21:27:49.845" html="yes" level="INFO">Removed file '&lt;a href="file:///var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt"&gt;/var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt&lt;/a&gt;'</msg>
-<status status="PASS" endtime="20090829 21:27:49.845" starttime="20090829 21:27:49.843"></status>
-</kw>
-<status status="PASS" endtime="20090829 21:27:49.846" starttime="20090829 21:27:49.843"></status>
-</kw>
-<kw type="kw" name='When A User Creates An Account With Username "${username}" And Password "${password}"' timeout="">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="set" name="${STATUS} = cli_resource.Create User" timeout="">
-<doc></doc>
-<arguments>
-<arg>${username}</arg>
-<arg>${password}</arg>
-</arguments>
-<kw type="set" name="${output} = cli_resource.Run Command" timeout="">
-<doc></doc>
-<arguments>
-<arg>create</arg>
-<arg>${username}</arg>
-<arg>${password}</arg>
-</arguments>
-<kw type="set" name="${cmd} = BuiltIn.Catenate" timeout="">
-<doc>Catenates the given items together and returns the resulted string.</doc>
-<arguments>
-<arg>ruby</arg>
-<arg>${AUTHPATH}</arg>
-<arg>@{args}</arg>
-</arguments>
-<msg timestamp="20090829 21:27:49.851" html="no" level="INFO">${cmd} = ruby /users/esh/desktop/code/atdd-demo/demo/atest/../../demo/src/auth.rb create fred password</msg>
-<status status="PASS" endtime="20090829 21:27:49.851" starttime="20090829 21:27:49.850"></status>
-</kw>
-<kw type="set" name="${output} = OperatingSystem.Run" timeout="">
-<doc>Runs the given command in the system and returns the output.</doc>
-<arguments>
-<arg>${cmd}</arg>
-</arguments>
-<msg timestamp="20090829 21:27:49.868" html="no" level="INFO">Running command 'ruby /users/esh/desktop/code/atdd-demo/demo/atest/../../demo/src/auth.rb create fred password 2&gt;&amp;1'</msg>
-<msg timestamp="20090829 21:27:49.869" html="no" level="INFO">${output} = Account created</msg>
-<status status="PASS" endtime="20090829 21:27:49.870" starttime="20090829 21:27:49.852"></status>
-</kw>
-<kw type="kw" name="BuiltIn.Log" timeout="">
-<doc>Logs the given message with the given level.</doc>
-<arguments>
-<arg>${output}</arg>
-</arguments>
-<msg timestamp="20090829 21:27:49.872" html="no" level="INFO">Account created</msg>
-<status status="PASS" endtime="20090829 21:27:49.872" starttime="20090829 21:27:49.871"></status>
-</kw>
-<msg timestamp="20090829 21:27:49.873" html="no" level="INFO">${output} = Account created</msg>
-<status status="PASS" endtime="20090829 21:27:49.873" starttime="20090829 21:27:49.848"></status>
-</kw>
-<msg timestamp="20090829 21:27:49.873" html="no" level="INFO">${STATUS} = Account created</msg>
-<status status="PASS" endtime="20090829 21:27:49.874" starttime="20090829 21:27:49.847"></status>
-</kw>
-<kw type="kw" name="BuiltIn.Set Test Variable" timeout="">
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<arguments>
-<arg>${STATUS}</arg>
-</arguments>
-<msg timestamp="20090829 21:27:49.877" html="no" level="INFO">${STATUS} = Account created</msg>
-<status status="PASS" endtime="20090829 21:27:49.877" starttime="20090829 21:27:49.875"></status>
-</kw>
-<status status="PASS" endtime="20090829 21:27:49.878" starttime="20090829 21:27:49.846"></status>
-</kw>
-<kw type="kw" name='Then the system responds with the message "Account created"' timeout="">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="kw" name="BuiltIn.Should Be Equal" timeout="">
-<doc>Fails if the given objects are unequal.</doc>
-<arguments>
-<arg>${STATUS}</arg>
-<arg>${message}</arg>
-</arguments>
-<status status="PASS" endtime="20090829 21:27:49.881" starttime="20090829 21:27:49.880"></status>
-</kw>
-<status status="PASS" endtime="20090829 21:27:49.881" starttime="20090829 21:27:49.879"></status>
-</kw>
-<status status="PASS" endtime="20090829 21:27:49.882" starttime="20090829 21:27:49.842"></status>
-</kw>
-<kw type="kw" name='When a user attempts to login with username "fred" and password "password"' timeout="">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="set" name="${STATUS} = cli_resource.Attempt To Login" timeout="">
-<doc></doc>
-<arguments>
-<arg>${username}</arg>
-<arg>${password}</arg>
-</arguments>
-<kw type="set" name="${output} = cli_resource.Run Command" timeout="">
-<doc></doc>
-<arguments>
-<arg>login</arg>
-<arg>${username}</arg>
-<arg>${password}</arg>
-</arguments>
-<kw type="set" name="${cmd} = BuiltIn.Catenate" timeout="">
-<doc>Catenates the given items together and returns the resulted string.</doc>
-<arguments>
-<arg>ruby</arg>
-<arg>${AUTHPATH}</arg>
-<arg>@{args}</arg>
-</arguments>
-<msg timestamp="20090829 21:27:49.887" html="no" level="INFO">${cmd} = ruby /users/esh/desktop/code/atdd-demo/demo/atest/../../demo/src/auth.rb login fred password</msg>
-<status status="PASS" endtime="20090829 21:27:49.887" starttime="20090829 21:27:49.886"></status>
-</kw>
-<kw type="set" name="${output} = OperatingSystem.Run" timeout="">
-<doc>Runs the given command in the system and returns the output.</doc>
-<arguments>
-<arg>${cmd}</arg>
-</arguments>
-<msg timestamp="20090829 21:27:49.904" html="no" level="INFO">Running command 'ruby /users/esh/desktop/code/atdd-demo/demo/atest/../../demo/src/auth.rb login fred password 2&gt;&amp;1'</msg>
-<msg timestamp="20090829 21:27:49.905" html="no" level="INFO">${output} = Welcome!</msg>
-<status status="PASS" endtime="20090829 21:27:49.905" starttime="20090829 21:27:49.888"></status>
-</kw>
-<kw type="kw" name="BuiltIn.Log" timeout="">
-<doc>Logs the given message with the given level.</doc>
-<arguments>
-<arg>${output}</arg>
-</arguments>
-<msg timestamp="20090829 21:27:49.907" html="no" level="INFO">Welcome!</msg>
-<status status="PASS" endtime="20090829 21:27:49.907" starttime="20090829 21:27:49.906"></status>
-</kw>
-<msg timestamp="20090829 21:27:49.908" html="no" level="INFO">${output} = Welcome!</msg>
-<status status="PASS" endtime="20090829 21:27:49.908" starttime="20090829 21:27:49.884"></status>
-</kw>
-<msg timestamp="20090829 21:27:49.909" html="no" level="INFO">${STATUS} = Welcome!</msg>
-<status status="PASS" endtime="20090829 21:27:49.909" starttime="20090829 21:27:49.883"></status>
-</kw>
-<kw type="kw" name="BuiltIn.Set Test Variable" timeout="">
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<arguments>
-<arg>${STATUS}</arg>
-</arguments>
-<msg timestamp="20090829 21:27:49.911" html="no" level="INFO">${STATUS} = Welcome!</msg>
-<status status="PASS" endtime="20090829 21:27:49.911" starttime="20090829 21:27:49.910"></status>
-</kw>
-<status status="PASS" endtime="20090829 21:27:49.912" starttime="20090829 21:27:49.882"></status>
-</kw>
-<kw type="kw" name='Then the system responds with the message "Welcome!"' timeout="">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="kw" name="BuiltIn.Should Be Equal" timeout="">
-<doc>Fails if the given objects are unequal.</doc>
-<arguments>
-<arg>${STATUS}</arg>
-<arg>${message}</arg>
-</arguments>
-<status status="PASS" endtime="20090829 21:27:49.914" starttime="20090829 21:27:49.913"></status>
-</kw>
-<status status="PASS" endtime="20090829 21:27:49.915" starttime="20090829 21:27:49.912"></status>
-</kw>
-<tags>
-</tags>
-<status status="PASS" endtime="20090829 21:27:49.915" starttime="20090829 21:27:49.841"></status>
-</test>
-<test critical="yes" name="Users Cannot Login With Wrong Password" timeout="">
-<doc></doc>
-<kw type="kw" name='Given there is an account with username "fred" and password "password"' timeout="">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="kw" name="Given There Are No Accounts In The System" timeout="">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="kw" name="OperatingSystem.Remove File" timeout="">
-<doc>Removes a file with the given path.</doc>
-<arguments>
-<arg>${DATABASE}</arg>
-</arguments>
-<msg timestamp="20090829 21:27:49.920" html="yes" level="INFO">Removed file '&lt;a href="file:///var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt"&gt;/var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt&lt;/a&gt;'</msg>
-<status status="PASS" endtime="20090829 21:27:49.920" starttime="20090829 21:27:49.918"></status>
-</kw>
-<status status="PASS" endtime="20090829 21:27:49.920" starttime="20090829 21:27:49.917"></status>
-</kw>
-<kw type="kw" name='When A User Creates An Account With Username "${username}" And Password "${password}"' timeout="">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="set" name="${STATUS} = cli_resource.Create User" timeout="">
-<doc></doc>
-<arguments>
-<arg>${username}</arg>
-<arg>${password}</arg>
-</arguments>
-<kw type="set" name="${output} = cli_resource.Run Command" timeout="">
-<doc></doc>
-<arguments>
-<arg>create</arg>
-<arg>${username}</arg>
-<arg>${password}</arg>
-</arguments>
-<kw type="set" name="${cmd} = BuiltIn.Catenate" timeout="">
-<doc>Catenates the given items together and returns the resulted string.</doc>
-<arguments>
-<arg>ruby</arg>
-<arg>${AUTHPATH}</arg>
-<arg>@{args}</arg>
-</arguments>
-<msg timestamp="20090829 21:27:49.925" html="no" level="INFO">${cmd} = ruby /users/esh/desktop/code/atdd-demo/demo/atest/../../demo/src/auth.rb create fred password</msg>
-<status status="PASS" endtime="20090829 21:27:49.926" starttime="20090829 21:27:49.924"></status>
-</kw>
-<kw type="set" name="${output} = OperatingSystem.Run" timeout="">
-<doc>Runs the given command in the system and returns the output.</doc>
-<arguments>
-<arg>${cmd}</arg>
-</arguments>
-<msg timestamp="20090829 21:27:49.942" html="no" level="INFO">Running command 'ruby /users/esh/desktop/code/atdd-demo/demo/atest/../../demo/src/auth.rb create fred password 2&gt;&amp;1'</msg>
-<msg timestamp="20090829 21:27:49.943" html="no" level="INFO">${output} = Account created</msg>
-<status status="PASS" endtime="20090829 21:27:49.943" starttime="20090829 21:27:49.926"></status>
-</kw>
-<kw type="kw" name="BuiltIn.Log" timeout="">
-<doc>Logs the given message with the given level.</doc>
-<arguments>
-<arg>${output}</arg>
-</arguments>
-<msg timestamp="20090829 21:27:49.945" html="no" level="INFO">Account created</msg>
-<status status="PASS" endtime="20090829 21:27:49.946" starttime="20090829 21:27:49.944"></status>
-</kw>
-<msg timestamp="20090829 21:27:49.946" html="no" level="INFO">${output} = Account created</msg>
-<status status="PASS" endtime="20090829 21:27:49.947" starttime="20090829 21:27:49.923"></status>
-</kw>
-<msg timestamp="20090829 21:27:49.947" html="no" level="INFO">${STATUS} = Account created</msg>
-<status status="PASS" endtime="20090829 21:27:49.947" starttime="20090829 21:27:49.921"></status>
-</kw>
-<kw type="kw" name="BuiltIn.Set Test Variable" timeout="">
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<arguments>
-<arg>${STATUS}</arg>
-</arguments>
-<msg timestamp="20090829 21:27:49.949" html="no" level="INFO">${STATUS} = Account created</msg>
-<status status="PASS" endtime="20090829 21:27:49.950" starttime="20090829 21:27:49.948"></status>
-</kw>
-<status status="PASS" endtime="20090829 21:27:49.950" starttime="20090829 21:27:49.921"></status>
-</kw>
-<kw type="kw" name='Then the system responds with the message "Account created"' timeout="">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="kw" name="BuiltIn.Should Be Equal" timeout="">
-<doc>Fails if the given objects are unequal.</doc>
-<arguments>
-<arg>${STATUS}</arg>
-<arg>${message}</arg>
-</arguments>
-<status status="PASS" endtime="20090829 21:27:49.954" starttime="20090829 21:27:49.952"></status>
-</kw>
-<status status="PASS" endtime="20090829 21:27:49.954" starttime="20090829 21:27:49.951"></status>
-</kw>
-<status status="PASS" endtime="20090829 21:27:49.954" starttime="20090829 21:27:49.917"></status>
-</kw>
-<kw type="kw" name='When a user attempts to login with username "fred" and password "bad"' timeout="">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="set" name="${STATUS} = cli_resource.Attempt To Login" timeout="">
-<doc></doc>
-<arguments>
-<arg>${username}</arg>
-<arg>${password}</arg>
-</arguments>
-<kw type="set" name="${output} = cli_resource.Run Command" timeout="">
-<doc></doc>
-<arguments>
-<arg>login</arg>
-<arg>${username}</arg>
-<arg>${password}</arg>
-</arguments>
-<kw type="set" name="${cmd} = BuiltIn.Catenate" timeout="">
-<doc>Catenates the given items together and returns the resulted string.</doc>
-<arguments>
-<arg>ruby</arg>
-<arg>${AUTHPATH}</arg>
-<arg>@{args}</arg>
-</arguments>
-<msg timestamp="20090829 21:27:49.960" html="no" level="INFO">${cmd} = ruby /users/esh/desktop/code/atdd-demo/demo/atest/../../demo/src/auth.rb login fred bad</msg>
-<status status="PASS" endtime="20090829 21:27:49.960" starttime="20090829 21:27:49.959"></status>
-</kw>
-<kw type="set" name="${output} = OperatingSystem.Run" timeout="">
-<doc>Runs the given command in the system and returns the output.</doc>
-<arguments>
-<arg>${cmd}</arg>
-</arguments>
-<msg timestamp="20090829 21:27:49.977" html="no" level="INFO">Running command 'ruby /users/esh/desktop/code/atdd-demo/demo/atest/../../demo/src/auth.rb login fred bad 2&gt;&amp;1'</msg>
-<msg timestamp="20090829 21:27:49.978" html="no" level="INFO">${output} = Access denied</msg>
-<status status="PASS" endtime="20090829 21:27:49.978" starttime="20090829 21:27:49.961"></status>
-</kw>
-<kw type="kw" name="BuiltIn.Log" timeout="">
-<doc>Logs the given message with the given level.</doc>
-<arguments>
-<arg>${output}</arg>
-</arguments>
-<msg timestamp="20090829 21:27:49.980" html="no" level="INFO">Access denied</msg>
-<status status="PASS" endtime="20090829 21:27:49.980" starttime="20090829 21:27:49.979"></status>
-</kw>
-<msg timestamp="20090829 21:27:49.981" html="no" level="INFO">${output} = Access denied</msg>
-<status status="PASS" endtime="20090829 21:27:49.981" starttime="20090829 21:27:49.957"></status>
-</kw>
-<msg timestamp="20090829 21:27:49.982" html="no" level="INFO">${STATUS} = Access denied</msg>
-<status status="PASS" endtime="20090829 21:27:49.982" starttime="20090829 21:27:49.956"></status>
-</kw>
-<kw type="kw" name="BuiltIn.Set Test Variable" timeout="">
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<arguments>
-<arg>${STATUS}</arg>
-</arguments>
-<msg timestamp="20090829 21:27:49.984" html="no" level="INFO">${STATUS} = Access denied</msg>
-<status status="PASS" endtime="20090829 21:27:49.984" starttime="20090829 21:27:49.983"></status>
-</kw>
-<status status="PASS" endtime="20090829 21:27:49.985" starttime="20090829 21:27:49.955"></status>
-</kw>
-<kw type="kw" name='Then the system responds with the message "Access denied"' timeout="">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="kw" name="BuiltIn.Should Be Equal" timeout="">
-<doc>Fails if the given objects are unequal.</doc>
-<arguments>
-<arg>${STATUS}</arg>
-<arg>${message}</arg>
-</arguments>
-<status status="PASS" endtime="20090829 21:27:49.987" starttime="20090829 21:27:49.986"></status>
-</kw>
-<status status="PASS" endtime="20090829 21:27:49.988" starttime="20090829 21:27:49.985"></status>
-</kw>
-<tags>
-</tags>
-<status status="PASS" endtime="20090829 21:27:49.988" starttime="20090829 21:27:49.916"></status>
-</test>
 <test critical="yes" name="Existing Users In The Database Can Login" timeout="">
 <doc></doc>
-<kw type="kw" name='Given there is an account with username "fred" and invalid password "password"' timeout="">
+<kw type="kw" name='password_keywords_resource.Given there is an account with username "fred" and invalid password "password"' timeout="">
 <doc></doc>
 <arguments>
 </arguments>
@@ -470,12 +28,24 @@
 <arg>${DATABASE}</arg>
 <arg>${username}\t${password}\tactive\n</arg>
 </arguments>
-<msg timestamp="20090829 21:27:49.993" html="yes" level="INFO">Created file '&lt;a href="file:///var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt"&gt;/var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt&lt;/a&gt;'</msg>
-<status status="PASS" endtime="20090829 21:27:49.993" starttime="20090829 21:27:49.991"></status>
+<msg timestamp="20100106 07:35:08.373" html="yes" level="INFO">Created file '&lt;a href="file:///var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt"&gt;/var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt&lt;/a&gt;'</msg>
+<status status="PASS" endtime="20100106 07:35:08.373" starttime="20100106 07:35:08.372"></status>
 </kw>
-<status status="PASS" endtime="20090829 21:27:49.993" starttime="20090829 21:27:49.990"></status>
+<kw type="kw" name="cli_resource.Reload User Database" timeout="">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="BuiltIn.No Operation" timeout="">
+<doc>Does absolutely nothing.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20100106 07:35:08.375" starttime="20100106 07:35:08.374"></status>
 </kw>
-<kw type="kw" name='When a user attempts to login with username "fred" and password "password"' timeout="">
+<status status="PASS" endtime="20100106 07:35:08.375" starttime="20100106 07:35:08.374"></status>
+</kw>
+<status status="PASS" endtime="20100106 07:35:08.375" starttime="20100106 07:35:08.371"></status>
+</kw>
+<kw type="kw" name='password_keywords_resource.When a user attempts to login with username "fred" and password "password"' timeout="">
 <doc></doc>
 <arguments>
 </arguments>
@@ -490,7 +60,7 @@
 <arguments>
 <arg>login</arg>
 <arg>${username}</arg>
-<arg>${password}</arg>
+<arg>"${password}"</arg>
 </arguments>
 <kw type="set" name="${cmd} = BuiltIn.Catenate" timeout="">
 <doc>Catenates the given items together and returns the resulted string.</doc>
@@ -499,43 +69,43 @@
 <arg>${AUTHPATH}</arg>
 <arg>@{args}</arg>
 </arguments>
-<msg timestamp="20090829 21:27:49.999" html="no" level="INFO">${cmd} = ruby /users/esh/desktop/code/atdd-demo/demo/atest/../../demo/src/auth.rb login fred password</msg>
-<status status="PASS" endtime="20090829 21:27:49.999" starttime="20090829 21:27:49.997"></status>
+<msg timestamp="20100106 07:35:08.380" html="no" level="INFO">${cmd} = ruby /users/esh/desktop/code/atdd-demo/demo/atest/../../demo/src/auth.rb login fred "password"</msg>
+<status status="PASS" endtime="20100106 07:35:08.380" starttime="20100106 07:35:08.379"></status>
 </kw>
 <kw type="set" name="${output} = OperatingSystem.Run" timeout="">
 <doc>Runs the given command in the system and returns the output.</doc>
 <arguments>
 <arg>${cmd}</arg>
 </arguments>
-<msg timestamp="20090829 21:27:50.015" html="no" level="INFO">Running command 'ruby /users/esh/desktop/code/atdd-demo/demo/atest/../../demo/src/auth.rb login fred password 2&gt;&amp;1'</msg>
-<msg timestamp="20090829 21:27:50.016" html="no" level="INFO">${output} = Welcome!</msg>
-<status status="PASS" endtime="20090829 21:27:50.016" starttime="20090829 21:27:50.000"></status>
+<msg timestamp="20100106 07:35:08.607" html="no" level="INFO">Running command 'ruby /users/esh/desktop/code/atdd-demo/demo/atest/../../demo/src/auth.rb login fred "password" 2&gt;&amp;1'</msg>
+<msg timestamp="20100106 07:35:08.607" html="no" level="INFO">${output} = Welcome!</msg>
+<status status="PASS" endtime="20100106 07:35:08.608" starttime="20100106 07:35:08.381"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Log" timeout="">
 <doc>Logs the given message with the given level.</doc>
 <arguments>
 <arg>${output}</arg>
 </arguments>
-<msg timestamp="20090829 21:27:50.018" html="no" level="INFO">Welcome!</msg>
-<status status="PASS" endtime="20090829 21:27:50.019" starttime="20090829 21:27:50.017"></status>
+<msg timestamp="20100106 07:35:08.608" html="no" level="INFO">Welcome!</msg>
+<status status="PASS" endtime="20100106 07:35:08.609" starttime="20100106 07:35:08.608"></status>
 </kw>
-<msg timestamp="20090829 21:27:50.019" html="no" level="INFO">${output} = Welcome!</msg>
-<status status="PASS" endtime="20090829 21:27:50.020" starttime="20090829 21:27:49.996"></status>
+<msg timestamp="20100106 07:35:08.609" html="no" level="INFO">${output} = Welcome!</msg>
+<status status="PASS" endtime="20100106 07:35:08.609" starttime="20100106 07:35:08.378"></status>
 </kw>
-<msg timestamp="20090829 21:27:50.020" html="no" level="INFO">${STATUS} = Welcome!</msg>
-<status status="PASS" endtime="20090829 21:27:50.020" starttime="20090829 21:27:49.995"></status>
+<msg timestamp="20100106 07:35:08.610" html="no" level="INFO">${STATUS} = Welcome!</msg>
+<status status="PASS" endtime="20100106 07:35:08.610" starttime="20100106 07:35:08.377"></status>
 </kw>
 <kw type="kw" name="BuiltIn.Set Test Variable" timeout="">
 <doc>Makes a variable available everywhere within the scope of the current test.</doc>
 <arguments>
 <arg>${STATUS}</arg>
 </arguments>
-<msg timestamp="20090829 21:27:50.022" html="no" level="INFO">${STATUS} = Welcome!</msg>
-<status status="PASS" endtime="20090829 21:27:50.022" starttime="20090829 21:27:50.021"></status>
+<msg timestamp="20100106 07:35:08.611" html="no" level="INFO">${STATUS} = Welcome!</msg>
+<status status="PASS" endtime="20100106 07:35:08.611" starttime="20100106 07:35:08.610"></status>
 </kw>
-<status status="PASS" endtime="20090829 21:27:50.023" starttime="20090829 21:27:49.994"></status>
+<status status="PASS" endtime="20100106 07:35:08.611" starttime="20100106 07:35:08.376"></status>
 </kw>
-<kw type="kw" name='Then the system responds with the message "Welcome!"' timeout="">
+<kw type="kw" name='password_keywords_resource.Then the system responds with the message "Welcome!"' timeout="">
 <doc></doc>
 <arguments>
 </arguments>
@@ -545,161 +115,27 @@
 <arg>${STATUS}</arg>
 <arg>${message}</arg>
 </arguments>
-<status status="PASS" endtime="20090829 21:27:50.027" starttime="20090829 21:27:50.025"></status>
+<status status="PASS" endtime="20100106 07:35:08.612" starttime="20100106 07:35:08.612"></status>
 </kw>
-<status status="PASS" endtime="20090829 21:27:50.027" starttime="20090829 21:27:50.024"></status>
-</kw>
-<tags>
-</tags>
-<status status="PASS" endtime="20090829 21:27:50.028" starttime="20090829 21:27:49.989"></status>
-</test>
-<test critical="yes" name="Account Information Is Stored In A Database" timeout="">
-<doc></doc>
-<kw type="kw" name='Given there is an account with username "fred" and password "password"' timeout="">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="kw" name="Given There Are No Accounts In The System" timeout="">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="kw" name="OperatingSystem.Remove File" timeout="">
-<doc>Removes a file with the given path.</doc>
-<arguments>
-<arg>${DATABASE}</arg>
-</arguments>
-<msg timestamp="20090829 21:27:50.035" html="yes" level="INFO">Removed file '&lt;a href="file:///var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt"&gt;/var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt&lt;/a&gt;'</msg>
-<status status="PASS" endtime="20090829 21:27:50.035" starttime="20090829 21:27:50.034"></status>
-</kw>
-<status status="PASS" endtime="20090829 21:27:50.036" starttime="20090829 21:27:50.033"></status>
-</kw>
-<kw type="kw" name='When A User Creates An Account With Username "${username}" And Password "${password}"' timeout="">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="set" name="${STATUS} = cli_resource.Create User" timeout="">
-<doc></doc>
-<arguments>
-<arg>${username}</arg>
-<arg>${password}</arg>
-</arguments>
-<kw type="set" name="${output} = cli_resource.Run Command" timeout="">
-<doc></doc>
-<arguments>
-<arg>create</arg>
-<arg>${username}</arg>
-<arg>${password}</arg>
-</arguments>
-<kw type="set" name="${cmd} = BuiltIn.Catenate" timeout="">
-<doc>Catenates the given items together and returns the resulted string.</doc>
-<arguments>
-<arg>ruby</arg>
-<arg>${AUTHPATH}</arg>
-<arg>@{args}</arg>
-</arguments>
-<msg timestamp="20090829 21:27:50.041" html="no" level="INFO">${cmd} = ruby /users/esh/desktop/code/atdd-demo/demo/atest/../../demo/src/auth.rb create fred password</msg>
-<status status="PASS" endtime="20090829 21:27:50.041" starttime="20090829 21:27:50.040"></status>
-</kw>
-<kw type="set" name="${output} = OperatingSystem.Run" timeout="">
-<doc>Runs the given command in the system and returns the output.</doc>
-<arguments>
-<arg>${cmd}</arg>
-</arguments>
-<msg timestamp="20090829 21:27:50.058" html="no" level="INFO">Running command 'ruby /users/esh/desktop/code/atdd-demo/demo/atest/../../demo/src/auth.rb create fred password 2&gt;&amp;1'</msg>
-<msg timestamp="20090829 21:27:50.059" html="no" level="INFO">${output} = Account created</msg>
-<status status="PASS" endtime="20090829 21:27:50.059" starttime="20090829 21:27:50.042"></status>
-</kw>
-<kw type="kw" name="BuiltIn.Log" timeout="">
-<doc>Logs the given message with the given level.</doc>
-<arguments>
-<arg>${output}</arg>
-</arguments>
-<msg timestamp="20090829 21:27:50.061" html="no" level="INFO">Account created</msg>
-<status status="PASS" endtime="20090829 21:27:50.062" starttime="20090829 21:27:50.060"></status>
-</kw>
-<msg timestamp="20090829 21:27:50.062" html="no" level="INFO">${output} = Account created</msg>
-<status status="PASS" endtime="20090829 21:27:50.062" starttime="20090829 21:27:50.038"></status>
-</kw>
-<msg timestamp="20090829 21:27:50.063" html="no" level="INFO">${STATUS} = Account created</msg>
-<status status="PASS" endtime="20090829 21:27:50.063" starttime="20090829 21:27:50.037"></status>
-</kw>
-<kw type="kw" name="BuiltIn.Set Test Variable" timeout="">
-<doc>Makes a variable available everywhere within the scope of the current test.</doc>
-<arguments>
-<arg>${STATUS}</arg>
-</arguments>
-<msg timestamp="20090829 21:27:50.065" html="no" level="INFO">${STATUS} = Account created</msg>
-<status status="PASS" endtime="20090829 21:27:50.066" starttime="20090829 21:27:50.064"></status>
-</kw>
-<status status="PASS" endtime="20090829 21:27:50.066" starttime="20090829 21:27:50.036"></status>
-</kw>
-<kw type="kw" name='Then the system responds with the message "Account created"' timeout="">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="kw" name="BuiltIn.Should Be Equal" timeout="">
-<doc>Fails if the given objects are unequal.</doc>
-<arguments>
-<arg>${STATUS}</arg>
-<arg>${message}</arg>
-</arguments>
-<status status="PASS" endtime="20090829 21:27:50.070" starttime="20090829 21:27:50.068"></status>
-</kw>
-<status status="PASS" endtime="20090829 21:27:50.070" starttime="20090829 21:27:50.067"></status>
-</kw>
-<status status="PASS" endtime="20090829 21:27:50.070" starttime="20090829 21:27:50.032"></status>
-</kw>
-<kw type="kw" name="Then the database contains an active account fred/password" timeout="">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="set" name="${db} = OperatingSystem.Get File" timeout="">
-<doc>Returns the contents of a specified file.</doc>
-<arguments>
-<arg>${DATABASE}</arg>
-</arguments>
-<msg timestamp="20090829 21:27:50.073" html="yes" level="INFO">Getting file '&lt;a href="file:///var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt"&gt;/var/folders/JT/JT9HYWQ9GZSyRp7uiNPjQU+++TI/-Tmp-/pwds.txt&lt;/a&gt;'</msg>
-<msg timestamp="20090829 21:27:50.074" html="no" level="INFO">${db} = fred	password	active
-</msg>
-<status status="PASS" endtime="20090829 21:27:50.074" starttime="20090829 21:27:50.072"></status>
-</kw>
-<kw type="kw" name="BuiltIn.Should Contain" timeout="">
-<doc>Fails if `item1` does not contain `item2` one or more times.</doc>
-<arguments>
-<arg>${db}</arg>
-<arg>${username}\t${password}\t${state}</arg>
-</arguments>
-<status status="PASS" endtime="20090829 21:27:50.076" starttime="20090829 21:27:50.075"></status>
-</kw>
-<status status="PASS" endtime="20090829 21:27:50.076" starttime="20090829 21:27:50.071"></status>
+<status status="PASS" endtime="20100106 07:35:08.613" starttime="20100106 07:35:08.611"></status>
 </kw>
 <tags>
+<tag>legacydata</tag>
 </tags>
-<status status="PASS" endtime="20090829 21:27:50.077" starttime="20090829 21:27:50.031"></status>
+<status status="PASS" endtime="20100106 07:35:08.613" starttime="20100106 07:35:08.370"></status>
 </test>
-<kw type="teardown" name="cli_resource.Exit" timeout="">
-<doc></doc>
-<arguments>
-</arguments>
-<kw type="kw" name="BuiltIn.No Operation" timeout="">
-<doc>Does absolutely nothing.</doc>
-<arguments>
-</arguments>
-<status status="PASS" endtime="20090829 21:27:50.079" starttime="20090829 21:27:50.079"></status>
-</kw>
-<status status="PASS" endtime="20090829 21:27:50.080" starttime="20090829 21:27:50.078"></status>
-</kw>
-<status status="PASS" endtime="20090829 21:27:50.080" starttime="20090829 21:27:49.734"></status>
+<status status="PASS" endtime="20100106 07:35:08.613" starttime="20100106 07:35:08.117"></status>
 </suite>
 <statistics>
 <total>
-<stat fail="0" pass="5">Critical Tests</stat>
-<stat fail="0" pass="5">All Tests</stat>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
 </total>
 <tag>
+<stat info="" fail="0" pass="1">legacydata</stat>
 </tag>
 <suite>
-<stat fail="0" doc="Creating User" pass="5">Creating User</stat>
+<stat fail="0" doc="Secure Passwords" pass="1">Secure Passwords</stat>
 </suite>
 </statistics>
 <errors>

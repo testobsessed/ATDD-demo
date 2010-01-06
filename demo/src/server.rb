@@ -9,6 +9,7 @@ include Sinatra::Partials
 
 pwd_file = PasswordFile.new()
 auth = Authentication.new(pwd_file)
+puts "CREATED FILE AT: #{pwd_file.path}"
 
 get '/' do
   @template = :login
@@ -16,7 +17,7 @@ get '/' do
 end
 
 post '/create' do
-  return_code = auth.send(:create, params[:uname], params[:pwd]) 
+  return_code = auth.send(:create, params[:uname], params[:pwd])
   @message = Messages.lookup(return_code)
   if (@message == "Account created")
     @color = "green"
@@ -37,5 +38,9 @@ post '/login' do
     @color = "red"
   end
   erb :page
+end
+
+get '/reload' do
+  auth.send(:load_users)
 end
 

@@ -2,70 +2,31 @@
 
 Users can create a new account with a username and password
     Given there are no accounts in the system
-    When a user creates an account with username "fred" and password "password"
+    When a user creates an account with username "jonbach" and password "p@ssw0rd"
     Then the system responds with the message "Account created"
 
+Users cannot create an account if the account name already exists
+    When a user attempts to create an account with a username that already exists
+    Then the system responds with the message "Account already exists"
+
 Users can login with a new, valid account
-    Given there is an account with username "fred" and password "password"
-    When a user attempts to login with username "fred" and password "password"
+    Given there is an account with username "fred" and password "p@ssw0rd"
+    When a user attempts to login with username "fred" and password "p@ssw0rd"
     Then the system responds with the message "Welcome!"
 
 Users cannot login with wrong password
-    Given there is an account with username "fred" and password "password"
+    Given there is an account with username "fred" and password "p@ssw0rd"
     When a user attempts to login with username "fred" and password "bad"
     Then the system responds with the message "Access denied"
 
-Existing users in the database can login
-    Given there is an account with username "fred" and invalid password "password"
-    When a user attempts to login with username "fred" and password "password"
-    Then the system responds with the message "Welcome!"
-
 Account information is stored in a database
-    Given there is an account with username "fred" and password "password"
-    Then the database contains an active account fred/password
+    Given there is an account with username "fred" and password "p@ssw0rd"
+    Then the database contains an active account fred/p@ssw0rd
 
 
-
-
-
-*** Keywords ***
-
-Given there are no accounts in the system
-    Remove File  ${DATABASE}
-
-When a user creates an account with username "${username}" and password "${password}"
-    ${STATUS} =  Create User  ${username}  ${password}      
-    Set Test Variable  ${STATUS}
-
-Then the system responds with the message "${message}"
-    Should Be Equal  ${STATUS}  ${message}
-
-Given there is an account with username "${username}" and password "${password}"
-    Given there are no accounts in the system
-    When a user creates an account with username "${username}" and password "${password}"
-    Then the system responds with the message "Account created"
-
-When a user attempts to login with username "${username}" and password "${password}"
-    ${STATUS} =  Attempt to Login  ${username}  ${password}
-    Set Test Variable  ${STATUS}
-    
-Then the database contains an ${state} account ${username}/${password}
-    ${db} =  Get File  ${DATABASE}
-    Should Contain  ${db}  ${username}\t${password}\t${state}
-
-Given there is an account with username "${username}" and invalid password "${password}"
-    Create File  ${DATABASE}  ${username}\t${password}\tactive\n
 
 
 *** Settings ***
 
-Library         OperatingSystem
-Resource        ${INTERFACE}_resource.txt
+Resource        password_keywords_resource.txt
 Suite Setup     Open Login Page
-Suite Teardown  Exit
-
-
-*** Variables ***
-
-${INTERFACE}  cli
-${DATABASE}   ${TEMPDIR}/pwds.txt

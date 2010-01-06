@@ -2,7 +2,7 @@
 require 'rubygems' # required to make gem-finding work. must be a better way
 require 'test/unit'
 require 'flexmock/test_unit'
-require 'src/auth'
+require File.dirname(__FILE__) + '/../src/auth'
 
 
 class TestAuth < Test::Unit::TestCase  
@@ -44,13 +44,13 @@ class TestAuth < Test::Unit::TestCase
     assert @auth.account_exists?("newacc")
     assert_equal :success, return_code
   end
-  
-  # def test_bad_passwords_are_rejected
-  #   assert !@auth.account_exists?("newacc")
-  #   return_code = @auth.create("newacc", "bad")
-  #   assert !@auth.account_exists?("newacc")
-  #   assert_equal :bad_password, return_code
-  # end
+
+  def test_create_user_returns_error_if_user_exists
+    account_name = "newacc"
+    @auth.create(account_name, "d3f!lt")
+    return_code = @auth.create(account_name, "f00b@r")
+    assert_equal :already_exists, return_code
+  end
   
 end
 
@@ -90,7 +90,7 @@ end
 #   end
 #   
 #   def test_validate_password_returns_false_when_password_more_than_12_chars
-#     password = Password.new "a0!aaaaaaaaaa"
+#     password = Password.new "@5" + "a"*11
 #     assert !password.valid?
 #   end
 #   
@@ -99,7 +99,7 @@ end
 #     assert !password.valid?
 #   end
 #   
-#   def test_validate_password_returns_false_when_password_missing_letter
+#   def test_valid_returns_missing_letter
 #     password = Password.new "!!!!00"
 #     assert !password.valid?
 #   end
@@ -108,6 +108,7 @@ end
 #     password = Password.new "!!!!!A"
 #     assert !password.valid?
 #   end
+#     
 # end
 
 

@@ -1,0 +1,8 @@
+:success: "Account created"
+:fail: "FAIL"
+:unknown: "Auth Server: unknown command"
+:no_cmd: "Must provide at least one command"
+:logged_in: "Welcome!"
+:load_failed: "Failed to load user accounts"
+:access_denied: "Access denied"
+:already_exists: "Account already exists"
