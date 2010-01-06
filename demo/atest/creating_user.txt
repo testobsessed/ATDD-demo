@@ -2,7 +2,7 @@
 
 Users can create a new account with a username and password
     Given there are no accounts in the system
-    When a user creates an account with username "jonbach" and password "p@ssw0rd"
+    When a user creates an account with username "fred" and password "p@ssw0rd"
     Then the system responds with the message "Account created"
 
 Users cannot create an account if the account name already exists

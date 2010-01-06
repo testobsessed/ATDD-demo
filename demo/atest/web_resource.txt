@@ -2,7 +2,7 @@
 Library  SeleniumLibrary
 
 *** Variables ***
-${LOGIN PAGE} =  http://localhost:4567
+${LOGIN PAGE} =  http://localhost:9393
 ${DELAY} =  0
 
 *** Keywords ***
@@ -27,6 +27,7 @@ Create Or Login  [Arguments]  ${link}  ${button}  ${username}  ${password}
 Open Login Page
     Open Browser  ${LOGIN PAGE}
     Set Selenium Speed  ${DELAY}
+    Maximize Browser Window
 
 Exit
     Close Browser

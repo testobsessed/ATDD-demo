@@ -53,7 +53,6 @@ class Authentication
   
   def create(username, password, status=:active)
     return :already_exists unless @user_accounts[username].nil?
-    return :too_short unless Password.new(password).valid?
     account_data = {}
     account_data[:pwd] = password
     account_data[:status] = status
