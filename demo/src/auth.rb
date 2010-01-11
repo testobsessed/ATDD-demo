@@ -30,6 +30,10 @@ class PasswordFile
     password_file.close
     get_users
   end
+  
+  def delete
+    save({})
+  end
 end
 
 class Authentication
@@ -96,43 +100,6 @@ class User
   end
 end
 
-# class Password
-#   attr :password
-#   
-#   def initialize(password)
-#     @password = password
-#   end
-#   
-#   def valid?
-#      if !contains_number? || !contains_letter? || too_short? || too_long? || !contains_punctuation? 
-#        return false
-#      else 
-#       return true
-#      end
-#   end
-#   
-#   def too_short?
-#     return (@password.length < 6)
-#   end
-#   
-#   def too_long?
-#     return (@password.length > 12)
-#   end
-#   
-#   def contains_punctuation?
-#     return !@password.match(/\W/).nil?
-#   end
-#   
-#   def contains_letter?
-#     return !@password.match(/[a-zA-Z]/).nil?
-#   end
-#   
-#   def contains_number?
-#     return !@password.match(/\d/).nil?
-#   end
-#   
-# end
-
 class CommandLine
   
   def self.CalledWith(auth, args)
@@ -158,3 +125,41 @@ if !(ARGV[0].nil?)
   puts CommandLine.CalledWith(auth, ARGV)
 
 end
+
+class Password
+  attr :password
+  
+  def initialize(password)
+    @password = password
+  end
+  
+  def valid?
+     # if !contains_number? || !contains_letter? || too_short? || too_long? || !contains_punctuation? 
+     #   return false
+     # else 
+     #   return true
+     # end
+  end
+  
+  # def too_short?
+  #   return (@password.length < 6)
+  # end
+  # 
+  # def too_long?
+  #   return (@password.length > 20)
+  # end
+  # 
+  # def contains_punctuation?
+  #   return !@password.match(/\W/).nil?
+  # end
+  # 
+  # def contains_letter?
+  #   return !@password.match(/[a-zA-Z]/).nil?
+  # end
+  # 
+  # def contains_number?
+  #   return !@password.match(/\d/).nil?
+  # end
+  
+end
+

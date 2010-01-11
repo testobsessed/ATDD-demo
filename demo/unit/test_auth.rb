@@ -89,8 +89,8 @@ end
 #     assert !password.valid?
 #   end
 #   
-#   def test_validate_password_returns_false_when_password_more_than_12_chars
-#     password = Password.new "@5" + "a"*11
+#   def test_validate_password_returns_false_when_password_more_than_20_chars
+#     password = Password.new "@5" + "a"*19
 #     assert !password.valid?
 #   end
 #   
@@ -99,7 +99,7 @@ end
 #     assert !password.valid?
 #   end
 #   
-#   def test_valid_returns_missing_letter
+#   def test_valid_returns_false_when_missing_letter
 #     password = Password.new "!!!!00"
 #     assert !password.valid?
 #   end
@@ -107,8 +107,7 @@ end
 #   def test_validate_password_returns_false_when_password_missing_number
 #     password = Password.new "!!!!!A"
 #     assert !password.valid?
-#   end
-#     
+#   end  
 # end
 
 

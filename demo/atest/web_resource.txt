@@ -24,10 +24,17 @@ Create Or Login  [Arguments]  ${link}  ${button}  ${username}  ${password}
     ${output} =  Get Text  message
     [Return]  ${output}
 
-Open Login Page
+Enter
     Open Browser  ${LOGIN PAGE}
     Set Selenium Speed  ${DELAY}
     Maximize Browser Window
+
+Open Login Page
+    Go To  ${LOGIN PAGE}
+
+Go To Create Page
+    Open Login Page
+    Click Element  create  don't wait page to load
 
 Exit
     Close Browser

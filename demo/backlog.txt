@@ -1,6 +1,17 @@
 Prioritized Backlog
 -------------------
-Users are required to create accounts using only secure passwords (strings of at least 6 characters with at least one letter, one number, and one symbol) 
+As an administrator, I want users creating accounts to be required to choose secure passwords so that their accounts cannot be hacked by someone using a password guessing program. That means users are required to create accounts using only secure passwords (strings of at least 6 characters with at least one letter, one number, and one symbol)
+- us only keyboards
+
+----------------------
+
+Don't enable "create" until both name & pwd filled in
+
+Localization/internationalization
+
+Make ppl confirm their passwords
+
+Constrain user names the same way we constrain passwords.
 
 Users can log out.
 

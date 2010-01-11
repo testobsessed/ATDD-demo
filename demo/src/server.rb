@@ -44,3 +44,7 @@ get '/reload' do
   auth.send(:load_users)
 end
 
+get '/reset' do
+  pwd_file.delete
+end
+

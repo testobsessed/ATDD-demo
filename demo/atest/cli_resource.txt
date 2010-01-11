@@ -24,7 +24,13 @@ Run Command  [Arguments]  @{args}
 Open Login Page
     No Operation
 
+Go To Create Page
+    No Operation
+
 Reload User Database
+    No Operation
+
+Enter
     No Operation
 
 Exit
