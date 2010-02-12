@@ -2,7 +2,7 @@
 Library  SeleniumLibrary
 
 *** Variables ***
-${LOGIN PAGE} =  http://localhost:9393
+${LOGIN PAGE} =  http://localhost:4567
 ${DELAY} =  0
 
 *** Keywords ***
@@ -32,7 +32,7 @@ Enter
 Open Login Page
     Go To  ${LOGIN PAGE}
 
-Go To Create Page
+Open Create Page
     Open Login Page
     Click Element  create  don't wait page to load
 
@@ -41,3 +41,13 @@ Exit
 
 Reload User Database
     Go To  ${LOGIN PAGE}/reload
+
+Instructions should be hidden
+    Class should be  hide
+
+Instructions should be shown
+    Class should be  show
+
+Class should be  [Arguments]  ${class}
+    ${output} =  Execute Javascript   this.page().findElement("password_instructions").className;
+    Should Be Equal  ${class}  ${output}

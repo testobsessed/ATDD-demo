@@ -15,7 +15,7 @@ class PasswordFile
       password_file = File.open(@path)
       password_file.each_line do |acct|
         data = acct.split("\t")
-        user_accounts[data[0]] = {:name => data[0], :pwd => data[1], :status => data[2].chomp!.to_sym}
+        user_accounts[data[0].to_s] = {:name => data[0].to_s, :pwd => data[1].to_s, :status => data[2].chomp!.to_sym}
       end
       password_file.close
     end
@@ -25,7 +25,7 @@ class PasswordFile
   def save(user_accounts)
     password_file = File.open(@path, "w")
     user_accounts.each do |userid, values|
-      password_file.puts(userid + "\t" + values[:pwd] + "\t" + values[:status].to_s)
+      password_file.puts(userid.to_s + "\t" + values[:pwd].to_s + "\t" + values[:status].to_s)
     end
     password_file.close
     get_users
@@ -45,10 +45,12 @@ class Authentication
   def initialize(pwd_file)
     @pwd_file = pwd_file
     load_users
+    return nil
   end
   
   def load_users()
     @user_accounts = @pwd_file.get_users
+    return nil
   end
   
   def account_exists?(username)
@@ -114,52 +116,38 @@ class CommandLine
   end
 end
 
-# if being called from the cmd line with args
-if !(ARGV[0].nil?)
-
-  # setup the authentication server
-  pwd_file = PasswordFile.new()
-  auth     = Authentication.new(pwd_file)
-
-  # grab the input and write out the output to stdout
-  puts CommandLine.CalledWith(auth, ARGV)
-
-end
-
-class Password
-  attr :password
-  
-  def initialize(password)
-    @password = password
-  end
-  
-  def valid?
-     # if !contains_number? || !contains_letter? || too_short? || too_long? || !contains_punctuation? 
-     #   return false
-     # else 
-     #   return true
-     # end
-  end
-  
-  # def too_short?
-  #   return (@password.length < 6)
-  # end
-  # 
-  # def too_long?
-  #   return (@password.length > 20)
-  # end
-  # 
-  # def contains_punctuation?
-  #   return !@password.match(/\W/).nil?
-  # end
-  # 
-  # def contains_letter?
-  #   return !@password.match(/[a-zA-Z]/).nil?
-  # end
-  # 
-  # def contains_number?
-  #   return !@password.match(/\d/).nil?
-  # end
-  
-end
-
+# class Password
+#   attr :password
+#   
+#   def initialize(password)
+#     @password = password
+#   end
+#   
+#   def valid?
+#      return !violates_constraints?
+#   end
+#   
+#   def violates_constraints?
+#     return !contains_number? || !contains_letter? || too_short? || too_long? || !contains_punctuation?
+#   end
+#   
+#   def too_short?
+#     return (@password.length < 6)
+#   end
+#   
+#   def too_long?
+#     return (@password.length > 255)
+#   end
+#   
+#   def contains_punctuation?
+#     return !@password.match(/\W/).nil?
+#   end
+#   
+#   def contains_letter?
+#     return !@password.match(/[a-zA-Z]/).nil?
+#   end
+#   
+#   def contains_number?
+#     return !@password.match(/\d/).nil?
+#   end
+# end

@@ -2,7 +2,7 @@
 
 
 *** Variables ***
-${AUTHPATH} =  ${CURDIR}/../../demo/src/auth.rb
+${AUTHPATH} =  ${CURDIR}/../../demo/src/auth_cli.rb
 
 
 *** Keywords ***
@@ -31,6 +31,15 @@ Reload User Database
     No Operation
 
 Enter
+    No Operation
+
+Message Html Should Be  [Arguments]  ${expected}
+    Should Be Equal  ${STATUS}  ${expected}
+
+Instructions should be shown
+    No Operation
+
+Instructions should be hidden
     No Operation
 
 Exit

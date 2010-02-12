@@ -3,7 +3,8 @@ function showCreateForm() {
 	document.authform.action="/create";
 	document.getElementById('create').setAttribute("class", "tab create");
 	document.getElementById('login').setAttribute("class", "tab inactive");
-	document.getElementById('authentication_info').setAttribute("class", "create")
+	document.getElementById('authentication_info').setAttribute("class", "create");
+	document.getElementById('password_instructions').setAttribute("class", "show");
 	var submitButton = document.getElementById("submit_button");
 	submitButton.value="Create Account";
 }
@@ -12,6 +13,7 @@ function showLoginForm() {
 	document.getElementById('create').setAttribute("class", "tab inactive");
 	document.getElementById('login').setAttribute("class", "tab login");
 	document.getElementById('authentication_info').setAttribute("class", "login")
+	document.getElementById('password_instructions').setAttribute("class", "hide");
 	var submitButton = document.getElementById("submit_button");
 	submitButton.value="Login";
 }
@@ -30,6 +32,11 @@ function showLoginForm() {
 	<tr>
 		<td><span class="label">Password:</span></td>
 		<td><input type="text" name="pwd" /></td>
+	</tr>
+	<tr>
+		<td colspan=2>
+			<div id="password_instructions" class="hide"></div>
+		</td>
 	</tr>
 	<tr>
 		<td>&nbsp;</td>

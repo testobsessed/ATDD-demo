@@ -44,7 +44,7 @@ class TestAuth < Test::Unit::TestCase
     assert @auth.account_exists?("newacc")
     assert_equal :success, return_code
   end
-
+  
   def test_create_user_returns_error_if_user_exists
     account_name = "newacc"
     @auth.create(account_name, "d3f!lt")
@@ -89,8 +89,13 @@ end
 #     assert !password.valid?
 #   end
 #   
-#   def test_validate_password_returns_false_when_password_more_than_20_chars
-#     password = Password.new "@5" + "a"*19
+#   def test_validate_password_returns_true_when_password_255_chars
+#     password = Password.new "@5" + "a"*253
+#     assert password.valid?
+#   end
+# 
+#   def test_validate_password_returns_false_when_password_more_than_255_chars
+#     password = Password.new "@5" + "a"*254
 #     assert !password.valid?
 #   end
 #   
@@ -107,7 +112,7 @@ end
 #   def test_validate_password_returns_false_when_password_missing_number
 #     password = Password.new "!!!!!A"
 #     assert !password.valid?
-#   end  
+#   end
 # end
 
 

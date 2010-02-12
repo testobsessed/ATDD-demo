@@ -1,17 +1,6 @@
 Prioritized Backlog
 -------------------
 As an administrator, I want users creating accounts to be required to choose secure passwords so that their accounts cannot be hacked by someone using a password guessing program. That means users are required to create accounts using only secure passwords (strings of at least 6 characters with at least one letter, one number, and one symbol)
-- us only keyboards
-
-----------------------
-
-Don't enable "create" until both name & pwd filled in
-
-Localization/internationalization
-
-Make ppl confirm their passwords
-
-Constrain user names the same way we constrain passwords.
 
 Users can log out.
 
@@ -19,13 +8,13 @@ Status (logged in, etc.) are persisted.
 
 Users can change passwords (when logged in).
 
-Users with insecure passwords (legacy) are forced to change them on next login.
+Users with insecure passwords (legacy) are not forced to change them on next login.
 
 User cannot change password to the previous password.
 
-User accounts are suspended - and thus not valid - after 3 failed login attempts
+User accounts are suspended for a period of 10 minutes- and during this period not valid - after 3 failed login attempts
 
-There is a built in administrator account, with the default password my@dm1n, that has special privileges.
+There is a built in administrator account, with t he default password my@dm1n, that has special privileges.
 
 Some users are administrators with special privileges
 
