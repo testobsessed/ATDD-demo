@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ATDDinJava.iml" filepath="$PROJECT_DIR$/ATDDinJava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/specs/Specs.iml" filepath="$PROJECT_DIR$/specs/Specs.iml" />
+    </modules>
+  </component>
+</project>
+
