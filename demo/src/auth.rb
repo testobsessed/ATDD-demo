@@ -128,7 +128,7 @@ end
 #   end
 #   
 #   def violates_constraints?
-#     return !contains_number? || !contains_letter? || too_short? || too_long? || !contains_punctuation?
+#     return !contains_letter? || too_short? || too_long? || !contains_punctuation? || !contains_number?
 #   end
 #   
 #   def too_short?
@@ -136,7 +136,7 @@ end
 #   end
 #   
 #   def too_long?
-#     return (@password.length > 255)
+#     return (@password.length > 40)
 #   end
 #   
 #   def contains_punctuation?

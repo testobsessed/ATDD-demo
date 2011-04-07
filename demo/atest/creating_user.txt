@@ -2,9 +2,9 @@
 
 Users can create an account and log in
     Given there are no accounts in the system
-    When a user creates an account with username "fred" and password "password"
+    When a user creates an account with username "frank" and password "p@ssw0rd"
     Then the system responds with the message "Account created"
-    When a user attempts to login with username "fred" and password "password"
+    When a user attempts to login with username "frank" and password "p@ssw0rd"
     Then the system responds with the message "Welcome!"
 
 Users cannot create an account if the account name already exists
@@ -18,12 +18,24 @@ Users cannot login with wrong password
 
 Passwords are case sensitive
     Given there is an account with username "fred" and password "p@ssw0rd"
-    When a user attempts to login with username "fred" and password "P@SSW0RD"
+    When a user attempts to login with username "fred" and password "P@ssW0rd"
     Then the system responds with the message "Access denied"
 
-Account information is stored in a database
+Passwords can contain caps
+    Given there is an account with username "fred" and password "p@ssw0rd"
+    When a user attempts to login with username "fred" and password "p@ssw0rd"
+    Then the system responds with the message "Welcome!"
+
+Usernames are case sensitive
+    Given there is an account with username "fred" and password "p@ssw0rd"
+    When a user attempts to login with username "FRED" and password "p@ssw0rd"
+    Then the system responds with the message "Access denied"
+
+Account information is persisted
     Given there is an account with username "fred" and password "p@ssw0rd"
     Then the database contains an active account fred/p@ssw0rd
+    
+
 
 *** Settings ***
 

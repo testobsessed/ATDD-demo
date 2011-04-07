@@ -18,8 +18,8 @@ class TestAuth < Test::Unit::TestCase
   end
   
   def test_valid_user_can_log_in
-    @auth.create("sam", "a0!aaa")
-    return_code = @auth.login("sam", "a0!aaa")
+    @auth.create("sam", "A0!aaa")
+    return_code = @auth.login("sam", "A0!aaa")
     assert @auth.get_user("sam").logged_in?, "Expected user should be logged in"
     assert_equal :logged_in, return_code
   end
@@ -30,7 +30,7 @@ class TestAuth < Test::Unit::TestCase
   end
   
   def test_account_exists_returns_true_if_account_exists_with_username
-    @auth.create("fred", "f0!ble")
+    @auth.create("fred", "F0!ble")
     assert @auth.account_exists?("fred")
   end
   
@@ -40,15 +40,15 @@ class TestAuth < Test::Unit::TestCase
   
   def test_create_user_adds_new_user_to_list_with_user_data_and_returns_success
     assert !@auth.account_exists?("newacc")
-    return_code = @auth.create("newacc", "d3f!lt")
+    return_code = @auth.create("newacc", "D3f!lt")
     assert @auth.account_exists?("newacc")
     assert_equal :success, return_code
   end
   
   def test_create_user_returns_error_if_user_exists
     account_name = "newacc"
-    @auth.create(account_name, "d3f!lt")
-    return_code = @auth.create(account_name, "f00b@r")
+    @auth.create(account_name, "D3f!lt")
+    return_code = @auth.create(account_name, "F00b@r")
     assert_equal :already_exists, return_code
   end
   
@@ -80,27 +80,27 @@ end
 
 # class TestPassword < Test::Unit::TestCase
 #   def test_validate_password_returns_true_when_all_conventions_met
-#     password = Password.new "a0!aaa"
+#     password = Password.new "p@ssw0rd"
 #     assert password.valid?
 #   end
 #   
 #   def test_validate_password_returns_false_when_password_less_than_6_chars
-#     password = Password.new "a0!aa"
+#     password = Password.new "A0!!!"
 #     assert !password.valid?
 #   end
 #   
-#   def test_validate_password_returns_true_when_password_255_chars
-#     password = Password.new "@5" + "a"*253
+#   def test_validate_password_returns_true_when_password_6_chars
+#     password = Password.new "@5AAAA"
 #     assert password.valid?
 #   end
 # 
-#   def test_validate_password_returns_false_when_password_more_than_255_chars
-#     password = Password.new "@5" + "a"*254
+#   def test_validate_password_returns_false_when_password_more_than_40_chars
+#     password = Password.new "@5" + "A"*39
 #     assert !password.valid?
 #   end
 #   
 #   def test_validate_password_returns_false_when_password_missing_punctuation
-#     password = Password.new "aaaaa0"
+#     password = Password.new "Aaaaa0"
 #     assert !password.valid?
 #   end
 #   
@@ -113,6 +113,7 @@ end
 #     password = Password.new "!!!!!A"
 #     assert !password.valid?
 #   end
+# 
 # end
 
 

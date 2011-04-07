@@ -9,6 +9,8 @@ or
 
 Web interface:
 
+  (First run the selenium server with -forcedBrowserMode "*safari" to work around Firefox probs on Mac)
+  
   pybot --variable interface:web creating_user.txt 
 
 With delay:

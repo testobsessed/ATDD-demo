@@ -2,8 +2,8 @@
 Library  SeleniumLibrary
 
 *** Variables ***
-${LOGIN PAGE} =  http://localhost:4567
-${DELAY} =  0
+${LOGIN PAGE} =  http://localhost:9393
+${DELAY} =  0.5
 
 *** Keywords ***
 
