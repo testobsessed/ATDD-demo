@@ -6,4 +6,3 @@
 :load_failed: "Failed to load user accounts"
 :access_denied: "Access denied"
 :already_exists: "Account already exists"
-:invalid_password: "You have entered an invalid password."

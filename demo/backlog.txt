@@ -2,10 +2,6 @@ Prioritized Backlog
 -------------------
 As an administrator, I want users creating accounts to be required to choose secure passwords so that their accounts cannot be hacked by someone using a password guessing program.
 
-
-.......
-Captcha
-
 Users can log out.
 
 Status (logged in, etc.) are persisted.
