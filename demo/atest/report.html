@@ -246,13 +246,13 @@
     display: none;
   }
 </style>
-<title>Basic Login Test Report</title>
+<title>Secure Passwords Test Report</title>
 </head>
 <body>
 <div class="header">
-  <h1>Basic Login Test Report</h1>
+  <h1>Secure Passwords Test Report</h1>
   <div class="times">
-    <span class="generated_time">Generated<br />20110426&nbsp;18:36:03&nbsp;GMT&nbsp;-07:00</span><br />
+    <span class="generated_time">Generated<br />20110427&nbsp;18:12:51&nbsp;GMT&nbsp;-07:00</span><br />
 	<span class="generated_ago">
 <script type="text/javascript">
   function get_end(number) {
@@ -274,7 +274,7 @@
   function get_year_str(years) {
     return years + ' year' + get_end(years)
   }
-  generated = 1303868163
+  generated = 1303953171
   current = Math.round(new Date().getTime() / 1000)  // getTime returns millis
   elapsed = current - generated
   // elapsed should only be negative if clocks are not in sync
@@ -321,9 +321,9 @@
   <th>Status:</th>
   <td class="status_pass">All tests passed</td>
 </tr>
-  <tr><th>Start Time:</th><td>20110426 18:35:18.134</td></tr>
-  <tr><th>End Time:</th><td>20110426 18:36:03.753</td></tr>
-<tr><th>Elapsed Time:</th><td>00:00:45.619</td></tr>
+  <tr><th>Start Time:</th><td>20110427 18:10:59.948</td></tr>
+  <tr><th>End Time:</th><td>20110427 18:12:51.790</td></tr>
+<tr><th>Elapsed Time:</th><td>00:01:51.842</td></tr>
 </table>
 <h2>Test Statistics</h2>
 <table class="statistics">
@@ -338,8 +338,8 @@
 <td class="col_stat_name">
 <div class="stat_name"><span>Critical Tests</span></div>
 </td>
-<td class="col_stat">6</td>
-<td class="col_stat">6</td>
+<td class="col_stat">13</td>
+<td class="col_stat">13</td>
 <td class="col_stat">0</td>
 <td class="col_graph">
 <div class="graph">
@@ -352,8 +352,8 @@
 <td class="col_stat_name">
 <div class="stat_name"><span>All Tests</span></div>
 </td>
-<td class="col_stat">6</td>
-<td class="col_stat">6</td>
+<td class="col_stat">13</td>
+<td class="col_stat">13</td>
 <td class="col_stat">0</td>
 <td class="col_graph">
 <div class="graph">
@@ -373,12 +373,28 @@
 </tr>
 <tr>
 <td class="col_stat_name">
-<div class="stat_name"><a href="#tag_sprint_1">sprint_1</a></div>
+<div class="stat_name"><a href="#tag_legacydata">legacydata</a></div>
 <div class="tag_links">
 </div>
 </td>
-<td class="col_stat">6</td>
-<td class="col_stat">6</td>
+<td class="col_stat">1</td>
+<td class="col_stat">1</td>
+<td class="col_stat">0</td>
+<td class="col_graph">
+<div class="graph">
+<b class="pass_bar" style="width: 99.99%;" title="100.0%"></b>
+<b class="fail_bar" style="width: 0.00%;" title="0.0%"></b>
+</div>
+</td>
+</tr>
+<tr>
+<td class="col_stat_name">
+<div class="stat_name"><a href="#tag_secure">secure</a></div>
+<div class="tag_links">
+</div>
+</td>
+<td class="col_stat">13</td>
+<td class="col_stat">13</td>
 <td class="col_stat">0</td>
 <td class="col_graph">
 <div class="graph">
@@ -398,10 +414,10 @@
 </tr>
 <tr>
 <td class="col_stat_name">
-<div class="stat_name"><a href="#suite_Basic Login" title="Basic Login">Basic Login</a></div>
+<div class="stat_name"><a href="#suite_Secure Passwords" title="Secure Passwords">Secure Passwords</a></div>
 </td>
-<td class="col_stat">6</td>
-<td class="col_stat">6</td>
+<td class="col_stat">13</td>
+<td class="col_stat">13</td>
 <td class="col_stat">0</td>
 <td class="col_graph">
 <div class="graph">
@@ -423,68 +439,131 @@
 <th class="col_times">Start&nbsp;/&nbsp;Elapsed</th>
 </tr>
 <tr class="suite_row">
-<td class="col_name"><a href="log.html#suite_Basic Login" id="suite_Basic Login" title="Basic Login">Basic Login</a></td>
+<td class="col_name"><a href="log.html#suite_Secure Passwords" id="suite_Secure Passwords" title="Secure Passwords">Secure Passwords</a></td>
 <td class="col_doc"></td>
 <td class="col_tags">
 </td>
 <td class="col_crit not_available">N/A</td>
 <td class="col_status pass">PASS</td>
-<td class="col_msg">6&nbsp;critical&nbsp;tests,&nbsp;6&nbsp;passed,&nbsp;<span>0&nbsp;failed</span><br />6&nbsp;tests&nbsp;total,&nbsp;6&nbsp;passed,&nbsp;<span>0&nbsp;failed</span></td>
-<td class="col_times">20110426&nbsp;18:35:18<br />00:00:46</td>
+<td class="col_msg">13&nbsp;critical&nbsp;tests,&nbsp;13&nbsp;passed,&nbsp;<span>0&nbsp;failed</span><br />13&nbsp;tests&nbsp;total,&nbsp;13&nbsp;passed,&nbsp;<span>0&nbsp;failed</span></td>
+<td class="col_times">20110427&nbsp;18:10:59<br />00:01:52</td>
 </tr>
 <tr class="test_row">
-<td class="col_name"><a href="log.html#test_Basic Login.Users Can Create An Account And Log In" id="test_Basic Login.Users Can Create An Account And Log In" title="Basic Login.Users Can Create An Account And Log In">Users Can Create An Account And Log In</a></td>
+<td class="col_name"><a href="log.html#test_Secure Passwords.Existing Users With Insecure Passwords Can Login" id="test_Secure Passwords.Existing Users With Insecure Passwords Can Login" title="Secure Passwords.Existing Users With Insecure Passwords Can Login">Existing Users With Insecure Passwords Can Login</a></td>
 <td class="col_doc"></td>
-<td class="col_tags">sprint_1</td>
+<td class="col_tags">legacydata, secure</td>
 <td class="col_crit">yes</td>
 <td class="col_status pass">PASS</td>
 <td class="col_msg"></td>
-<td class="col_times">20110426&nbsp;18:35:20<br />00:00:08</td>
+<td class="col_times">20110427&nbsp;18:11:02<br />00:00:05</td>
 </tr>
 <tr class="test_row">
-<td class="col_name"><a href="log.html#test_Basic Login.Users Cannot Create An Account If The Account Name Already Exists" id="test_Basic Login.Users Cannot Create An Account If The Account Name Already Exists" title="Basic Login.Users Cannot Create An Account If The Account Name Already Exists">Users Cannot Create An Account If The Account Name Already Exists</a></td>
+<td class="col_name"><a href="log.html#test_Secure Passwords.A Password With All Require Character Types" id="test_Secure Passwords.A Password With All Require Character Types" title="Secure Passwords.A Password With All Require Character Types">A Password With All Require Character Types</a></td>
 <td class="col_doc"></td>
-<td class="col_tags">sprint_1</td>
+<td class="col_tags">secure</td>
 <td class="col_crit">yes</td>
 <td class="col_status pass">PASS</td>
 <td class="col_msg"></td>
-<td class="col_times">20110426&nbsp;18:35:29<br />00:00:08</td>
+<td class="col_times">20110427&nbsp;18:11:08<br />00:00:09</td>
 </tr>
 <tr class="test_row">
-<td class="col_name"><a href="log.html#test_Basic Login.Users Cannot Login With Wrong Password" id="test_Basic Login.Users Cannot Login With Wrong Password" title="Basic Login.Users Cannot Login With Wrong Password">Users Cannot Login With Wrong Password</a></td>
+<td class="col_name"><a href="log.html#test_Secure Passwords.A All Allowable Special Characters" id="test_Secure Passwords.A All Allowable Special Characters" title="Secure Passwords.A All Allowable Special Characters">A All Allowable Special Characters</a></td>
 <td class="col_doc"></td>
-<td class="col_tags">sprint_1</td>
+<td class="col_tags">secure</td>
 <td class="col_crit">yes</td>
 <td class="col_status pass">PASS</td>
 <td class="col_msg"></td>
-<td class="col_times">20110426&nbsp;18:35:36<br />00:00:08</td>
+<td class="col_times">20110427&nbsp;18:11:17<br />00:00:09</td>
 </tr>
 <tr class="test_row">
-<td class="col_name"><a href="log.html#test_Basic Login.Passwords Are Case Sensitive" id="test_Basic Login.Passwords Are Case Sensitive" title="Basic Login.Passwords Are Case Sensitive">Passwords Are Case Sensitive</a></td>
+<td class="col_name"><a href="log.html#test_Secure Passwords.A Password With No Digits" id="test_Secure Passwords.A Password With No Digits" title="Secure Passwords.A Password With No Digits">A Password With No Digits</a></td>
 <td class="col_doc"></td>
-<td class="col_tags">sprint_1</td>
+<td class="col_tags">secure</td>
 <td class="col_crit">yes</td>
 <td class="col_status pass">PASS</td>
 <td class="col_msg"></td>
-<td class="col_times">20110426&nbsp;18:35:44<br />00:00:08</td>
+<td class="col_times">20110427&nbsp;18:11:25<br />00:00:09</td>
 </tr>
 <tr class="test_row">
-<td class="col_name"><a href="log.html#test_Basic Login.Usernames Are Case Sensitive" id="test_Basic Login.Usernames Are Case Sensitive" title="Basic Login.Usernames Are Case Sensitive">Usernames Are Case Sensitive</a></td>
+<td class="col_name"><a href="log.html#test_Secure Passwords.A Password With No Capital Letters" id="test_Secure Passwords.A Password With No Capital Letters" title="Secure Passwords.A Password With No Capital Letters">A Password With No Capital Letters</a></td>
 <td class="col_doc"></td>
-<td class="col_tags">sprint_1</td>
+<td class="col_tags">secure</td>
 <td class="col_crit">yes</td>
 <td class="col_status pass">PASS</td>
 <td class="col_msg"></td>
-<td class="col_times">20110426&nbsp;18:35:52<br />00:00:08</td>
+<td class="col_times">20110427&nbsp;18:11:34<br />00:00:09</td>
 </tr>
 <tr class="test_row">
-<td class="col_name"><a href="log.html#test_Basic Login.Account Information Is Persisted" id="test_Basic Login.Account Information Is Persisted" title="Basic Login.Account Information Is Persisted">Account Information Is Persisted</a></td>
+<td class="col_name"><a href="log.html#test_Secure Passwords.A Password With No Lower Case Letters" id="test_Secure Passwords.A Password With No Lower Case Letters" title="Secure Passwords.A Password With No Lower Case Letters">A Password With No Lower Case Letters</a></td>
 <td class="col_doc"></td>
-<td class="col_tags">sprint_1</td>
+<td class="col_tags">secure</td>
 <td class="col_crit">yes</td>
 <td class="col_status pass">PASS</td>
 <td class="col_msg"></td>
-<td class="col_times">20110426&nbsp;18:35:59<br />00:00:04</td>
+<td class="col_times">20110427&nbsp;18:11:43<br />00:00:09</td>
+</tr>
+<tr class="test_row">
+<td class="col_name"><a href="log.html#test_Secure Passwords.A Password With No Special Characters" id="test_Secure Passwords.A Password With No Special Characters" title="Secure Passwords.A Password With No Special Characters">A Password With No Special Characters</a></td>
+<td class="col_doc"></td>
+<td class="col_tags">secure</td>
+<td class="col_crit">yes</td>
+<td class="col_status pass">PASS</td>
+<td class="col_msg"></td>
+<td class="col_times">20110427&nbsp;18:11:52<br />00:00:09</td>
+</tr>
+<tr class="test_row">
+<td class="col_name"><a href="log.html#test_Secure Passwords.A Password With No Letters" id="test_Secure Passwords.A Password With No Letters" title="Secure Passwords.A Password With No Letters">A Password With No Letters</a></td>
+<td class="col_doc"></td>
+<td class="col_tags">secure</td>
+<td class="col_crit">yes</td>
+<td class="col_status pass">PASS</td>
+<td class="col_msg"></td>
+<td class="col_times">20110427&nbsp;18:12:00<br />00:00:09</td>
+</tr>
+<tr class="test_row">
+<td class="col_name"><a href="log.html#test_Secure Passwords.A Password With An Invalid Character" id="test_Secure Passwords.A Password With An Invalid Character" title="Secure Passwords.A Password With An Invalid Character">A Password With An Invalid Character</a></td>
+<td class="col_doc"></td>
+<td class="col_tags">secure</td>
+<td class="col_crit">yes</td>
+<td class="col_status pass">PASS</td>
+<td class="col_msg"></td>
+<td class="col_times">20110427&nbsp;18:12:09<br />00:00:09</td>
+</tr>
+<tr class="test_row">
+<td class="col_name"><a href="log.html#test_Secure Passwords.A Password With Fewer Than 7 Characters" id="test_Secure Passwords.A Password With Fewer Than 7 Characters" title="Secure Passwords.A Password With Fewer Than 7 Characters">A Password With Fewer Than 7 Characters</a></td>
+<td class="col_doc"></td>
+<td class="col_tags">secure</td>
+<td class="col_crit">yes</td>
+<td class="col_status pass">PASS</td>
+<td class="col_msg"></td>
+<td class="col_times">20110427&nbsp;18:12:18<br />00:00:08</td>
+</tr>
+<tr class="test_row">
+<td class="col_name"><a href="log.html#test_Secure Passwords.A Password With More Than 20 Characters" id="test_Secure Passwords.A Password With More Than 20 Characters" title="Secure Passwords.A Password With More Than 20 Characters">A Password With More Than 20 Characters</a></td>
+<td class="col_doc"></td>
+<td class="col_tags">secure</td>
+<td class="col_crit">yes</td>
+<td class="col_status pass">PASS</td>
+<td class="col_msg"></td>
+<td class="col_times">20110427&nbsp;18:12:26<br />00:00:08</td>
+</tr>
+<tr class="test_row">
+<td class="col_name"><a href="log.html#test_Secure Passwords.A 7 Character Password" id="test_Secure Passwords.A 7 Character Password" title="Secure Passwords.A 7 Character Password">A 7 Character Password</a></td>
+<td class="col_doc"></td>
+<td class="col_tags">secure</td>
+<td class="col_crit">yes</td>
+<td class="col_status pass">PASS</td>
+<td class="col_msg"></td>
+<td class="col_times">20110427&nbsp;18:12:34<br />00:00:08</td>
+</tr>
+<tr class="test_row">
+<td class="col_name"><a href="log.html#test_Secure Passwords.A 20 Character Password" id="test_Secure Passwords.A 20 Character Password" title="Secure Passwords.A 20 Character Password">A 20 Character Password</a></td>
+<td class="col_doc"></td>
+<td class="col_tags">secure</td>
+<td class="col_crit">yes</td>
+<td class="col_status pass">PASS</td>
+<td class="col_msg"></td>
+<td class="col_times">20110427&nbsp;18:12:43<br />00:00:08</td>
 </tr>
 </table>
 <h2>Test Details by Tag</h2>
@@ -499,67 +578,148 @@
 <th class="col_times">Start&nbsp;/&nbsp;Elapsed</th>
 </tr>
 <tr class="tag_row">
-<td class="col_name"><a name="tag_sprint_1"></a>sprint_1</td>
+<td class="col_name"><a name="tag_legacydata"></a>legacydata</td>
 <td class="col_doc"></td>
 <td class="col_tags not_available">N/A</td>
 <td class="col_crit"></td>
 <td class="col_status pass">PASS</td>
-<td class="col_msg">6 tests, 6 passed, <span>0 failed</span></td>
-<td class="col_times">00:00:43</td>
+<td class="col_msg">1 test, 1 passed, <span>0 failed</span></td>
+<td class="col_times">00:00:05</td>
 </tr>
 <tr class="test_row">
-<td class="col_name"><a href="log.html#test_Basic Login.Account Information Is Persisted" id="test_Basic Login.Account Information Is Persisted" title="Basic Login.Account Information Is Persisted"><span class="parent_name">Basic Login . </span>Account Information Is Persisted</a></td>
+<td class="col_name"><a href="log.html#test_Secure Passwords.Existing Users With Insecure Passwords Can Login" id="test_Secure Passwords.Existing Users With Insecure Passwords Can Login" title="Secure Passwords.Existing Users With Insecure Passwords Can Login"><span class="parent_name">Secure Passwords . </span>Existing Users With Insecure Passwords Can Login</a></td>
 <td class="col_doc"></td>
-<td class="col_tags">sprint_1</td>
+<td class="col_tags">legacydata, secure</td>
 <td class="col_crit">yes</td>
 <td class="col_status pass">PASS</td>
 <td class="col_msg"></td>
-<td class="col_times">20110426&nbsp;18:35:59<br />00:00:04</td>
+<td class="col_times">20110427&nbsp;18:11:02<br />00:00:05</td>
+</tr>
+<tr class="tag_row">
+<td class="col_name"><a name="tag_secure"></a>secure</td>
+<td class="col_doc"></td>
+<td class="col_tags not_available">N/A</td>
+<td class="col_crit"></td>
+<td class="col_status pass">PASS</td>
+<td class="col_msg">13 tests, 13 passed, <span>0 failed</span></td>
+<td class="col_times">00:01:49</td>
 </tr>
 <tr class="test_row">
-<td class="col_name"><a href="log.html#test_Basic Login.Passwords Are Case Sensitive" id="test_Basic Login.Passwords Are Case Sensitive" title="Basic Login.Passwords Are Case Sensitive"><span class="parent_name">Basic Login . </span>Passwords Are Case Sensitive</a></td>
+<td class="col_name"><a href="log.html#test_Secure Passwords.A 20 Character Password" id="test_Secure Passwords.A 20 Character Password" title="Secure Passwords.A 20 Character Password"><span class="parent_name">Secure Passwords . </span>A 20 Character Password</a></td>
 <td class="col_doc"></td>
-<td class="col_tags">sprint_1</td>
+<td class="col_tags">secure</td>
 <td class="col_crit">yes</td>
 <td class="col_status pass">PASS</td>
 <td class="col_msg"></td>
-<td class="col_times">20110426&nbsp;18:35:44<br />00:00:08</td>
+<td class="col_times">20110427&nbsp;18:12:43<br />00:00:08</td>
 </tr>
 <tr class="test_row">
-<td class="col_name"><a href="log.html#test_Basic Login.Usernames Are Case Sensitive" id="test_Basic Login.Usernames Are Case Sensitive" title="Basic Login.Usernames Are Case Sensitive"><span class="parent_name">Basic Login . </span>Usernames Are Case Sensitive</a></td>
+<td class="col_name"><a href="log.html#test_Secure Passwords.A 7 Character Password" id="test_Secure Passwords.A 7 Character Password" title="Secure Passwords.A 7 Character Password"><span class="parent_name">Secure Passwords . </span>A 7 Character Password</a></td>
 <td class="col_doc"></td>
-<td class="col_tags">sprint_1</td>
+<td class="col_tags">secure</td>
 <td class="col_crit">yes</td>
 <td class="col_status pass">PASS</td>
 <td class="col_msg"></td>
-<td class="col_times">20110426&nbsp;18:35:52<br />00:00:08</td>
+<td class="col_times">20110427&nbsp;18:12:34<br />00:00:08</td>
 </tr>
 <tr class="test_row">
-<td class="col_name"><a href="log.html#test_Basic Login.Users Can Create An Account And Log In" id="test_Basic Login.Users Can Create An Account And Log In" title="Basic Login.Users Can Create An Account And Log In"><span class="parent_name">Basic Login . </span>Users Can Create An Account And Log In</a></td>
+<td class="col_name"><a href="log.html#test_Secure Passwords.A All Allowable Special Characters" id="test_Secure Passwords.A All Allowable Special Characters" title="Secure Passwords.A All Allowable Special Characters"><span class="parent_name">Secure Passwords . </span>A All Allowable Special Characters</a></td>
 <td class="col_doc"></td>
-<td class="col_tags">sprint_1</td>
+<td class="col_tags">secure</td>
 <td class="col_crit">yes</td>
 <td class="col_status pass">PASS</td>
 <td class="col_msg"></td>
-<td class="col_times">20110426&nbsp;18:35:20<br />00:00:08</td>
+<td class="col_times">20110427&nbsp;18:11:17<br />00:00:09</td>
 </tr>
 <tr class="test_row">
-<td class="col_name"><a href="log.html#test_Basic Login.Users Cannot Create An Account If The Account Name Already Exists" id="test_Basic Login.Users Cannot Create An Account If The Account Name Already Exists" title="Basic Login.Users Cannot Create An Account If The Account Name Already Exists"><span class="parent_name">Basic Login . </span>Users Cannot Create An Account If The Account Name Already Exists</a></td>
+<td class="col_name"><a href="log.html#test_Secure Passwords.A Password With All Require Character Types" id="test_Secure Passwords.A Password With All Require Character Types" title="Secure Passwords.A Password With All Require Character Types"><span class="parent_name">Secure Passwords . </span>A Password With All Require Character Types</a></td>
 <td class="col_doc"></td>
-<td class="col_tags">sprint_1</td>
+<td class="col_tags">secure</td>
 <td class="col_crit">yes</td>
 <td class="col_status pass">PASS</td>
 <td class="col_msg"></td>
-<td class="col_times">20110426&nbsp;18:35:29<br />00:00:08</td>
+<td class="col_times">20110427&nbsp;18:11:08<br />00:00:09</td>
 </tr>
 <tr class="test_row">
-<td class="col_name"><a href="log.html#test_Basic Login.Users Cannot Login With Wrong Password" id="test_Basic Login.Users Cannot Login With Wrong Password" title="Basic Login.Users Cannot Login With Wrong Password"><span class="parent_name">Basic Login . </span>Users Cannot Login With Wrong Password</a></td>
+<td class="col_name"><a href="log.html#test_Secure Passwords.A Password With An Invalid Character" id="test_Secure Passwords.A Password With An Invalid Character" title="Secure Passwords.A Password With An Invalid Character"><span class="parent_name">Secure Passwords . </span>A Password With An Invalid Character</a></td>
 <td class="col_doc"></td>
-<td class="col_tags">sprint_1</td>
+<td class="col_tags">secure</td>
 <td class="col_crit">yes</td>
 <td class="col_status pass">PASS</td>
 <td class="col_msg"></td>
-<td class="col_times">20110426&nbsp;18:35:36<br />00:00:08</td>
+<td class="col_times">20110427&nbsp;18:12:09<br />00:00:09</td>
+</tr>
+<tr class="test_row">
+<td class="col_name"><a href="log.html#test_Secure Passwords.A Password With Fewer Than 7 Characters" id="test_Secure Passwords.A Password With Fewer Than 7 Characters" title="Secure Passwords.A Password With Fewer Than 7 Characters"><span class="parent_name">Secure Passwords . </span>A Password With Fewer Than 7 Characters</a></td>
+<td class="col_doc"></td>
+<td class="col_tags">secure</td>
+<td class="col_crit">yes</td>
+<td class="col_status pass">PASS</td>
+<td class="col_msg"></td>
+<td class="col_times">20110427&nbsp;18:12:18<br />00:00:08</td>
+</tr>
+<tr class="test_row">
+<td class="col_name"><a href="log.html#test_Secure Passwords.A Password With More Than 20 Characters" id="test_Secure Passwords.A Password With More Than 20 Characters" title="Secure Passwords.A Password With More Than 20 Characters"><span class="parent_name">Secure Passwords . </span>A Password With More Than 20 Characters</a></td>
+<td class="col_doc"></td>
+<td class="col_tags">secure</td>
+<td class="col_crit">yes</td>
+<td class="col_status pass">PASS</td>
+<td class="col_msg"></td>
+<td class="col_times">20110427&nbsp;18:12:26<br />00:00:08</td>
+</tr>
+<tr class="test_row">
+<td class="col_name"><a href="log.html#test_Secure Passwords.A Password With No Capital Letters" id="test_Secure Passwords.A Password With No Capital Letters" title="Secure Passwords.A Password With No Capital Letters"><span class="parent_name">Secure Passwords . </span>A Password With No Capital Letters</a></td>
+<td class="col_doc"></td>
+<td class="col_tags">secure</td>
+<td class="col_crit">yes</td>
+<td class="col_status pass">PASS</td>
+<td class="col_msg"></td>
+<td class="col_times">20110427&nbsp;18:11:34<br />00:00:09</td>
+</tr>
+<tr class="test_row">
+<td class="col_name"><a href="log.html#test_Secure Passwords.A Password With No Digits" id="test_Secure Passwords.A Password With No Digits" title="Secure Passwords.A Password With No Digits"><span class="parent_name">Secure Passwords . </span>A Password With No Digits</a></td>
+<td class="col_doc"></td>
+<td class="col_tags">secure</td>
+<td class="col_crit">yes</td>
+<td class="col_status pass">PASS</td>
+<td class="col_msg"></td>
+<td class="col_times">20110427&nbsp;18:11:25<br />00:00:09</td>
+</tr>
+<tr class="test_row">
+<td class="col_name"><a href="log.html#test_Secure Passwords.A Password With No Letters" id="test_Secure Passwords.A Password With No Letters" title="Secure Passwords.A Password With No Letters"><span class="parent_name">Secure Passwords . </span>A Password With No Letters</a></td>
+<td class="col_doc"></td>
+<td class="col_tags">secure</td>
+<td class="col_crit">yes</td>
+<td class="col_status pass">PASS</td>
+<td class="col_msg"></td>
+<td class="col_times">20110427&nbsp;18:12:00<br />00:00:09</td>
+</tr>
+<tr class="test_row">
+<td class="col_name"><a href="log.html#test_Secure Passwords.A Password With No Lower Case Letters" id="test_Secure Passwords.A Password With No Lower Case Letters" title="Secure Passwords.A Password With No Lower Case Letters"><span class="parent_name">Secure Passwords . </span>A Password With No Lower Case Letters</a></td>
+<td class="col_doc"></td>
+<td class="col_tags">secure</td>
+<td class="col_crit">yes</td>
+<td class="col_status pass">PASS</td>
+<td class="col_msg"></td>
+<td class="col_times">20110427&nbsp;18:11:43<br />00:00:09</td>
+</tr>
+<tr class="test_row">
+<td class="col_name"><a href="log.html#test_Secure Passwords.A Password With No Special Characters" id="test_Secure Passwords.A Password With No Special Characters" title="Secure Passwords.A Password With No Special Characters"><span class="parent_name">Secure Passwords . </span>A Password With No Special Characters</a></td>
+<td class="col_doc"></td>
+<td class="col_tags">secure</td>
+<td class="col_crit">yes</td>
+<td class="col_status pass">PASS</td>
+<td class="col_msg"></td>
+<td class="col_times">20110427&nbsp;18:11:52<br />00:00:09</td>
+</tr>
+<tr class="test_row">
+<td class="col_name"><a href="log.html#test_Secure Passwords.Existing Users With Insecure Passwords Can Login" id="test_Secure Passwords.Existing Users With Insecure Passwords Can Login" title="Secure Passwords.Existing Users With Insecure Passwords Can Login"><span class="parent_name">Secure Passwords . </span>Existing Users With Insecure Passwords Can Login</a></td>
+<td class="col_doc"></td>
+<td class="col_tags">legacydata, secure</td>
+<td class="col_crit">yes</td>
+<td class="col_status pass">PASS</td>
+<td class="col_msg"></td>
+<td class="col_times">20110427&nbsp;18:11:02<br />00:00:05</td>
 </tr>
 </table>
 </body>
