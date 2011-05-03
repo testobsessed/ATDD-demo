@@ -34,6 +34,20 @@ class PasswordFile
   def delete
     save({})
   end
+  
+  def user_exists?(username, password, state)
+    if File.exists?(@path)
+      password_file = File.open(@path)
+      raw_accounts = password_file.lines.map {|line| "#{line}"}
+      password_file.close
+      raw_accounts.each do |acct|
+        return acct == "#{username}\t#{password}\t#{state}"
+      end
+      return false
+    else
+      false
+    end
+  end
 end
 
 class Authentication
@@ -58,7 +72,7 @@ class Authentication
   end
   
   def create(username, password, status=:active)
-    return :already_exists unless @user_accounts[username].nil?
+    return :already_exists if account_exists?(username)
     account_data = {}
     account_data[:pwd] = password
     account_data[:status] = status
@@ -80,6 +94,7 @@ class Authentication
   def get_user(name)
     return User.new(name, @user_accounts[name])
   end
+
 end
 
 class User
@@ -117,37 +132,25 @@ class CommandLine
 end
 
 # class Password
-#   attr :password
+#   Minlen=7
+#   Maxlen=20
+#   MustInclude = [/[a-z]/, /[A-Z]/, /[0-9]/, /[ !@#&_+=;<>?,.]/]
+#   CannotInclude = /[^a-zA-Z0-9 !@#&_+=;<>?,.]/
 #   
-#   def initialize(password)
-#     @password = password
+#   def self.valid?(password)
+#     password.length.between?(Minlen, Maxlen) &&
+#       includes_required_chars?(password) &&
+#       excludes_forbidden_chars?(password)
 #   end
 #   
-#   def valid?
-#      return !violates_constraints?
+#   def self.includes_required_chars?(password)
+#     MustInclude.each do |regex|
+#       return false if password.match(regex).nil?
+#     end
+#     true
 #   end
 #   
-#   def violates_constraints?
-#     return !contains_letter? || too_short? || too_long? || !contains_punctuation? || !contains_number?
-#   end
-#   
-#   def too_short?
-#     return (@password.length < 6)
-#   end
-#   
-#   def too_long?
-#     return (@password.length > 40)
-#   end
-#   
-#   def contains_punctuation?
-#     return !@password.match(/\W/).nil?
-#   end
-#   
-#   def contains_letter?
-#     return !@password.match(/[a-zA-Z]/).nil?
-#   end
-#   
-#   def contains_number?
-#     return !@password.match(/\d/).nil?
+#   def self.excludes_forbidden_chars?(password)
+#     password.match(CannotInclude).nil?
 #   end
 # end

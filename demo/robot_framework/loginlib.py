@@ -1,6 +1,6 @@
 import commands
 
-SRC_PATH = 'ruby /Users/esh/Desktop/loginExample081408/src/auth.rb'
+SRC_PATH = 'ruby auth.rb'
 
 class loginlib:
 	login_status = ''
