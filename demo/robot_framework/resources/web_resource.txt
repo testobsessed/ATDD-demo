@@ -1,0 +1,55 @@
+*** Settings ***
+Library  SeleniumLibrary
+
+*** Variables ***
+${LOGIN PAGE} =  http://localhost:9393
+${DELAY} =  0.5
+
+*** Keywords ***
+
+Create User  [Arguments]  ${username}  ${password}
+    ${output} =  Create Or Login  create  Create Account  ${username}  ${password}
+    [Return]  ${output}
+
+Attempt To Login  [Arguments]  ${username}  ${password}
+    ${output} =  Create Or Login  login  Login  ${username}  ${password}
+    [Return]  ${output}
+
+Create Or Login  [Arguments]  ${link}  ${button}  ${username}  ${password}
+    Go To  ${LOGIN PAGE}
+    Click Element  ${link}  don't wait page to load
+    Input Text  uname  ${username}
+    Input Text  pwd  ${password}
+    Click Button  ${button}
+    ${output} =  Get Text  message
+    [Return]  ${output}
+
+Enter
+    Start Selenium Server
+    Open Browser  ${LOGIN PAGE}  browser=safari
+    Set Selenium Speed  ${DELAY}
+    Maximize Browser Window
+
+Open Login Page
+    Go To  ${LOGIN PAGE}
+
+Open Create Page
+    Open Login Page
+    Click Element  create  don't wait page to load
+
+Exit
+    Close Browser
+    Stop Selenium Server
+
+Reload User Database
+    Go To  ${LOGIN PAGE}/reload
+
+Instructions should be hidden
+    Class should be  hide
+
+Instructions should be shown
+    Class should be  show
+
+Class should be  [Arguments]  ${class}
+    ${output} =  Execute Javascript   this.page().findElement("password_instructions").className;
+    Should Be Equal  ${class}  ${output}

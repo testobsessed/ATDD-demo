@@ -1,0 +1,46 @@
+*** Settings ***
+
+
+*** Variables ***
+${AUTHPATH} =  ${CURDIR}/../../../demo/src/auth_cli.rb
+
+
+*** Keywords ***
+
+Create User  [Arguments]  ${username}  ${password}
+    ${output} =  Run Command  create  ${username}  "${password}"
+    [Return]  ${output}
+
+Attempt To Login  [Arguments]  ${username}  ${password}
+    ${output} =  Run Command  login  ${username}  "${password}"
+    [Return]  ${output}
+
+Run Command  [Arguments]  @{args}
+    ${cmd} =  CATENATE  ruby  ${AUTHPATH}  @{args}
+    ${output} =  Run  ${cmd}
+    Log  ${output}
+    [Return]  ${output}
+
+Open Login Page
+    No Operation
+
+Go To Create Page
+    No Operation
+
+Reload User Database
+    No Operation
+
+Enter
+    No Operation
+
+Message Html Should Be  [Arguments]  ${expected}
+    Should Be Equal  ${STATUS}  ${expected}
+
+Instructions should be shown
+    No Operation
+
+Instructions should be hidden
+    No Operation
+
+Exit
+    No Operation

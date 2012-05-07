@@ -1,0 +1,45 @@
+*** Test Cases ***
+
+Users can create an account and log in
+    Given there are no accounts in the system
+    When a user creates an account with username "frank" and password "p@ssw0rd"
+    Then the system responds with the message "Account created"
+    When a user attempts to login with username "frank" and password "p@ssw0rd"
+    Then the system responds with the message "Welcome!"
+
+Users cannot create an account if the account name already exists
+    When a user attempts to create an account with a username that already exists
+    Then the system responds with the message "Account already exists"
+
+Users cannot login with wrong password
+    Given there is an account with username "michael" and password "p@ssw0rd"
+    When a user attempts to login with username "michael" and password "bad"
+    Then the system responds with the message "Access denied"
+
+Passwords are case sensitive
+    Given there is an account with username "fred" and password "p@ssw0rd"
+    When a user attempts to login with username "fred" and password "P@ssW0rd"
+    Then the system responds with the message "Access denied"
+
+Passwords can contain caps
+    Given there is an account with username "fred" and password "p@ssw0rd"
+    When a user attempts to login with username "fred" and password "p@ssw0rd"
+    Then the system responds with the message "Welcome!"
+
+Usernames are case sensitive
+    Given there is an account with username "fred" and password "p@ssw0rd"
+    When a user attempts to login with username "FRED" and password "p@ssw0rd"
+    Then the system responds with the message "Access denied"
+
+Account information is persisted
+    Given there is an account with username "fred" and password "p@ssw0rd"
+    Then the database contains an active account fred/p@ssw0rd
+    
+
+
+*** Settings ***
+
+Resource        password_keywords_resource.txt
+Force Tags      sprint_1
+Suite Setup         Enter
+Suite Teardown        Exit
