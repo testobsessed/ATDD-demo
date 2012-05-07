@@ -34,7 +34,5 @@ Account information is persisted
 
 *** Settings ***
 
-Resource        password_keywords_resource.txt
-Force Tags      sprint_1
-Suite Setup         Enter
-Suite Teardown        Exit
+Resource             password_keywords_resource.txt
+Force Tags           sprint_1
