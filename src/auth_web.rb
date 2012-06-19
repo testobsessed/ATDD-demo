@@ -2,7 +2,7 @@ require 'rubygems'
 require 'sinatra'
 require 'tmpdir'
 require 'erb'
-require 'partials'
+require 'partials.rb'
 require 'auth.rb'
 
 include Sinatra::Partials
