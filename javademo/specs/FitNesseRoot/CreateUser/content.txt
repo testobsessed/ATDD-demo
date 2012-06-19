@@ -1,9 +1,0 @@
-!1 Basic Account Creation Tests
-!define TEST_SYSTEM {slim}
-
-!contents -R2 -g -p -f -h
-
-!*< classpath setup
-!path classes
-!path lib/*.jar
-*!

@@ -1,4 +1,0 @@
-!1 Executable Specifications for the Login Example
-
-[[User Can Create Account and Login][CreateUser]]
-[[User Must Use Secure Password][CreateUser]]
