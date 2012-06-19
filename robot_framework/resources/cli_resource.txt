@@ -2,7 +2,7 @@
 
 
 *** Variables ***
-${AUTHPATH} =  ${CURDIR}/../../../demo/src/auth_cli.rb
+${AUTHPATH} =  ${CURDIR}/../../src/auth_cli.rb
 
 
 *** Keywords ***
