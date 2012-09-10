@@ -1,0 +1,37 @@
+*** Test Cases ***
+
+Users can create an account and log in
+    Create an account with username "vineet" and password "p@ssw0rd"
+    System response should be "Account created"
+    Attempt to login with username "vineet" and password "p@ssw0rd"
+    System response should be "Welcome!"
+
+Users cannot create an account if the account name already exists
+    Attempt to create an account with a username that already exists
+    System response should be "Account already exists"
+
+Users cannot login with wrong password
+    Create an account with username "michael" and password "p@ssw0rd"
+    Attempt to login with username "michael" and password "bad"
+    System response should be "Access denied"
+
+Passwords are case sensitive
+    Create an account with username "fred" and password "p@ssw0rd"
+    Attempt to login with username "fred" and password "P@ssW0rd"
+    System response should be "Access denied"
+
+Usernames are case sensitive
+    Create an account with username "fred" and password "p@ssw0rd"
+    Attempt to login with username "Fred" and password "p@ssW0rd"
+    System response should be "Access denied"
+
+Account information is persisted
+    Create an account with username "fred" and password "p@ssw0rd"
+    The accounts database should contain an active account fred/p@ssw0rd
+    
+
+
+*** Settings ***
+
+Resource             password_keywords_resource.txt
+Force Tags           sprint_1

@@ -6,3 +6,4 @@
 :load_failed: "Failed to load user accounts"
 :access_denied: "Access denied"
 :already_exists: "Account already exists"
+:bad: "Password does not meet the following criteria: must be at least six characters long with at least one number, one symbol, and one letter."

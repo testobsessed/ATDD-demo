@@ -1,0 +1,57 @@
+Passwords must meet conditions...
+
+    
+*** Test Cases ***
+
+Error message returned on bad passwords
+    When a user creates an account with a bad password
+    Then the system responds with the message "Password does not meet the following criteria: must be at least six characters long with at least one number, one symbol, and one letter."
+    
+Passwords cannot contain the character string used as username
+    Given there are no accounts in the system
+    When a user creates an account with username "georgette" and password "georgette!2"
+    Then the system responds with the message "Passwords cannot contain the character string used as username"
+
+*** Test Cases ***
+| Passwords with less than 6 characters | are invalid | bad0# |
+| Passwords with only numbers | are invalid | 123456 |
+| Passwords with only letters | are invalid | password |
+| Passwords with 6 characters | are valid | p@ssw0 |
+| Passwords with more than 20 chars | are invalid | p@ssw0rdaaaaaaaaaaaaa |
+| Passwords with 20 chars are valid | are valid | p@ssw0rdaaaaaaaaaaaa |
+| Passwords with spaces | are invalid | p@ss w0rd |
+
+*** Test Cases ***
+
+Existing users with insecure passwords can login
+    [Tags]  legacydata
+    Given there is an account with username "fred" and invalid password "password"
+    When a user attempts to login with username "fred" and password "password"
+    Then the system responds with the message "Welcome!"
+
+*** Settings ***
+
+Resource        password_keywords_resource.txt
+Force Tags      secure
+Suite Setup     Enter
+Suite Teardown  Exit
+
+*** Keywords ***
+When a user creates an account with a bad password
+    are invalid   bad
+    
+Attempting to create a user with password "${password}" results in error "${errormsg}"
+    When a user creates an account with username "fred" and password "${password}"
+    Then the system responds with the message "${errormsg}"
+    When a user attempts to login with username "fred" and password "${password}"
+    Then the system responds with the message "Access denied"
+
+are invalid  [Arguments]  ${password}
+    Attempting to create a user with password "${password}" results in error "PLACEHOLDER: ERROR GOES HERE"
+
+are valid  [Arguments]  ${password}
+    When a user creates an account with username "fred" and password "${password}"
+    Then the system responds with the message "Account created"
+    When a user attempts to login with username "fred" and password "${password}"
+    Then the system responds with the message "Welcome!"
+
