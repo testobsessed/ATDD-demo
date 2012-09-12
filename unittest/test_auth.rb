@@ -4,10 +4,10 @@ require 'test/unit'
 require 'flexmock/test_unit'
 require File.dirname(__FILE__) + '/../src/auth'
 
-
 class TestAuth < Test::Unit::TestCase  
   
   attr :auth
+  attr :goodpwd
   
   def setup
     # using mocks to avoid polluting real pwds file with test data
@@ -15,11 +15,12 @@ class TestAuth < Test::Unit::TestCase
     pwd_file.should_receive(:get_users).and_return({})
     pwd_file.should_receive(:save).and_return({})
     @auth = Authentication.new(pwd_file)
+    @goodpwd = "A0&daaaaaaaaaaaaaaaaa"
   end
   
   def test_valid_user_can_log_in
-    @auth.create("sam", "A0&daaa")
-    return_code = @auth.login("sam", "A0&daaa")
+    @auth.create("sam", @goodpwd)
+    return_code = @auth.login("sam", @goodpwd)
     assert @auth.get_user("sam").logged_in?, "Expected user should be logged in"
     assert_equal :logged_in, return_code
   end
@@ -30,7 +31,7 @@ class TestAuth < Test::Unit::TestCase
   end
   
   def test_account_exists_returns_true_if_account_exists_with_username
-    @auth.create("fred", "F0&blee")
+    @auth.create("fred", @goodpwd)
     assert @auth.account_exists?("fred")
   end
   
@@ -40,15 +41,15 @@ class TestAuth < Test::Unit::TestCase
   
   def test_create_user_adds_new_user_to_list_with_user_data_and_returns_success
     assert !@auth.account_exists?("newacc")
-    return_code = @auth.create("newacc", "D3f&lte")
+    return_code = @auth.create("newacc", @goodpwd)
     assert @auth.account_exists?("newacc")
     assert_equal :success, return_code
   end
   
   def test_create_user_returns_error_if_user_exists
     account_name = "newacc"
-    @auth.create(account_name, "D3f&lte")
-    return_code = @auth.create(account_name, "F00b&re")
+    @auth.create(account_name, @goodpwd)
+    return_code = @auth.create(account_name, @goodpwd)
     assert_equal :already_exists, return_code
   end  
   

@@ -1,5 +1,0 @@
-
-*** Settings ***
-Resource              password_keywords_resource.txt
-Suite Setup           Enter
-Suite Teardown        Exit
