@@ -9,7 +9,6 @@ include Sinatra::Partials
 
 pwd_file = PasswordFile.new()
 auth = Authentication.new(pwd_file)
-puts "CREATED FILE AT: #{pwd_file.path}"
 
 get '/' do
   @template = :login

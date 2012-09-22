@@ -33,6 +33,7 @@ class Authentication
     account_data[:status] = status
     @user_accounts[username] = account_data
     @pwd_file.save(@user_accounts)
+    puts "#{Time.now}: created account with username #{username} in password file at #{@pwd_file.path}"
     return :success
   end
   
@@ -40,8 +41,10 @@ class Authentication
     if !@user_accounts[username].nil? && @user_accounts[username][:pwd] == password
       @user_accounts[username][:status] = :online
       @pwd_file.save(@user_accounts)
+      puts "#{Time.now}: successful login as #{username}"
       return :logged_in
     else
+      puts "#{Time.now}: failed attempt to login as #{username}"
       return :access_denied
     end
   end
