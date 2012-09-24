@@ -22,7 +22,7 @@ Passwords are case sensitive
 
 Usernames are case sensitive
     Create an account with username "fred" and password "p@ssw0rd"
-    Attempt to login with username "Fred" and password "p@ssW0rd"
+    Attempt to login with username "Fred" and password "p@ssw0rd"
     System response should be "Access denied"
 
 Account information is persisted
