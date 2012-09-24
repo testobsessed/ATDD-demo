@@ -36,7 +36,6 @@ Enter
     Open Browser  ${LOGIN PAGE}  browser=safari
     Set Selenium Speed  ${DELAY}
     Maximize Browser Window
-    Clear db
 
 Open Login Page
     Go To  ${LOGIN PAGE}

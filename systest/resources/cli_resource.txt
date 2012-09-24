@@ -31,7 +31,7 @@ Reload User Database
     No Operation
 
 Enter
-    Clear the accounts database
+    No Operation
 
 Message Html Should Be  [Arguments]  ${expected}
     Should Be Equal  ${STATUS}  ${expected}

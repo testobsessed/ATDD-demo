@@ -2,4 +2,5 @@
 *** Settings ***
 Resource              password_keywords_resource.txt
 Suite Setup           Enter
+Test Setup            Clear the accounts database
 Suite Teardown        Exit
